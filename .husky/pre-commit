@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# . "$(dirname "$0")/_/husky.sh"
+
+pnpm lint-staged
+
+# docker compose -f compose.local.yaml up -d --build

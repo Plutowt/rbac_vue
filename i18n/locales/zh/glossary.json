@@ -1,0 +1,19 @@
+{
+  "testAccessToken": "要确认您的令牌是否工作正常，可以复制下面的 CURL 命令并将其粘贴到终端 Shell 中进行测试。",
+  "IMEI": "International Mobile Equipment Identity (国际移动设备身份码)",
+  "IMSI": "International Mobile Subscriber Identity (国际移动用户识别码)",
+  "ICCID": "Integrated Circuit Card Identifier (集成电路卡标识符)",
+  "MCC": "Mobile Country Code (移动国家代码)",
+  "MNC": "Mobile Network Code (移动网络代码)",
+  "RSSI": "Received Signal Strength Indicator (信号强度)",
+  "BER": "Bit Error Rate (信号质量)",
+  "SMSC": "短信服务中心",
+  "sessionExpired": "本次登录会话已过期，请重新登录",
+  "hiddenSMSMessage": "短信内容处理了，点击展开",
+  "tokenScope": {
+    "sms:post": "发送短信",
+    "device_location:get": "获取设备端口",
+    "device:get": "获取设备"
+  },
+  "saveTokenWarning": "请立即保存访问令牌，因为无法再看到它"
+}

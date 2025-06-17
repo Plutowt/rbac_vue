@@ -1,0 +1,21 @@
+{
+  "required": "该字段必须填写",
+  "string": {
+    "min": "不能少于 {min} 个字符",
+    "max": "不能长于 {max} 个字符",
+    "notStart": "不能以 {start} 开头",
+    "format": "无效格式",
+    "null": "该字段不能为空"
+  },
+  "number": {
+    "min": "不能小于 {min}",
+    "max": "不能大于 {max}"
+  },
+  "invalidItemFormat": "无效的{item}格式",
+  "passwordRepeat": "两次输入的密码必须相同",
+  "permissionForbidden": "权限不足",
+  "permissionForbiddenDetail": "没有访问该资源的权限",
+  "rateLimit": "请求过于频繁，请稍后重试",
+  "notBeValue": "不能是{value}",
+  "InvalidCredentials": "@:{'common.username'}或@:{'common.password'}错误"
+}

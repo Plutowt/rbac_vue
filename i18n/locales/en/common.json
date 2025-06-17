@@ -1,0 +1,13 @@
+{
+  "unknownServerError": "服务端未知异常",
+  "username": "Username",
+  "password": "Password",
+  "rememberLogin": "Remember Me",
+  "theme": {
+    "auto": "Auto",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "login": "Login",
+  "logout": "Logout"
+}
