@@ -9,18 +9,18 @@ export default defineNuxtRouteMiddleware(
       }
     }
 
-    async function checkPermission() {
-      if (auth.info) {
-        // TODO
-        // 单个 permission 以对象形式
-        // { value: "类似 code", condition: "条件(以当前环境)" }
-        if (to.meta.roles && !to.meta.roles.includes(auth.info))
-          return await navigateTo(localePath('forbidden'))
-      }
-      else {
-        return await auth.logout()
-      }
-    }
+    // async function checkPermission() {
+    //   if (auth.info) {
+    //     // TODO
+    //     // 单个 permission 以对象形式
+    //     // { value: "类似 code", condition: "条件(以当前环境)" }
+    //     if (to.meta.roles && !to.meta.roles.includes(auth.info))
+    //       return await navigateTo(localePath('forbidden'))
+    //   }
+    //   else {
+    //     return await auth.logout()
+    //   }
+    // }
 
     // // 如果不是去登录界面
     // if (to.meta.layout !== 'auth') {

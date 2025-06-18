@@ -9,5 +9,10 @@
     "light": "Light"
   },
   "login": "Login",
-  "logout": "Logout"
+  "logout": "Logout",
+  "menu": {
+    "home": "Dashboard",
+    "roles": "Roles",
+    "users": "Users"
+  }
 }

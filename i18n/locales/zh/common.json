@@ -9,5 +9,10 @@
     "light": "亮色模式"
   },
   "login": "登录",
-  "logout": "退出登录"
+  "logout": "退出登录",
+  "menu": {
+    "home": "仪表盘",
+    "roles": "角色管理",
+    "users": "用户管理"
+  }
 }

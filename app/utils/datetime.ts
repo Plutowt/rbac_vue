@@ -30,7 +30,7 @@ export function seconds2String(v: number | undefined) {
   const hours = Math.floor(v / 60 / 60 % 24)
   const minutes = Math.floor(v / 60 % 60)
   const seconds = Math.floor(v % 60)
-  const t = useNuxtApp().$i18n.t
+  const { t } = useNuxtApp().$i18n
   const results: string[] = []
   if (days)
     results.push(`${days} ${t('common.dateLabel.day')}`)

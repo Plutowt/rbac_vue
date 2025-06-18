@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <div>users</div>
+  <div>2333</div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLinkLocale to="/" class="block">
+  <NuxtLinkLocale to="index" class="block">
     <div class="text-xl font-light dark:text-white">
       Smart Select
     </div>

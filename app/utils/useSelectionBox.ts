@@ -24,6 +24,7 @@ function getElementPath(element: HTMLElement): string[] {
 
   return path
 }
+
 export function useSelectionBox(options: SelectionBoxOptions = {}) {
   const { container, disabled = ref(false), onSelect } = options
 

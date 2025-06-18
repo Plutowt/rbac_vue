@@ -17,6 +17,7 @@
     "up-api-types": "pnpx openapi-typescript http://localhost:8000/openapi.json -o ./app/api/v1/types.d.ts"
   },
   "dependencies": {
+    "nanoid": "^5.1.5",
     "object-to-formdata": "^4.5.1",
     "openapi-fetch": "^0.14.0"
   },

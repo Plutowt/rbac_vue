@@ -1,56 +1,84 @@
 <script setup lang="ts">
-const props = defineProps<{ items: UIAnyNavigationItem[] }>()
+import type { SetOptional } from 'type-fest'
+import type { UIAnyNavigationItem, UIGroupNavigationItem, UINavigationItem, UISubNavigationItem } from '~/components/UI/MenuItems/types'
+import {
+  IconHome,
+  IconLock,
+  IconUserGroup,
+} from '@arco-design/web-vue/es/icon'
+import { has } from 'es-toolkit/compat'
+import { nanoid } from 'nanoid'
 
+const { t } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
 
-function onClickMenuItem(key: string) {
-  let result: UINavigationItem | undefined
-  let current = props.items
-  const indexes = key.split('_')
+function withKey(items: SetOptional<UIAnyNavigationItem, 'key'>[]): UIAnyNavigationItem[] {
+  const result: UIAnyNavigationItem[] = []
 
-  for (const [index, indexValue] of indexes.entries()) {
-    const i = current[Number.parseInt(indexValue)]!
-    if ((index + 1) < indexes.length) {
-      current = (i as UISubNavigationItem).children ?? (i as UIGroupNavigationItem).group
+  for (const i of items) {
+    if (has(i, 'group')) {
+      i.key = nanoid()
+      i.group = withKey((i as UIGroupNavigationItem).group)
+    }
+    else if (has(i, 'children')) {
+      i.key = nanoid()
+      i.children = withKey((i as UISubNavigationItem).children)
     }
     else {
-      result = i as UINavigationItem
+      i.key = localePath((i as UINavigationItem).to)
     }
+    result.push(i)
   }
-
-  if (result!.to) {
-    navigateTo(localePath(result!.to))
-  }
+  return result
 }
 
-function withKey(items: Record<string, any>[], parent?: string) {
-  let counter = 0
-  const result = []
-  for (const i of items) {
-    const ii = { ...i }
-    ii.key = parent ? `${parent}_${counter++}` : `${counter++}`
+const items = computed<UIAnyNavigationItem[]>(() => withKey([
+  { icon: IconHome, label: t('common.menu.home'), to: 'index' },
+  { icon: IconLock, label: t('common.menu.roles'), to: 'roles' },
+  { icon: IconUserGroup, label: t('common.menu.users'), to: 'users', roles: ['admin'] },
+  // {
+  //   icon: IconCommon,
+  //   label: t('common.menu.deviceManage.label'),
+  //   children: [
+  //   ],
+  // },
+  // {
+  //   icon: IconApps,
+  //   label: t('common.menu.appSettings.label'),
+  //   children: [
+  //     // { label: t('common.menu.appSettings.phoneQueryTemplate'), to: '/app_settings/phone_query_templates' },
+  //     // { label: t('common.deviceUser'), to: '/devices/users' },
+  //   ],
+  // },
+  // {
+  //   icon: IconRelation,
+  //   label: t('common.openapi'),
+  //   to: '/openapi',
+  // },
+  // { icon: IconMindMapping, label: t('common.menu.operationLog'), to: '/operation_logs', roles: ['admin'] },
+]))
 
-    if (ii.children) {
-      ii.children = withKey(ii.children, ii.key.toString())
-    }
-    else if (ii.group) {
-      ii.group = withKey(ii.group, ii.key.toString())
-    }
-    result.push(ii)
-  }
-  return result as (UIAnyNavigationItem & { key: string })[]
+function onClickMenuItem(
+  key: import('vue-router').RouteLocationNamedI18n,
+) {
+  navigateTo(localePath(key))
 }
-const items = computed(() => withKey(props.items))
+
 const sidebar = useSidebar()
+
+const selectedKeys = ref([route.path])
 </script>
 
 <template>
   <AMenu
+    v-model:collapsed="sidebar.collapsed"
+    v-model:selected-keys="selectedKeys"
     class="h-full"
     show-collapse-button
-    @collapse="sidebar.toggleExpanded()"
+    @collapse="sidebar.toggleCollapse"
     @menu-item-click="onClickMenuItem"
   >
-    <UINavigationItems :items="items" />
+    <UIMenuItems :items="items" />
   </AMenu>
 </template>
