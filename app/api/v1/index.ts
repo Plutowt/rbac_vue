@@ -17,3 +17,20 @@ const client = createClient<paths>({
 })
 export const apiV1 = wrapAsPathBasedClient(client)
 client.use(middleware)
+
+// 工具类型
+
+// 提取查询参数
+type _Queries<T> = T extends { params?: { query?: infer Value } | undefined } ? Value : T
+export type APIQuery<T> = T extends (params: infer Params) => any ? _Queries<Params> : _Queries<T>
+
+// 提取查询参数里的排序参数
+export type APIQuerySort<T> = APIQuery<T> extends { sorts?: infer Value } ? Exclude<Value, undefined | null> : T
+
+// 提取分页结果
+type _Result<T> = UnVueMaybeRef<T> extends {
+  data?: { results: (infer DataResultsItem)[] }
+} ? DataResultsItem : T extends {
+    results: (infer DataResultsItem)[]
+  } ? DataResultsItem : T
+export type APIResult<T> = T extends (...params: any) => Promise<infer Res> ? _Result<Res> : _Result<T>

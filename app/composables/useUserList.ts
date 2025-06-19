@@ -7,7 +7,7 @@ export function useUserList(opts?: { watch?: [WatchSource, WatchCallback] | [Wat
   const max = ref<number>()
   const auth = useAuth()
 
-  const { params: pageParams, nextPage } = usePaginate({ max })
+  const { params: pageParams, nextPage } = usePageParams({ max })
   const queryUserModel = reactive<APIUserPageQueryModel>({})
   const { data } = useAsyncData(
     async () => {

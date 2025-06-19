@@ -14,5 +14,6 @@
     "home": "Dashboard",
     "roles": "Roles",
     "users": "Users"
-  }
+  },
+  "id": "ID"
 }

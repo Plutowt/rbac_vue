@@ -4,6 +4,6 @@ definePageMeta({ layout: 'auth' })
 
 <template>
   <UserAuthForm>
-    <UserLoginForm class="mx-auto w-full sm:max-w-80" />
+    <UserAuthLoginForm class="mx-auto w-full sm:max-w-80" />
   </UserAuthForm>
 </template>

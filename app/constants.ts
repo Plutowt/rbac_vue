@@ -2,11 +2,9 @@
 export const layoutHeaderHeight = 60
 
 // pixels
-export const defaultLayoutSidebarWidth = 256
+export const layoutSidebarWidth = 224
+export const enabledSidebarWidthChange = true
 
-// URL
-export const support = 'https://t.me/JJ669988'
-
-export const appName = 'SMS Device Manager'
+export const appName = 'RBAC'
 
 export const clientId = 'dashboard'

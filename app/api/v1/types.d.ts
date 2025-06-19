@@ -72,23 +72,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/oauth/authorize': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** Authorize */
-    get: operations['authorize_oauth_authorize_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/oauth/token': {
     parameters: {
       query?: never
@@ -98,7 +81,10 @@ export interface paths {
     }
     get?: never
     put?: never
-    /** Create Token */
+    /**
+     * Create Token
+     * @description ⏱️ Rate limit:
+     */
     post: operations['create_token_oauth_token_post']
     delete?: never
     options?: never
@@ -502,8 +488,8 @@ export interface components {
     APIApplicationUpdate: {
       /** clientName */
       clientName?: string | null
-      /** redirectUrls */
-      redirectUrls?: string[] | null
+      /** redirectUris */
+      redirectUris?: string[] | null
       /** grantTypes */
       grantTypes?: components['schemas']['GrantType'][] | null
       /** idTokenTtl */
@@ -988,6 +974,11 @@ export interface components {
       /** password */
       password?: string | null
     }
+    /**
+     * AuthusermodelSort
+     * @enum {string}
+     */
+    AuthusermodelSort: 'updatedAt.asc' | 'updatedAt.desc' | 'createdAt.asc' | 'createdAt.desc' | 'id.asc' | 'id.desc'
     /** Body_revoke_token_oauth_token_revoke_post */
     Body_revoke_token_oauth_token_revoke_post: {
       /** Token */
@@ -1292,59 +1283,12 @@ export interface operations {
       }
     }
   }
-  authorize_oauth_authorize_get: {
-    parameters: {
-      query: {
-        response_type: 'code' | 'token'
-        state?: string | null
-        code_challenge?: string | null
-        code_challenge_method?: string | null
-        client_id?: string | null
-        redirect_uri?: string | null
-      }
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': unknown
-        }
-      }
-      /** @description Bad Request */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['OAuthCommonError']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
   create_token_oauth_token_post: {
     parameters: {
       query?: never
       header?: {
         'X-Request-ID'?: string | null
-        /** @example Basic {client_id}:{client_secret} */
+        /** @example Basic client_id:client_secret */
         'Authorization'?: string
       }
       path?: never
@@ -1377,10 +1321,10 @@ export interface operations {
           username: string
           /** Password */
           password: string
+          /** Client Id */
+          client_id: string
           /** Scope */
           scope?: string | null
-          /** Client Id */
-          client_id?: string | null
           /** Client Secret */
           client_secret?: string | null
         } | {
@@ -1421,6 +1365,24 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['APIIssuingTokenError']
+        }
+      }
+      /** @description Unauthorized */
+      401: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+        }
+      }
+      /** @description Forbidden */
+      403: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['APINotEnoughPermissionsModel']
         }
       }
       /** @description Validation Error */
@@ -1632,6 +1594,15 @@ export interface operations {
           'application/json': components['schemas']['HTTPValidationError']
         }
       }
+      /** @description Too Many Requests */
+      429: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['RateLimitErrorModel']
+        }
+      }
     }
   }
   get_authenticated_userinfo_userinfo_get: {
@@ -1679,6 +1650,7 @@ export interface operations {
       query?: {
         pageSize?: number
         pageNo?: number
+        sorts?: components['schemas']['AuthusermodelSort'][] | null
       }
       header?: {
         'X-Request-ID'?: string | null

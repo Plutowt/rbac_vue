@@ -1,9 +1,25 @@
 <script setup lang="ts">
-const {
-  locale,
-  locales,
-  setLocale,
-} = useI18n()
+import type { Locale } from 'vue-i18n'
+import { apiV1 } from '~/api/v1'
+
+const auth = useAuth()
+
+const { locale, locales, setLocale } = useI18n()
+
+watch(
+  () => auth.info?.locale as Locale | undefined,
+  (userLocale) => {
+    if (userLocale !== locale.value && userLocale)
+      setLocale(userLocale)
+  },
+)
+
+async function changeLocale(locale: Locale) {
+  await setLocale(locale)
+  if (auth.isLogged) {
+    await apiV1['/user'].PATCH({ body: { locale } })
+  }
+}
 
 interface Item {
   label: string
@@ -37,7 +53,7 @@ const current = computed<Item>(() => languages.value.find(i => i.locale === loca
       <ADoption
         v-for="i in languages" :key="i.locale" :value="i"
         :class="{ '!bg-fill-2': i.iso === current.iso }"
-        @click="setLocale(i.locale)"
+        @click="changeLocale(i.locale)"
       >
         <div
           class="flex items-center gap-2"

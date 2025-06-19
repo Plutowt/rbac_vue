@@ -12,6 +12,8 @@ import { nanoid } from 'nanoid'
 const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
+const router = useRouter()
+const auth = useAuth()
 
 function withKey(items: SetOptional<UIAnyNavigationItem, 'key'>[]): UIAnyNavigationItem[] {
   const result: UIAnyNavigationItem[] = []
@@ -33,10 +35,63 @@ function withKey(items: SetOptional<UIAnyNavigationItem, 'key'>[]): UIAnyNavigat
   return result
 }
 
-const items = computed<UIAnyNavigationItem[]>(() => withKey([
+/**
+ * 显示当前用户有权限访问的菜单
+ */
+function permissionFilter(items: UIAnyNavigationItem[]) {
+  const result: UIAnyNavigationItem[] = []
+
+  for (const i of items) {
+    let invalid = false
+    if (has(i, 'group')) {
+      i.group = permissionFilter((i as UIGroupNavigationItem).group)
+    }
+    else if (has(i, 'children')) {
+      i.children = permissionFilter((i as UISubNavigationItem).children)
+    }
+    else {
+      const r = router.options.routes.find(r => r.path === i.key)
+
+      if (r) {
+        const requires = r.meta?.permissions
+        // 如果有要求权限
+        if (requires?.length) {
+          // 登录了就检查
+          if (auth.info) {
+            // 检查是否具备任意一项权限
+            invalid = !requires.some(i => auth.info?.permissions.includes(i))
+          }
+          // 没登陆就不显示
+          else {
+            invalid = true
+          }
+        }
+      }
+    }
+    if (!invalid)
+      result.push(i)
+  }
+
+  return result
+}
+
+const items = computed<UIAnyNavigationItem[]>(() => permissionFilter(withKey([
   { icon: IconHome, label: t('common.menu.home'), to: 'index' },
-  { icon: IconLock, label: t('common.menu.roles'), to: 'roles' },
-  { icon: IconUserGroup, label: t('common.menu.users'), to: 'users', roles: ['admin'] },
+  {
+    icon: IconLock,
+    label: t('common.menu.roles'),
+    to: 'roles',
+  },
+  {
+    icon: IconUserGroup,
+    label: t('common.menu.users'),
+    to: 'users',
+  },
+  {
+    // icon: IconUserGroup,
+    label: 'invalid permission demo',
+    to: 'invalid-permission',
+  },
   // {
   //   icon: IconCommon,
   //   label: t('common.menu.deviceManage.label'),
@@ -57,7 +112,7 @@ const items = computed<UIAnyNavigationItem[]>(() => withKey([
   //   to: '/openapi',
   // },
   // { icon: IconMindMapping, label: t('common.menu.operationLog'), to: '/operation_logs', roles: ['admin'] },
-]))
+])))
 
 function onClickMenuItem(
   key: import('vue-router').RouteLocationNamedI18n,

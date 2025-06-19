@@ -2,6 +2,8 @@
 import enUS from '@arco-design/web-vue/es/locale/lang/en-us'
 import zhCN from '@arco-design/web-vue/es/locale/lang/zh-cn'
 
+import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+
 useHead({ title: appName })
 
 const color = useColorMode()
@@ -37,4 +39,5 @@ const locale = computed(() => {
       <NuxtPage />
     </NuxtLayout>
   </a-config-provider>
+  <VueQueryDevtools />
 </template>
