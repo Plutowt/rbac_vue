@@ -4,8 +4,6 @@ import type { APIGetUsersParams } from '~/api/v1/users'
 import { useQuery } from '@tanstack/vue-query'
 import { getUsers } from '~/api/v1/users'
 
-// Access QueryClient instance
-
 // type Results = Exclude<Awaited<ReturnType<typeof apiV1['/users']['GET']>>['data'], undefined>['results']
 const query = reactive<APIQuery<APIGetUsersParams>>({})
 const page = usePageParams()
@@ -17,6 +15,13 @@ const { data } = useQuery({
   }),
 })
 
+const columns = apiV1TableColumns<typeof getUsers>([
+  {
+    dataIndex: 'id',
+    sortable: ['asc', 'desc'],
+  },
+])
+
 const onSorterChange = apiV1TableOnSorterChange(query)
 </script>
 
@@ -25,15 +30,7 @@ const onSorterChange = apiV1TableOnSorterChange(query)
   <ATable
     v-bind="page.arcoTable"
     :data="data?.data?.results"
-    :columns="[
-      { title: 'ID',
-        dataIndex: 'id',
-        sortable: {
-          sortDirections: ['ascend', 'descend'],
-          sorter: true,
-        },
-      },
-    ]"
+    :columns="columns"
     @sorter-change="onSorterChange"
   />
 </template>

@@ -4,30 +4,30 @@ import type { APIResult } from '~/api/v1'
 import { remove } from 'es-toolkit'
 import { findIndex } from 'es-toolkit/compat'
 
-type TypeTableColumnData<APIResultT> = TableColumnData & {
+interface TypeTableColumnData<APIResultT = unknown> {
   dataIndex: Paths<APIResultT>
   sortable?: ['asc', 'desc'] | ['desc', 'asc'] | ['asc'] | ['desc']
 }
 
+type ExcludeTypeTableColumnData = Omit<TableColumnData, keyof TypeTableColumnData>
+
+const sortMap = {
+  asc: 'ascend',
+  desc: 'descend',
+}
+
 export function apiV1TableColumns<T>(
-  _columns: TypeTableColumnData<APIResult<T>>[],
+  _columns: (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData)[],
 ) {
   const { t } = useNuxtApp().$i18n
   return _columns.map((i) => {
-    const result: TableColumnData = {
+    const result = {
       title: t(`common.${i.dataIndex}`),
       ...i,
-    }
+    } as unknown as TableColumnData
 
     if (i.sortable) {
-      const value = []
-      if (i.sortable[0] === 'asc') {
-        value[0] = 'ascend'
-      }
-      if (i.sortable[1] === 'desc') {
-        value[1] = 'descend'
-      }
-
+      const value = i.sortable.map(ii => sortMap[ii])
       result.sortable = {
         sortDirections: value as ('ascend' | 'descend')[],
         sorter: true,
