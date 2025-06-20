@@ -1,5 +1,5 @@
 {
-  "unknownServerError": "服务端未知异常",
+  "unknownServerError": "Unknown server error",
   "username": "Username",
   "password": "Password",
   "rememberLogin": "Remember Me",
@@ -15,5 +15,9 @@
     "roles": "Roles",
     "users": "Users"
   },
-  "id": "ID"
+  "id": "ID",
+  "email": "Email",
+  "createdAt": "Create Time",
+  "updatedAt": "Update Time",
+  "isActive": "Enabled"
 }

@@ -1,13 +1,13 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import type { APIQuery } from '~/api/v1'
 import type { APIGetUsersParams } from '~/api/v1/users'
 import { useQuery } from '@tanstack/vue-query'
 import { getUsers } from '~/api/v1/users'
+import IsActive from '~/components/UI/IsActive.vue'
 
-// type Results = Exclude<Awaited<ReturnType<typeof apiV1['/users']['GET']>>['data'], undefined>['results']
 const query = reactive<APIQuery<APIGetUsersParams>>({})
 const page = usePageParams()
-// Query
+
 const { data } = useQuery({
   queryKey: ['users', query],
   queryFn: () => getUsers({
@@ -19,6 +19,23 @@ const columns = apiV1TableColumns<typeof getUsers>([
   {
     dataIndex: 'id',
     sortable: ['asc', 'desc'],
+  },
+  {
+    dataIndex: 'email',
+  },
+  {
+    dataIndex: 'createdAt',
+    sortable: ['asc', 'desc'],
+  },
+  {
+    dataIndex: 'updatedAt',
+    sortable: ['asc', 'desc'],
+  },
+  {
+    dataIndex: 'isActive',
+    render({ record }) {
+      return <IsActive ok={record.isActive}></IsActive>
+    },
   },
 ])
 

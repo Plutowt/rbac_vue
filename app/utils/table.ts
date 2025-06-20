@@ -1,12 +1,18 @@
 import type { TableColumnData } from '@arco-design/web-vue'
 import type { Paths } from 'type-fest'
+import type { VNodeChild } from 'vue'
 import type { APIResult } from '~/api/v1'
 import { remove } from 'es-toolkit'
 import { findIndex } from 'es-toolkit/compat'
 
-interface TypeTableColumnData<APIResultT = unknown> {
-  dataIndex: Paths<APIResultT>
+interface TypeTableColumnData<APIResultT = unknown, DataIndex = Paths<APIResultT>> {
+  dataIndex: DataIndex
   sortable?: ['asc', 'desc'] | ['desc', 'asc'] | ['asc'] | ['desc']
+  render?: (data: {
+    record: APIResultT
+    column: { title: string, dataIndex: DataIndex }
+    rowIndex: number
+  }) => VNodeChild
 }
 
 type ExcludeTypeTableColumnData = Omit<TableColumnData, keyof TypeTableColumnData>
@@ -22,7 +28,7 @@ export function apiV1TableColumns<T>(
   const { t } = useNuxtApp().$i18n
   return _columns.map((i) => {
     const result = {
-      title: t(`common.${i.dataIndex}`),
+      title: computed(() => t(`common.${i.dataIndex}`)),
       ...i,
     } as unknown as TableColumnData
 

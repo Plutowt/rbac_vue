@@ -4,6 +4,9 @@ import { defineStore } from 'pinia'
 import { apiV1 } from '~/api/v1'
 import { clientId } from '~/constants'
 
+const clientInfo = btoa(`${clientId}:_`)
+const Authorization = `Basic ${clientInfo}`
+
 export const useAuth = defineStore('auth', () => {
   const { t } = useNuxtApp().$i18n
   const localePath = useLocalePath()
@@ -25,9 +28,7 @@ export const useAuth = defineStore('auth', () => {
         refresh_token: '.',
       },
       bodySerializer: serialize,
-      headers: {
-        Authorization: `Basic ${btoa(clientId)}`,
-      },
+      headers: { Authorization },
     })
 
     if (error) {
@@ -98,6 +99,7 @@ export const useAuth = defineStore('auth', () => {
       else {
         const code = url.searchParams.get('code')!
         const { data, error, response } = await apiV1['/oauth/token'].POST({
+          headers: { Authorization },
           body: {
             ...query,
             grant_type: 'authorization_code',

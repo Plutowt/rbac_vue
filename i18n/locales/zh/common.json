@@ -15,5 +15,9 @@
     "roles": "角色管理",
     "users": "用户管理"
   },
-  "id": "ID"
+  "id": "ID",
+  "email": "邮箱",
+  "createdAt": "创建时间",
+  "updatedAt": "更新时间",
+  "isActive": "启用"
 }
