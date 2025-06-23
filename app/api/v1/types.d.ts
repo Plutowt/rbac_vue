@@ -13,7 +13,10 @@ export interface paths {
     }
     get?: never
     put?: never
-    /** Legacy Login */
+    /**
+     * Legacy Login
+     * @description ⏱️ Rate limit: `10 per 1 minute`
+     */
     post: operations['legacy_login_auth_login_post']
     delete?: never
     options?: never
@@ -30,7 +33,10 @@ export interface paths {
     }
     get?: never
     put?: never
-    /** Logout */
+    /**
+     * Logout
+     * @description ⏱️ Rate limit: `10 per 1 minute`
+     */
     post: operations['logout_auth_logout_post']
     delete?: never
     options?: never
@@ -45,64 +51,13 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    /** Get Csrf Token */
+    /**
+     * Get Csrf Token
+     * @description ⏱️ Rate limit: `30 per 1 minute`
+     */
     get: operations['get_csrf_token_auth_csrf_token_get']
     put?: never
     post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/authenticate': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** Authenticate */
-    post: operations['authenticate_authenticate_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/oauth/token': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /**
-     * Create Token
-     * @description ⏱️ Rate limit:
-     */
-    post: operations['create_token_oauth_token_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/oauth/token/revoke': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** Revoke Token */
-    post: operations['revoke_token_oauth_token_revoke_post']
     delete?: never
     options?: never
     head?: never
@@ -116,32 +71,21 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    /** Get Authenticated Userinfo */
+    /**
+     * Get Authenticated Userinfo
+     * @description ⏱️ Rate limit: `60 per 1 minute`
+     */
     get: operations['get_authenticated_userinfo_user_get']
     put?: never
     post?: never
     delete?: never
     options?: never
     head?: never
-    /** Update Authenticated Userinfo */
+    /**
+     * Update Authenticated Userinfo
+     * @description ⏱️ Rate limit: `60 per 1 minute`
+     */
     patch: operations['update_authenticated_userinfo_user_patch']
-    trace?: never
-  }
-  '/userinfo': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** Get Authenticated Userinfo */
-    get: operations['get_authenticated_userinfo_userinfo_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/users': {
@@ -153,13 +97,13 @@ export interface paths {
     }
     /**
      * Get Users
-     * @description 🔓 `users:read`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:read`
      */
     get: operations['get_users_users_get']
     put?: never
     /**
      * Create User
-     * @description 🔓 `users:create`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:create`
      */
     post: operations['create_user_users_post']
     delete?: never
@@ -177,21 +121,21 @@ export interface paths {
     }
     /**
      * Get User
-     * @description 🔓 `users:read`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:read`
      */
     get: operations['get_user_users__user_id__get']
     put?: never
     post?: never
     /**
      * Delete User
-     * @description 🔓 `users:delete`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:delete`
      */
     delete: operations['delete_user_users__user_id__delete']
     options?: never
     head?: never
     /**
      * Update User
-     * @description 🔓 `users:update`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:update`
      */
     patch: operations['update_user_users__user_id__patch']
     trace?: never
@@ -206,7 +150,7 @@ export interface paths {
     get?: never
     /**
      * Set User Roles
-     * @description 🔓 `users:update`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `users:update`
      */
     put: operations['set_user_roles_users__user_id__roles_put']
     post?: never
@@ -225,7 +169,7 @@ export interface paths {
     }
     /**
      * Get All Permissions
-     * @description 🔓 `permissions:read`, `users`, `roles`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `permissions:read`, `users`, `roles`
      */
     get: operations['get_all_permissions_permissions_get']
     put?: never
@@ -245,13 +189,13 @@ export interface paths {
     }
     /**
      * Get Roles
-     * @description 🔓 `roles:read`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:read`
      */
     get: operations['get_roles_roles_get']
     put?: never
     /**
      * Create Role
-     * @description 🔓 `roles:create`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:create`
      */
     post: operations['create_role_roles_post']
     delete?: never
@@ -269,21 +213,21 @@ export interface paths {
     }
     /**
      * Get Role Detail
-     * @description 🔓 `roles:read`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:read`
      */
     get: operations['get_role_detail_roles__role_id__get']
     put?: never
     post?: never
     /**
      * Delete Role
-     * @description 🔓 `roles:delete`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:delete`
      */
     delete: operations['delete_role_roles__role_id__delete']
     options?: never
     head?: never
     /**
      * Update Role
-     * @description 🔓 `roles:update`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:update`
      */
     patch: operations['update_role_roles__role_id__patch']
     trace?: never
@@ -298,121 +242,9 @@ export interface paths {
     get?: never
     /**
      * Set Role Permissions
-     * @description 🔓 `roles:update`
+     * @description ⏱️ Rate limit: `300 per 1 minute`🔓 `roles:update`
      */
     put: operations['set_role_permissions_roles__role_id__permissions_put']
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/schedulers': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Get Scheduler Jobs
-     * @description 🔓 `schedulers:read`
-     */
-    get: operations['get_scheduler_jobs_schedulers_get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/schedulers/{job_id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Get Scheduler Job
-     * @description 🔓 `schedulers:read`
-     */
-    get: operations['get_scheduler_job_schedulers__job_id__get']
-    put?: never
-    post?: never
-    /**
-     * Delete Scheduler Job
-     * @description 🔓 `schedulers:delete`
-     */
-    delete: operations['delete_scheduler_job_schedulers__job_id__delete']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/applications': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Get Applications
-     * @description 🔓 `applications:read`
-     */
-    get: operations['get_applications_applications_get']
-    put?: never
-    /**
-     * Create Application
-     * @description 🔓 `applications:create`
-     */
-    post: operations['create_application_applications_post']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/applications/{application_id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Get Application
-     * @description 🔓 `applications:read`
-     */
-    get: operations['get_application_applications__application_id__get']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    /**
-     * Update Application
-     * @description 🔓 `applications:update`
-     */
-    patch: operations['update_application_applications__application_id__patch']
-    trace?: never
-  }
-  '/applications/{application_id}/client-secret': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * Get Application Client Secret
-     * @description 🔓 `applications:read`
-     */
-    get: operations['get_application_client_secret_applications__application_id__client_secret_get']
-    put?: never
     post?: never
     delete?: never
     options?: never
@@ -424,100 +256,6 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
-    /** APIApplicationCreate */
-    APIApplicationCreate: {
-      /** clientName */
-      clientName: string
-      /** redirectUrls */
-      redirectUrls: string[]
-      /** grantTypes */
-      grantTypes: components['schemas']['GrantType'][]
-      /** idTokenTtl */
-      idTokenTTL?: number | null
-      /** accessTokenTtl */
-      accessTokenTTL?: number | null
-      /** refreshTokenTtl */
-      refreshTokenTTL?: number | null
-      /** authorizationCodeTtl */
-      authorizationCodeTTL?: number | null
-    }
-    /** APIApplicationNotFoundModel */
-    APIApplicationNotFoundModel: {
-      /**
-       * code
-       * @constant
-       */
-      code: 'NotFound'
-      /** message */
-      message: string
-      /**
-       * target
-       * @enum {string}
-       */
-      target: 'applicationId' | 'clientId'
-    }
-    /** APIApplicationResult */
-    APIApplicationResult: {
-      /**
-       * createdAt
-       * Format: date-time
-       */
-      createdAt: string
-      /** updatedAt */
-      updatedAt?: string | null
-      /** id */
-      id: number
-      /** clientName */
-      clientName: string
-      /** clientId */
-      clientId: string
-      /** redirectUrls */
-      redirectUrls: string[]
-      /** grantTypes */
-      grantTypes: components['schemas']['GrantType'][]
-      /** idTokenTtl */
-      idTokenTTL: number
-      /** accessTokenTtl */
-      accessTokenTTL: number
-      /** refreshTokenTtl */
-      refreshTokenTTL: number
-      /** authorizationCodeTtl */
-      authorizationCodeTTL: number
-    }
-    /** APIApplicationUpdate */
-    APIApplicationUpdate: {
-      /** clientName */
-      clientName?: string | null
-      /** redirectUris */
-      redirectUris?: string[] | null
-      /** grantTypes */
-      grantTypes?: components['schemas']['GrantType'][] | null
-      /** idTokenTtl */
-      idTokenTTL?: number | null
-      /** accessTokenTtl */
-      accessTokenTTL?: number | null
-      /** refreshTokenTtl */
-      refreshTokenTTL?: number | null
-      /** authorizationCodeTtl */
-      authorizationCodeTTL?: number | null
-      /** isActive */
-      isActive?: boolean | null
-    }
-    /** APIClientConflictModel */
-    APIClientConflictModel: {
-      /**
-       * code
-       * @constant
-       */
-      code: 'Conflict'
-      /** message */
-      message: string
-      /**
-       * target
-       * @constant
-       */
-      target: 'clientName'
-    }
     /** APIConflictModel */
     APIConflictModel: {
       /**
@@ -525,43 +263,6 @@ export interface components {
        * @constant
        */
       code: 'Conflict'
-      /** message */
-      message: string
-    }
-    /** APICronTriggerInfo */
-    APICronTriggerInfo: {
-      /** year */
-      year: '*' | number
-      /** month */
-      month: '*' | number
-      /** week */
-      week: '*' | number
-      /** day */
-      day: '*' | number
-      /** dayOfWeek */
-      dayOfWeek: '*' | number
-      /** hour */
-      hour: '*' | number
-      /** minute */
-      minute: '*' | number
-      /** second */
-      second: '*' | number
-    }
-    /** APIDateTriggerInfo */
-    APIDateTriggerInfo: {
-      /**
-       * at
-       * Format: date-time
-       */
-      at: string
-    }
-    /** APIExpiredAccessTokenModel */
-    APIExpiredAccessTokenModel: {
-      /**
-       * code
-       * @constant
-       */
-      code: 'Unauthorized'
       /** message */
       message: string
     }
@@ -575,27 +276,6 @@ export interface components {
       /** message */
       message: string
     }
-    /** APIIntervalTriggerInfo */
-    APIIntervalTriggerInfo: {
-      /** interval */
-      interval: number
-      /** intervalLength */
-      intervalLength: number
-      /** start */
-      start: string | null
-      /** end */
-      end: string | null
-    }
-    /** APIInvalidAccessTokenModel */
-    APIInvalidAccessTokenModel: {
-      /**
-       * code
-       * @constant
-       */
-      code: 'Unauthorized'
-      /** message */
-      message: string
-    }
     /** APIInvalidLoginCredentialsModel */
     APIInvalidLoginCredentialsModel: {
       /**
@@ -606,36 +286,15 @@ export interface components {
       /** message */
       message: string
     }
-    /** APIIssuingTokenError */
-    APIIssuingTokenError: {
-      error: components['schemas']['APIIssuingTokenErrorCode']
-      /** Error Description */
-      error_description?: string | null
-      /** Error Uri */
-      error_uri?: string | null
-    }
-    /**
-     * APIIssuingTokenErrorCode
-     * @enum {string}
-     */
-    APIIssuingTokenErrorCode: 'invalid_request' | 'invalid_client' | 'invalid_grant' | 'unauthorized_client' | 'unsupported_grant_type' | 'invalid_scope'
-    /** APIJobInfo */
-    APIJobInfo: {
-      /** id */
-      id: string
-      /** name */
-      name: string
-      /** callback */
-      callback: string
-      /** trigger */
-      trigger: components['schemas']['APIIntervalTriggerInfo'] | components['schemas']['APICronTriggerInfo'] | components['schemas']['APIDateTriggerInfo']
-      /** maxInstances */
-      maxInstances: number
+    /** APIInvalidSessionModel */
+    APIInvalidSessionModel: {
       /**
-       * nextRunTime
-       * Format: date-time
+       * code
+       * @constant
        */
-      nextRunTime: string
+      code: 'Unauthorized'
+      /** message */
+      message: string
     }
     /** APILegacyLoginCredentials */
     APILegacyLoginCredentials: {
@@ -644,13 +303,6 @@ export interface components {
       /** username */
       username: string
       /** password */
-      password: string
-    }
-    /** APILoginCredentials */
-    APILoginCredentials: {
-      /** Username */
-      username: string
-      /** Password */
       password: string
     }
     /** APINotEnoughPermissionsModel */
@@ -672,34 +324,6 @@ export interface components {
       code: 'NotFound'
       /** message */
       message: string
-    }
-    /** APIPage[APIApplicationResult] */
-    APIPage_APIApplicationResult_: {
-      /**
-       * pageSize
-       * @description page size
-       */
-      pageSize: number
-      /**
-       * pageNo
-       * @description page number
-       */
-      pageNo: number
-      /**
-       * pageCount
-       * @description page count
-       */
-      pageCount: number
-      /**
-       * count
-       * @description result count
-       */
-      count: number
-      /**
-       * results
-       * @description results
-       */
-      results: components['schemas']['APIApplicationResult'][]
     }
     /** APIPage[APIRoleResult] */
     APIPage_APIRoleResult_: {
@@ -760,7 +384,7 @@ export interface components {
     /** APIPermissionResult */
     APIPermissionResult: {
       /** code */
-      code: components['schemas']['PermissionCode']
+      code: string
       /** description */
       description?: string | null
     }
@@ -854,7 +478,7 @@ export interface components {
     /** APIUserDetail */
     APIUserDetail: {
       /** id */
-      id: string
+      id: number
       /**
        * createdAt
        * Format: date-time
@@ -872,6 +496,11 @@ export interface components {
       locale?: string | null
       /** phoneNumber */
       phoneNumber?: string | null
+      /**
+       * uid
+       * Format: uuid
+       */
+      uid: string
       /**
        * email
        * Format: email
@@ -886,8 +515,6 @@ export interface components {
     }
     /** APIUserInfo */
     APIUserInfo: {
-      /** id */
-      id: string
       /**
        * createdAt
        * Format: date-time
@@ -905,6 +532,11 @@ export interface components {
       locale?: string | null
       /** phoneNumber */
       phoneNumber?: string | null
+      /**
+       * uid
+       * Format: uuid
+       */
+      uid: string
       /**
        * email
        * Format: email
@@ -924,8 +556,6 @@ export interface components {
      * @description 用户结果
      */
     APIUserResult: {
-      /** id */
-      id: string
       /**
        * createdAt
        * Format: date-time
@@ -943,6 +573,11 @@ export interface components {
       locale?: string | null
       /** phoneNumber */
       phoneNumber?: string | null
+      /**
+       * uid
+       * Format: uuid
+       */
+      uid: string
       /**
        * email
        * Format: email
@@ -978,17 +613,7 @@ export interface components {
      * AuthusermodelSort
      * @enum {string}
      */
-    AuthusermodelSort: 'updatedAt.asc' | 'updatedAt.desc' | 'createdAt.asc' | 'createdAt.desc' | 'id.asc' | 'id.desc'
-    /** Body_revoke_token_oauth_token_revoke_post */
-    Body_revoke_token_oauth_token_revoke_post: {
-      /** Token */
-      token: string
-    }
-    /**
-     * GrantType
-     * @enum {string}
-     */
-    GrantType: 'authorization_code' | 'password' | 'client_credentials' | 'refresh_token'
+    AuthusermodelSort: 'createdAt.asc' | 'createdAt.desc' | 'id.asc' | 'id.desc' | 'updatedAt.asc' | 'updatedAt.desc'
     /** HTTPValidationError */
     HTTPValidationError: {
       /** Detail */
@@ -1004,19 +629,6 @@ export interface components {
       /** Message */
       message: string
     }
-    /** OAuthCommonError */
-    OAuthCommonError: {
-      error: components['schemas']['OAuthCommonErrorCode']
-      /** Error Description */
-      error_description?: string | null
-      /** Error Uri */
-      error_uri?: string | null
-    }
-    /**
-     * OAuthCommonErrorCode
-     * @enum {string}
-     */
-    OAuthCommonErrorCode: 'invalid_request' | 'unauthorized_client' | 'access_denied' | 'unsupported_response_type' | 'invalid_scope' | 'server_error' | 'temporarily_unavailable'
     /**
      * PermissionCode
      * @enum {string}
@@ -1031,34 +643,6 @@ export interface components {
       code: 'TooMany'
       /** Message */
       message: string
-    }
-    /** TokenPair */
-    TokenPair: {
-      /** Access Token */
-      access_token: string
-      /** Expires In */
-      expires_in: number
-      /**
-       * Token Type
-       * @default bearer
-       */
-      token_type: string
-      /** Id Token */
-      id_token: string
-      /** Refresh Token */
-      refresh_token: string
-    }
-    /** TokenRevokeError */
-    TokenRevokeError: {
-      /**
-       * Error
-       * @constant
-       */
-      error: 'unsupported_token_type'
-      /** Error Description */
-      error_description?: string | null
-      /** Error Uri */
-      error_uri?: string | null
     }
     /** ValidationError */
     ValidationError: {
@@ -1237,245 +821,6 @@ export interface operations {
       }
     }
   }
-  authenticate_authenticate_post: {
-    parameters: {
-      query: {
-        state?: string | null
-        client_id: string
-        redirect_uri?: string | null
-      }
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/x-www-form-urlencoded': components['schemas']['APILoginCredentials']
-      }
-    }
-    responses: {
-      /** @description Successful Response */
-      302: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Bad Request */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['OAuthCommonError']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
-  create_token_oauth_token_post: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-        /** @example Basic client_id:client_secret */
-        'Authorization'?: string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: {
-      content: {
-        'application/x-www-form-urlencoded': {
-          /**
-           * Grant Type
-           * @constant
-           */
-          grant_type: 'authorization_code'
-          /** Code */
-          code: string
-          /**
-           * Redirect Uri
-           * Format: uri
-           */
-          redirect_uri: string
-          /** Client Id */
-          client_id: string
-        } | {
-          /**
-           * Grant Type
-           * @constant
-           */
-          grant_type: 'password'
-          /** Username */
-          username: string
-          /** Password */
-          password: string
-          /** Client Id */
-          client_id: string
-          /** Scope */
-          scope?: string | null
-          /** Client Secret */
-          client_secret?: string | null
-        } | {
-          /**
-           * Grant Type
-           * @constant
-           */
-          grant_type: 'client_credentials'
-          /** Scope */
-          scope?: string | null
-        } | {
-          /**
-           * Grant Type
-           * @constant
-           */
-          grant_type: 'refresh_token'
-          /** Refresh Token */
-          refresh_token: string
-          /** Scope */
-          scope?: string | null
-        }
-      }
-    }
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['TokenPair']
-        }
-      }
-      /** @description Bad Request */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIIssuingTokenError']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-      /** @description Too Many Requests */
-      429: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  revoke_token_oauth_token_revoke_post: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/x-www-form-urlencoded': components['schemas']['Body_revoke_token_oauth_token_revoke_post']
-      }
-    }
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': unknown
-        }
-      }
-      /** @description Bad Request */
-      400: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['TokenRevokeError']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-      /** @description Too Many Requests */
-      429: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
   get_authenticated_userinfo_user_get: {
     parameters: {
       query?: never
@@ -1502,7 +847,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1511,7 +856,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Validation Error */
@@ -1567,15 +912,6 @@ export interface operations {
           'application/json': components['schemas']['APIUnauthorizedModel']
         }
       }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
       /** @description Conflict */
       409: {
         headers: {
@@ -1601,46 +937,6 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  get_authenticated_userinfo_userinfo_get: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIUserInfo']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIUnauthorizedModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
         }
       }
     }
@@ -1675,7 +971,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1684,7 +980,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Validation Error */
@@ -1737,7 +1033,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1746,7 +1042,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -1794,7 +1090,7 @@ export interface operations {
         'X-Request-ID'?: string | null
       }
       path: {
-        user_id: string
+        user_id: number
       }
       cookie?: never
     }
@@ -1815,7 +1111,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1824,7 +1120,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -1872,7 +1168,7 @@ export interface operations {
         'X-Request-ID'?: string | null
       }
       path: {
-        user_id: string
+        user_id: number
       }
       cookie?: never
     }
@@ -1891,7 +1187,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1900,7 +1196,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -1948,7 +1244,7 @@ export interface operations {
         'X-Request-ID'?: string | null
       }
       path: {
-        user_id: string
+        user_id: number
       }
       cookie?: never
     }
@@ -1973,7 +1269,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -1982,7 +1278,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2030,7 +1326,7 @@ export interface operations {
         'X-Request-ID'?: string | null
       }
       path: {
-        user_id: string
+        user_id: number
       }
       cookie?: never
     }
@@ -2055,7 +1351,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2064,7 +1360,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2131,7 +1427,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2140,7 +1436,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Validation Error */
@@ -2192,7 +1488,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2201,7 +1497,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Validation Error */
@@ -2254,7 +1550,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2263,7 +1559,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Conflict */
@@ -2323,7 +1619,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2332,7 +1628,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2390,7 +1686,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2399,7 +1695,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2463,7 +1759,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2472,7 +1768,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2545,7 +1841,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
+          'application/json': components['schemas']['APIInvalidSessionModel']
         }
       }
       /** @description Forbidden */
@@ -2554,7 +1850,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
+          'application/json': components['schemas']['APIForbiddenModel']
         }
       }
       /** @description Not Found */
@@ -2582,507 +1878,6 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  get_scheduler_jobs_schedulers_get: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIJobInfo'][]
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-      /** @description Too Many Requests */
-      429: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  get_scheduler_job_schedulers__job_id__get: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path: {
-        job_id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIJobInfo']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Not Found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotFoundModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-      /** @description Too Many Requests */
-      429: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  delete_scheduler_job_schedulers__job_id__delete: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path: {
-        job_id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      204: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Not Found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotFoundModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-      /** @description Too Many Requests */
-      429: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['RateLimitErrorModel']
-        }
-      }
-    }
-  }
-  get_applications_applications_get: {
-    parameters: {
-      query?: {
-        pageSize?: number
-        pageNo?: number
-      }
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIPage_APIApplicationResult_']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIUnauthorizedModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
-  create_application_applications_post: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['APIApplicationCreate']
-      }
-    }
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationResult']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Conflict */
-      409: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIClientConflictModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
-  get_application_applications__application_id__get: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path: {
-        application_id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationResult']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Not Found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationNotFoundModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
-  update_application_applications__application_id__patch: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path: {
-        application_id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['APIApplicationUpdate']
-      }
-    }
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationResult']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Not Found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationNotFoundModel']
-        }
-      }
-      /** @description Conflict */
-      409: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIClientConflictModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
-        }
-      }
-    }
-  }
-  get_application_client_secret_applications__application_id__client_secret_get: {
-    parameters: {
-      query?: never
-      header?: {
-        'X-Request-ID'?: string | null
-      }
-      path: {
-        application_id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationResult']
-        }
-      }
-      /** @description Unauthorized */
-      401: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIInvalidAccessTokenModel'] | components['schemas']['APIExpiredAccessTokenModel']
-        }
-      }
-      /** @description Forbidden */
-      403: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APINotEnoughPermissionsModel']
-        }
-      }
-      /** @description Not Found */
-      404: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['APIApplicationNotFoundModel']
-        }
-      }
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['HTTPValidationError']
         }
       }
     }

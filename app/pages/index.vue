@@ -2,10 +2,9 @@
 definePageMeta({
   layout: 'dashboard',
   middleware: 'auth',
-  // breadcrumbs: () => [{ label: 'common.home' }],
 })
 </script>
 
 <template>
-  <div>2</div>
+  <div>2333</div>
 </template>

@@ -14,7 +14,7 @@
     "postinstall": "nuxt prepare",
     "prepare": "husky",
     "release": "bumpp",
-    "up-api-types": "pnpx openapi-typescript http://localhost:8000/openapi.json -o ./app/api/v1/types.d.ts"
+    "openapi": "pnpx openapi-typescript http://localhost:8000/openapi.json -o ./app/api/v1/types.d.ts"
   },
   "dependencies": {
     "@lottiefiles/dotlottie-vue": "^0.7.1",
@@ -52,6 +52,7 @@
     "jwt-decode": "^4.0.0",
     "lint-staged": "^15.5.2",
     "nuxt": "^3.17.5",
+    "openapi-typescript": "^7.8.0",
     "orval": "^7.10.0",
     "pinia": "^3.0.3",
     "shiki": "^3.6.0",

@@ -34,3 +34,7 @@ type _Result<T> = UnVueMaybeRef<T> extends {
     results: (infer DataResultsItem)[]
   } ? DataResultsItem : T
 export type APIResult<T> = T extends (...params: any) => Promise<infer Res> ? _Result<Res> : _Result<T>
+
+export function getCSRFToken() {
+  return client.GET('/auth/csrf-token')
+}

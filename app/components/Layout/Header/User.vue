@@ -5,6 +5,7 @@ const auth = useAuth()
 <template>
   <ADropdown>
     <AAvatar :size="34" class="cursor-pointer !bg-primary-5">
+      <!-- {{ auth.info }} -->
       {{ (auth.info?.nickname || auth.info?.username)?.slice(0, 2) }}
     </AAvatar>
 

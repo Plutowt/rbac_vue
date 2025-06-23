@@ -8,8 +8,8 @@ export default defineNuxtRouteMiddleware(
     const requires = to.meta.permissions
     // 如果页面声明了权限
     if (requires?.length) {
-      // 如果没登陆 并且刷新 token 失败
-      if (!auth.isLogged && !await auth.refreshTokens()) {
+      // 如果没登陆 并且刷新 用户信息 失败
+      if (!auth.isLogged && !await auth.refreshUserInfo()) {
         return await navigateTo(loginPath)
       }
 

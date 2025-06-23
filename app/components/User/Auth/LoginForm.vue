@@ -1,14 +1,33 @@
 <script setup lang="ts">
 import type { GetArgument } from '@yecaoi/arco'
+import { getCSRFToken } from '~/api/v1'
 
 const auth = useAuth()
 
 type LoginData = GetArgument<typeof auth.login>
 
+const csrfToken = ref()
+
+const { data } = useAsyncData(getCSRFToken)
+
+watch(data, (n) => {
+  if (n?.error) {
+    console.error(`request csrf token error: ${n.error}`)
+  }
+  else {
+    csrfToken.value = n?.data
+  }
+})
+
 const { attrs, model } = useForm<LoginData>({
   async onSubmitSuccess(values) {
-    if (!auth.loading)
-      await auth.login(values)
+    if (!auth.loading) {
+      const v = { ...values }
+      if (!v._token) {
+        v._token = data.value?.data || null
+      }
+      await auth.login(v)
+    }
   },
   onChange: () => {
     auth.clearError()

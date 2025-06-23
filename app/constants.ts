@@ -8,3 +8,8 @@ export const enabledSidebarWidthChange = true
 export const appName = 'RBAC'
 
 export const clientId = 'dashboard'
+
+/**
+ * 每 5 分钟自动刷新一次
+ */
+export const autoRefreshIntervalSeconds = 1000 * 60 * 5
