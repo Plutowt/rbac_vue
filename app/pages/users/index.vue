@@ -8,8 +8,14 @@ definePageMeta({
     'users:update',
   ],
 })
+
+// const auth = useAuth()
 </script>
 
 <template>
-  <div><UserList /></div>
+  <div>
+    <UserCreate />
+
+    <UserList v-if="checkPermissions(['users:read'])" />
+  </div>
 </template>

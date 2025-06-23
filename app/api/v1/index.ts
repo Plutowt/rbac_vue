@@ -1,4 +1,4 @@
-import type { paths } from '~/api/v1/types'
+import type { components, paths } from '~/api/v1/types'
 import createClient, { type Middleware, wrapAsPathBasedClient } from 'openapi-fetch'
 
 const middleware: Middleware = {
@@ -38,3 +38,5 @@ export type APIResult<T> = T extends (...params: any) => Promise<infer Res> ? _R
 export function getCSRFToken() {
   return client.GET('/auth/csrf-token')
 }
+
+export type PermissionCode = components['schemas']['PermissionCode']

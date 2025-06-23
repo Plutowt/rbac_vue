@@ -16,8 +16,12 @@
     "users": "Users"
   },
   "id": "ID",
+  "uid": "User ID",
   "email": "Email",
   "createdAt": "Create Time",
   "updatedAt": "Update Time",
-  "isActive": "Enabled"
+  "isActive": "Enabled",
+  "isDisabled": "Disabled",
+  "isEnabled": "Enabled",
+  "operation": "Operation | Operations"
 }

@@ -1,20 +1,22 @@
-import type { TableColumnData } from '@arco-design/web-vue'
+import type { TableColumnData, TableData } from '@arco-design/web-vue'
 import type { Paths } from 'type-fest'
 import type { VNodeChild } from 'vue'
 import type { APIResult } from '~/api/v1'
 import { remove } from 'es-toolkit'
 import { findIndex } from 'es-toolkit/compat'
 
+type TypeTableRecord<T> = TableData & T
+
 interface TypeTableColumnData<APIResultT = unknown, DataIndex = Paths<APIResultT>> {
-  dataIndex: DataIndex
+  dataIndex?: DataIndex
   sortable?: ['asc', 'desc'] | ['desc', 'asc'] | ['asc'] | ['desc']
   render?: (data: {
-    record: APIResultT
+    record: TypeTableRecord<APIResultT>
     column: { title: string, dataIndex: DataIndex }
     rowIndex: number
   }) => VNodeChild
 }
-
+// (record: TableData, column: TableColumnData, ev: Event) => any
 type ExcludeTypeTableColumnData = Omit<TableColumnData, keyof TypeTableColumnData>
 
 const sortMap = {
@@ -94,3 +96,5 @@ export function apiV1TableOnSorterChange(
 
   return handle
 }
+
+// export function  apiV1TableOnCellContextmenu(record: TypeTableRecord<APIResultT>, column: TableColumnData, ev: Event)

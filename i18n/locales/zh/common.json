@@ -16,8 +16,14 @@
     "users": "用户管理"
   },
   "id": "ID",
+  "uid": "用户 ID",
   "email": "邮箱",
   "createdAt": "创建时间",
   "updatedAt": "更新时间",
-  "isActive": "启用"
+  "isActive": "启用",
+  "isEnabled": "已启用",
+  "isDisabled": "已禁用",
+  "operation": "操作",
+  "delete": "删除",
+  "create": "创建"
 }
