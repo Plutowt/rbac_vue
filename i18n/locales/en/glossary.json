@@ -1,19 +1,3 @@
 {
-  "testAccessToken": "To confirm your token is working correctly, copy and paste the below CURL command in a terminal shell to test.",
-  "IMEI": "IMEI (International mobile equipment identity)",
-  "IMSI": "IMSI (International mobile subscriber identity)",
-  "ICCID": "ICCID (SIM Card ID)",
-  "MCC": "MCC (Country Code)",
-  "MNC": "MNC (Network Code)",
-  "RSSI": "RSSI (Signal Strength)",
-  "BER": "BER (Signal Quality)",
-  "SMSC": "SMS Service Center",
-  "sessionExpired": "Your login has expired, please log in again",
-  "hiddenSMSMessage": "Message hidden, click to show",
-  "tokenScope": {
-    "sms:post": "Send SMS",
-    "device_location:get": "View Device Port Info",
-    "device:get": "View Device Info"
-  },
-  "saveTokenWarning": "Please save this access token now, you won't be able to see it again"
+  "sessionExpired": "Your login has expired, please log in again"
 }
