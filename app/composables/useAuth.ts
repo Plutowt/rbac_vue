@@ -10,9 +10,7 @@ export const useAuth = defineStore('auth', () => {
 
   const info = ref<components['schemas']['APIUserInfo']>()
 
-  const accessTokenType = ref<string>()
-  const accessToken = ref<string>()
-  const isLogged = computed(() => !!accessToken.value)
+  const isLogged = computed(() => !!info.value)
 
   const remember = useLocalStorage<boolean>('remember', false)
 
@@ -47,7 +45,6 @@ export const useAuth = defineStore('auth', () => {
 
   function clear() {
     info.value = undefined
-    accessToken.value = undefined
   }
 
   async function initial(data: components['schemas']['APIUserInfo']) {
@@ -97,8 +94,6 @@ export const useAuth = defineStore('auth', () => {
 
   return {
     info,
-    accessToken,
-    accessTokenType,
     refreshUserInfo,
     remember,
     isLogged,
