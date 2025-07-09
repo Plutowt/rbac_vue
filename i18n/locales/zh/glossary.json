@@ -1,3 +1,6 @@
 {
-  "sessionExpired": "本次登录会话已过期，请重新登录"
+  "sessionExpired": "本次登录会话已过期，请重新登录",
+  "deleteCurrentUserTitle": "正在删除登录用户！",
+  "deleteCurrentUser": "删除对象与当前登录用户是同一用户，是否确定删除？",
+  "deleteUser": "是否确定删除用户 {value} ？"
 }

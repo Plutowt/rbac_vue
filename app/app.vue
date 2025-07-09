@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import enUS from '@arco-design/web-vue/es/locale/lang/en-us'
 import zhCN from '@arco-design/web-vue/es/locale/lang/zh-cn'
-
 import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+import { appName } from '~/constants'
 
 useHead({ title: appName })
 

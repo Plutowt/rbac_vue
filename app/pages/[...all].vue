@@ -3,12 +3,12 @@ definePageMeta({ layout: false })
 </script>
 
 <template>
-  <div class="c-div">
+  <div>
     <h2>
       Page Not Found
     </h2>
 
-    <div class="c-options">
+    <div>
       <AButton @click="$router.back()">
         <template #icon>
           <IconArrowLeft />
@@ -28,7 +28,7 @@ definePageMeta({ layout: false })
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<!-- <style lang="postcss" scoped>
 .c-div {
   @apply space-y-8 p-4;
 
@@ -40,4 +40,4 @@ definePageMeta({ layout: false })
     @apply flex gap-5;
   }
 }
-</style>
+</style> -->

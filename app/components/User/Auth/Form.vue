@@ -1,5 +1,10 @@
 <template>
-  <ACard class="p-3 sm:p-6">
+  <ACard
+    class="
+      p-3
+      sm:p-6
+    "
+  >
     <ASpace size="large" direction="vertical" fill>
       <ATypographyTitle :heading="4">
         {{ appName }}

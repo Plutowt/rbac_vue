@@ -15,35 +15,53 @@ interface TypeTableColumnData<APIResultT = unknown, DataIndex = Paths<APIResultT
     column: { title: string, dataIndex: DataIndex }
     rowIndex: number
   }) => VNodeChild
+  enableToggleVisible?: boolean
+  defaultVisible?: boolean
+  title?: string | null | ComputedRef<string | null>
 }
 // (record: TableData, column: TableColumnData, ev: Event) => any
 type ExcludeTypeTableColumnData = Omit<TableColumnData, keyof TypeTableColumnData>
 
-const sortMap = {
-  asc: 'ascend',
-  desc: 'descend',
-}
+const sortMap = { asc: 'ascend', desc: 'descend' }
+
+export type TableColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData)[]
+export type TableAllColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData & { visible: Ref<boolean> })[]
+export type TableVisibleColumns = TableColumnData[]
+export type TableToggleVisibleColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData & { visible: Ref<boolean>, toggleVisible: () => void })[]
 
 export function apiV1TableColumns<T>(
-  _columns: (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData)[],
-) {
+  _columns: TableColumns<T>,
+): {
+  allColumns: TableAllColumns<T>
+  visibleColumns: ComputedRef<TableVisibleColumns>
+  toggleVisibleColumns: TableToggleVisibleColumns<T>
+} {
   const { t } = useNuxtApp().$i18n
-  return _columns.map((i) => {
+
+  const allColumns = _columns.map((i) => {
     const result = {
       title: computed(() => t(`common.${i.dataIndex}`)),
+      visible: ref(i.defaultVisible),
       ...i,
-    } as unknown as TableColumnData
+    }
 
     if (i.sortable) {
-      const value = i.sortable.map(ii => sortMap[ii])
-      result.sortable = {
-        sortDirections: value as ('ascend' | 'descend')[],
+      const value = i.sortable.map(ii => sortMap[ii]) as ('ascend' | 'descend')[]
+      (result as unknown as TableColumnData).sortable = {
+        sortDirections: value,
         sorter: true,
       }
     }
 
     return result
-  })
+  }) as TableAllColumns<T>
+
+  const visibleColumns = computed(() => (allColumns.filter(i => i.visible.value !== false) as TableColumnData[]))
+  const toggleVisibleColumns = allColumns.filter(i => i.enableToggleVisible).map(i => ({
+    ...i,
+    toggleVisible: () => { i.visible.value = i.visible.value === undefined ? false : !i.visible.value },
+  }))
+  return { allColumns, visibleColumns, toggleVisibleColumns }
 }
 
 export function apiV1TableOnSorterChange(

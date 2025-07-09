@@ -3,14 +3,19 @@ import type { PaginationProps } from '@arco-design/web-vue'
 export function usePageParams(options?: {
   no?: number
   size?: number
-  max?: MaybeRef<number | undefined>
-  total?: MaybeRef<number | undefined>
 }) {
   const defaultValue = { no: options?.no || 1, size: options?.size || 10 }
-  const max = options?.max
+  const total = ref<number>()
 
   const no = ref(defaultValue.no)
   const size = ref(defaultValue.size)
+
+  const max = computed(() => {
+    if (total.value)
+      return Math.ceil(total.value / size.value)
+    else
+      return 1
+  })
 
   function reset() {
     no.value = defaultValue.no
@@ -18,17 +23,8 @@ export function usePageParams(options?: {
   }
 
   function nextPage() {
-    if (max === undefined) {
+    if (max.value === undefined || max.value > no.value) {
       no.value++
-    }
-    else {
-      const value = toValue(max)
-      if (value === undefined) {
-        no.value++
-      }
-      else if (value > no.value) {
-        no.value++
-      }
     }
   }
 
@@ -41,7 +37,7 @@ export function usePageParams(options?: {
     pageSize: size.value,
     showTotal: true,
     showPageSize: true,
-    total: options?.total,
+    total: total.value,
   }))
 
   const onPageChange = (page: number) => {
@@ -58,11 +54,11 @@ export function usePageParams(options?: {
       pageSize: size.value,
       showTotal: true,
       showPageSize: true,
-      total: options?.total,
+      total: total.value,
     } satisfies PaginationProps,
     onPageChange,
     onPageSizeChange,
   }))
 
-  return { no, size, reset, pagination, nextPage, prevPage, onPageChange, onPageSizeChange, arcoTable }
+  return { no, size, reset, pagination, nextPage, prevPage, onPageChange, onPageSizeChange, arcoTablePageAttrs: arcoTable, max, total }
 }

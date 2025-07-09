@@ -1,10 +1,9 @@
 <script setup lang="ts">
 definePageMeta({
   permissions: ['users:create'],
-  layout: 'dashboard',
 })
 </script>
 
 <template>
-  <UserCreateForm />
+  <UserCreateForm v-permissions="['users:create']" />
 </template>

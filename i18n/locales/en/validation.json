@@ -1,7 +1,7 @@
 {
   "required": "This field is required",
   "string": {
-    "min": "Must be at least {min} characters",
+    "min": "Must be at least {value} characters",
     "max": "Cannot exceed {max} characters",
     "notStart": "Cannot start with {start}",
     "format": "Invalid format",
@@ -17,5 +17,7 @@
   "permissionForbiddenDetail": "You do not have permission to access this resource",
   "rateLimit": "Too many requests",
   "notBeValue": "Cannot be {value}",
-  "InvalidCredentials": "Invalid @:{'common.username'} or @:{'common.password'}"
+  "InvalidCredentials": "Invalid @:{'common.username'} or @:{'common.password'}",
+  "invalidFormat": "",
+  "conflictItem": ""
 }

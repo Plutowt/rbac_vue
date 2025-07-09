@@ -28,7 +28,10 @@ const { style } = useDraggable(el, {
   <DevOnly>
     <div
       ref="el"
-      class="z-[9999999] rounded border border-gray-500 shadow dark:shadow-white" :style="style" style="position: fixed"
+      class="
+        z-[9999999] rounded border border-gray-500 shadow
+        dark:shadow-white
+      " :style="style" style="position: fixed"
     >
       <div v-html="data" />
     </div>

@@ -1,70 +1,15 @@
-body {
-  @apply bg-bg-1;
-  /* font-family: Roboto; */
-}
+@import "tailwindcss";
+@import "./theme.css";
 
 html,
 body,
 #__nuxt {
-  @apply size-full;
-  background-color: var(--color-neutral-2);
+  @apply size-full bg-arco-fill-2;
 }
 
-* {
-  @apply !outline-none;
-}
 
-@keyframes rotate {
-  from {
-    transform-origin: center;
-    transform: rotate(0);
-  }
-
-  to {
-    transform-origin: center;
-    transform: rotate(360deg);
+@utility sidebar-drawer {
+  .arco-drawer-body {
+    padding: 0 !important;
   }
 }
-
-.c-loading-rotate {
-  animation: rotate 2s linear infinite;
-  transform-origin: center;
-}
-
-/*
-TODO: 有时间实现一下滚轮面板
-.p-scrollpanel-content::-webkit-scrollbar {
-  display: none;
-}
-
-.p-scrollpanel-bar {
-  position: relative;
-  border-radius: 4px;
-  z-index: 2;
-  cursor: pointer;
-  opacity: 0;
-  outline-color: transparent;
-  transition: outline-color 200ms;
-  background: var(--color-gray-100);
-  border: 0 none;
-  transition: outline-color 200ms, opacity 200ms;
-}
-
-.p-scrollpanel-bar-y {
-  width: 9px;
-  top: 0;
-}
-
-.p-scrollpanel-bar-x {
-  height: 9px;
-  bottom: 0;
-}
-
-.p-scrollpanel-hidden {
-  visibility: hidden;
-}
-
-.p-scrollpanel:hover .p-scrollpanel-bar,
-.p-scrollpanel:active .p-scrollpanel-bar {
-  opacity: 1;
-} */

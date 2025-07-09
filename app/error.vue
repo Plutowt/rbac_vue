@@ -48,7 +48,7 @@ const { data } = useAsyncData(() => codeToHtml(
         <template #icon>
           <IconRefresh />
         </template>
-        {{ $t('common.refresh') }}
+        {{ $t('common.reload') }}
       </AButton>
 
       <AButton class="ml-auto" @click="clearError({ redirect: '/' })">

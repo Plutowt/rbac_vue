@@ -30,7 +30,9 @@ const current = computed(() => {
 <template>
   <ADropdown @select="i => { (i as Item).click() }">
     <AButton
-      size="small" shape="circle" type="outline" class="!border-border-2 !text-[rgb(var(--gray-8))]"
+      size="small" shape="circle" type="outline" class="
+        !border-arco-border-2 !text-[rgb(var(--gray-8))]
+      "
     >
       <template #icon>
         <IconDesktop v-if="current.value === 'system'" />

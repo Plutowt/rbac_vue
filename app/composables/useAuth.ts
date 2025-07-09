@@ -1,14 +1,12 @@
-import type { components } from '~/api/v1/types'
-import { serialize } from 'object-to-formdata'
-import { defineStore } from 'pinia'
-import { apiV1 } from '~/api/v1'
+import type { ApiLegacyLoginCredentials, ApiUserInfo } from '~/api/v1_1'
 import { autoRefreshIntervalSeconds } from '~/constants'
 
 export const useAuth = defineStore('auth', () => {
   const { t } = useNuxtApp().$i18n
   const localePath = useLocalePath()
+  const { authenticatedUserGetUserinfo, authLegacyLogin } = useApiV1Client()
 
-  const info = ref<components['schemas']['APIUserInfo']>()
+  const info = ref<ApiUserInfo>()
 
   const isLogged = computed(() => !!info.value)
 
@@ -17,7 +15,9 @@ export const useAuth = defineStore('auth', () => {
   const loading = ref(false)
   const errorMessage = ref('')
   async function refreshUserInfo() {
-    const { error, data } = await apiV1['/user'].GET()
+    const ipInfo = useIpInfo()
+    const { error, data } = await authenticatedUserGetUserinfo()
+    await ipInfo.refresh()
 
     if (error) {
       const route = useRoute()
@@ -47,23 +47,19 @@ export const useAuth = defineStore('auth', () => {
     info.value = undefined
   }
 
-  async function initial(data: components['schemas']['APIUserInfo']) {
+  async function initial(data: ApiUserInfo) {
     autoRefreshInterval.value = autoRefreshIntervalSeconds
     info.value = data
     startAutoRefresh()
   }
 
-  async function login(credentials: components['schemas']['APILegacyLoginCredentials']) {
+  async function login(credentials: ApiLegacyLoginCredentials) {
     loading.value = true
 
-    const { error, data } = await apiV1['/auth/login'].POST({
-      body: credentials,
-      bodySerializer: serialize,
-    })
+    const { error, data } = await authLegacyLogin({ body: credentials })
 
     if (error) {
-      // 这里出现时应该是 clientId 不匹配或者没有提交 redirect_uri 参数
-      Message.error(t('validation.InvalidCredentials'))
+      errorMessage.value = t('validation.InvalidCredentials')
     }
     else {
       await initial(data)

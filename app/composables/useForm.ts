@@ -1,13 +1,14 @@
-import type { FormInstance, ValidatedError } from '@arco-design/web-vue'
+import type { FormInstance, ValidatedError, ValidateStatus } from '@arco-design/web-vue'
+import type { Paths } from 'type-fest'
 import type { Reactive, WatchCallback } from 'vue'
 import { cloneDeep } from 'es-toolkit'
 import { FetchError } from 'ofetch'
 
-export function useForm<T extends Record<string, any>>(
+export function useArcoForm<T extends object>(
   options: {
     default?: Partial<T>
     onChange?: WatchCallback<Reactive<Partial<T>>, Reactive<Partial<T>>>
-    onSubmitSuccess: (values: T, ev: Event) => Promise<any> | any
+    onSubmitSuccess?: (values: T, ev: Event) => Promise<any> | any
     onSubmitFailed?: ((data: {
       values: T
       errors: Record<string, ValidatedError>
@@ -34,7 +35,7 @@ export function useForm<T extends Record<string, any>>(
     submitting.value = true
 
     try {
-      await options.onSubmitSuccess(values, ev)
+      await options.onSubmitSuccess?.(values, ev)
     }
     catch (error) {
       if (error instanceof FetchError) {
@@ -55,6 +56,14 @@ export function useForm<T extends Record<string, any>>(
     }, ev: Event) => any)),
   }
 
+  function setField(field: Paths<T>, opts: {
+    message: string
+    status?: ValidateStatus
+
+  }) {
+    el.value?.setFields(Object.fromEntries([[field, opts]]))
+  }
+
   return {
     attrs,
     model,
@@ -62,5 +71,6 @@ export function useForm<T extends Record<string, any>>(
     onSubmitSuccess: attrs.onSubmitSuccess,
     submitting,
     reset,
+    setField,
   }
 }

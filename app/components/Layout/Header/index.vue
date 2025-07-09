@@ -30,13 +30,19 @@ const color = useColorMode()
 
 <template>
   <a-layout-header
-    class="flex items-center border-b border-b-[--color-border] bg-bg-1 px-5"
+    class="
+      flex items-center border-b border-b-arco-border-1 bg-arco-bg-2 pr-5
+      sm:pl-5
+    "
     :style="{ height: `${layoutHeaderHeight}px` }"
   >
     <button
       v-if="!sm"
       type="button"
-      class="h-full cursor-pointer sm:hidden"
+      class="
+        h-full cursor-pointer
+        sm:hidden
+      "
       :style="{ width: `${layoutHeaderHeight}px` }"
       @click="() => sidebar.togglePopShow()"
     >

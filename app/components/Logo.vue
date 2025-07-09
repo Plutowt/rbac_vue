@@ -1,8 +1,15 @@
+<script setup>
+</script>
+
 <template>
   <NuxtLinkLocale to="index" class="block">
-    <div class="text-xl font-light dark:text-white">
-      Smart Select
+    <div
+      class="
+        text-xl font-light text-black
+        dark:text-white
+      "
+    >
+      {{ appName }}
     </div>
-    <!-- <img src="/logo.png" class="h-12"> -->
   </NuxtLinkLocale>
 </template>

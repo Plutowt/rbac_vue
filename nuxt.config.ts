@@ -81,10 +81,10 @@ export default defineNuxtConfig({
     lazy: true,
     // restructureDir: 'app/i18n',
     langDir: 'lang',
-    defaultLocale: 'zh',
+    defaultLocale: 'CN',
     locales: [
-      { code: 'en', file: 'en.js', name: 'English', language: 'us' },
-      { code: 'zh', file: 'zh.js', name: '中文', language: 'cn' },
+      { code: 'EN', file: 'en.js', name: 'English', language: 'US' },
+      { code: 'CN', file: 'zh.js', name: '中文', language: 'CN' },
     ],
     vueI18n: '../i18n.config.ts',
     bundle: {
@@ -105,16 +105,16 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    server: {
-      proxy: {
-        '/api': {
-          // eslint-disable-next-line node/prefer-global/process
-          target: process.env.NUXT_PUBLIC_API_V1_BASE,
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, ''),
-        },
-      },
-    },
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       // eslint-disable-next-line node/prefer-global/process
+    //       target: process.env.NUXT_PUBLIC_API_V1_BASE,
+    //       changeOrigin: true,
+    //       rewrite: path => path.replace(/^\/api/, ''),
+    //     },
+    //   },
+    // },
   },
 
   compatibilityDate: '2025-02-12',

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Locale } from 'vue-i18n'
-import { apiV1 } from '~/api/v1'
 
 const auth = useAuth()
 
@@ -14,10 +13,11 @@ watch(
   },
 )
 
+const { authenticatedUserUpdateUserinfo } = useApiV1Client()
 async function changeLocale(locale: Locale) {
   await setLocale(locale)
   if (auth.isLogged) {
-    await apiV1['/user'].PATCH({ body: { locale } })
+    await authenticatedUserUpdateUserinfo({ body: { locale } })
   }
 }
 
@@ -42,7 +42,9 @@ const current = computed<Item>(() => languages.value.find(i => i.locale === loca
 <template>
   <ADropdown>
     <AButton
-      size="small" shape="circle" type="outline" class="!border-border-2 !text-[rgb(var(--gray-8))]"
+      size="small" shape="circle" type="outline" class="
+        !border-arco-border-2 !text-[rgb(var(--gray-8))]
+      "
     >
       <template #icon>
         <icon-language />
@@ -52,13 +54,13 @@ const current = computed<Item>(() => languages.value.find(i => i.locale === loca
     <template #content>
       <ADoption
         v-for="i in languages" :key="i.locale" :value="i"
-        :class="{ '!bg-fill-2': i.iso === current.iso }"
+        :class="{ '!bg-arco-fill-2': i.iso === current.iso }"
         @click="changeLocale(i.locale)"
       >
         <div
           class="flex items-center gap-2"
         >
-          <UIFlag :iso="i.iso" class="size-4" />
+          <UIFlag :iso="i.iso" class="w-4" />
           {{ i.label }}
         </div>
       </ADoption>

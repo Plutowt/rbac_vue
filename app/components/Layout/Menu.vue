@@ -59,7 +59,7 @@ function permissionFilter(items: UIAnyNavigationItem[]) {
           // 登录了就检查
           if (auth.info) {
             // 检查是否具备任意一项权限
-            invalid = !requires.some(i => auth.info?.permissions.includes(i))
+            invalid = !useHasAnyPermission(...requires)
           }
           // 没登陆就不显示
           else {
@@ -123,6 +123,7 @@ function onClickMenuItem(
 const sidebar = useSidebar()
 
 const selectedKeys = ref([route.path])
+const { sm } = useArcoBreakpoints()
 </script>
 
 <template>
@@ -130,7 +131,7 @@ const selectedKeys = ref([route.path])
     v-model:collapsed="sidebar.collapsed"
     v-model:selected-keys="selectedKeys"
     class="h-full"
-    show-collapse-button
+    :show-collapse-button="sm"
     @collapse="sidebar.toggleCollapse"
     @menu-item-click="onClickMenuItem"
   >

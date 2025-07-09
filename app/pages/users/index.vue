@@ -1,21 +1,21 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
   permissions: [
     'users:create',
     'users:delete',
     'users:read',
     'users:update',
+    'users',
   ],
 })
-
-// const auth = useAuth()
 </script>
 
 <template>
-  <div>
-    <UserCreate />
+  <div class="size-full space-y-6 bg-arco-bg-1 p-4">
+    <h3 class="text-xl font-arco-500">
+      {{ $t('common.menu.users') }}
+    </h3>
 
-    <UserList v-if="checkPermissions(['users:read'])" />
+    <UserTable v-permissions="['users:read']" />
   </div>
 </template>

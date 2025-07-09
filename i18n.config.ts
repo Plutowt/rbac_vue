@@ -1,7 +1,7 @@
 export default defineI18nConfig(() => ({
-  fallbackLocale: 'en',
+  fallbackLocale: 'EN',
   datetimeFormats: {
-    en: {
+    EN: {
       mini: {
         month: '2-digit',
         day: '2-digit',
@@ -20,7 +20,7 @@ export default defineI18nConfig(() => ({
         minute: 'numeric',
       },
     },
-    zh: {
+    CN: {
       mini: {
         month: '2-digit',
         day: '2-digit',

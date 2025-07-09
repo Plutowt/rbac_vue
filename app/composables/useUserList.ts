@@ -1,36 +1,34 @@
 import type { WatchCallback, WatchOptions, WatchSource } from 'vue'
-import type { APIUserPageQueryModel } from '~/api/v1/users'
-import { getUserPage } from '~/api/v1/users'
+import type { UserGetPageData } from '~/api/v1_1'
 
 export function useUserList(opts?: { watch?: [WatchSource, WatchCallback] | [WatchSource, WatchCallback, WatchOptions] }) {
   const options = reactive<{ label: string, value: number }[]>([])
-  const max = ref<number>()
-  const auth = useAuth()
 
-  const { params: pageParams, nextPage } = usePageParams({ max })
-  const queryUserModel = reactive<APIUserPageQueryModel>({})
+  const { userGetPage } = useApiV1Client()
+  const { no, size, nextPage, max } = usePageParams()
+  const query = reactive<Y<UserGetPageData['query']>>({})
   const { data } = useAsyncData(
     async () => {
-      if (auth.info?.role === 'admin') {
-        return await getUserPage({ ...pageParams, ...queryUserModel })()
+      if (useHasAnyPermission('users', 'users:read')) {
+        return await userGetPage({ query: { pageNo: no.value, pageSize: size.value, ...query } })
       }
     },
     {
-      watch: [pageParams, queryUserModel],
+      watch: [no, size, query],
     },
   )
 
   watchEffect(() => {
-    const result = data.value?.result
+    const result = data.value?.data
 
     if (result) {
       max.value = result.pageCount
       if (result.pageNo === 1) {
         options.splice(0)
-        options.push(...result.results.map(i => ({ label: i.username!, value: i.id })))
+        options.push(...result.results.map(i => ({ label: i.username, value: i.id })))
       }
       else {
-        options.push(...result.results.map(i => ({ label: i.username!, value: i.id })))
+        options.push(...result.results.map(i => ({ label: i.username, value: i.id })))
       }
     }
   })
@@ -41,5 +39,5 @@ export function useUserList(opts?: { watch?: [WatchSource, WatchCallback] | [Wat
     watch(source, callback, opts.watch[2])
   }
 
-  return { options, queryUserModel, pageParams, nextPage }
+  return { options, queryUserModel: query, no, size, nextPage }
 }

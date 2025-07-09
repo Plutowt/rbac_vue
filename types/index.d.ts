@@ -1,13 +1,22 @@
 import type { NuxtLinkProps } from 'nuxt/app'
-import type { components } from '~/api/v1/types'
+import type { Directive } from 'vue'
+import type { PermissionCode } from '~/api/v1_1'
 import '#app'
 
 declare module '#app' {
 
   interface PageMeta {
     breadcrumbs?: () => (NuxtLinkLocaleProps & { label: string })[]
-    permissions?: components['schemas']['PermissionCode'][]
+    permissions?: PermissionCode[]
     padding?: boolean
+  }
+}
+
+declare module 'vue' {
+  interface ComponentCustomProperties {
+
+    // 这里只是声明类型，方便在组件上使用, 具体的定义参考 app/plugins/permission-directive.ts
+    vPermissions: VPermissions
   }
 }
 
@@ -18,22 +27,13 @@ declare global {
       readonly NUXT_PUBLIC_API_V1_BASE: string
     }
   }
+  type VPermissions = Directive<Element, PermissionCode[]>
 
   type NuxtLinkLocaleProps = Omit<NuxtLinkProps, 'to'> & {
     to?: import('vue-router').RouteLocationNamedI18n
   }
-  ////////////////////////////////////////////////////////////////
-  // ref: https://flagicons.lipis.dev/ ⬇️
-  // const isoList = []
-  // document.querySelectorAll('#iso-flags div.col-6 div.flag').forEach(node => {
-  //     const iso = node.querySelector('.flag-code').textContent
-  //     const name = node.querySelector('.flag-country').title
-  //     isoList.push({iso, name})
-  // })
-  // const ISO = isoList.map(i => `"${i.iso}"`).join('|')
-  // ref: https://flagicons.lipis.dev/ ⬆️
-  ////////////////////////////////////////////////////////////////
-  type ISO3166_1_Alpha_2 = 'af' | 'ax' | 'al' | 'dz' | 'as' | 'ad' | 'ao' | 'ai' | 'aq' | 'ag' | 'ar' | 'am' | 'aw' | 'au' | 'at' | 'az' | 'bs' | 'bh' | 'bd' | 'bb' | 'by' | 'be' | 'bz' | 'bj' | 'bm' | 'bt' | 'bo' | 'bq' | 'ba' | 'bw' | 'bv' | 'br' | 'io' | 'bn' | 'bg' | 'bf' | 'bi' | 'cv' | 'kh' | 'cm' | 'ca' | 'ky' | 'cf' | 'td' | 'cl' | 'cn' | 'cx' | 'cc' | 'co' | 'km' | 'ck' | 'cr' | 'hr' | 'cu' | 'cw' | 'cy' | 'cz' | 'ci' | 'cd' | 'dk' | 'dj' | 'dm' | 'do' | 'ec' | 'eg' | 'sv' | 'gq' | 'er' | 'ee' | 'sz' | 'et' | 'fk' | 'fo' | 'fm' | 'fj' | 'fi' | 'fr' | 'gf' | 'pf' | 'tf' | 'ga' | 'gm' | 'ge' | 'de' | 'gh' | 'gi' | 'gr' | 'gl' | 'gd' | 'gp' | 'gu' | 'gt' | 'gg' | 'gn' | 'gw' | 'gy' | 'ht' | 'hm' | 'va' | 'hn' | 'hk' | 'hu' | 'is' | 'in' | 'id' | 'ir' | 'iq' | 'ie' | 'im' | 'il' | 'it' | 'jm' | 'jp' | 'je' | 'jo' | 'kz' | 'ke' | 'ki' | 'kw' | 'kg' | 'la' | 'lv' | 'lb' | 'ls' | 'lr' | 'ly' | 'li' | 'lt' | 'lu' | 'mo' | 'mg' | 'mw' | 'my' | 'mv' | 'ml' | 'mt' | 'mh' | 'mq' | 'mr' | 'mu' | 'yt' | 'mx' | 'md' | 'mc' | 'mn' | 'me' | 'ms' | 'ma' | 'mz' | 'mm' | 'na' | 'nr' | 'np' | 'nl' | 'nc' | 'nz' | 'ni' | 'ne' | 'ng' | 'nu' | 'nf' | 'kp' | 'mk' | 'mp' | 'no' | 'om' | 'pk' | 'pw' | 'pa' | 'pg' | 'py' | 'pe' | 'ph' | 'pn' | 'pl' | 'pt' | 'pr' | 'qa' | 'cg' | 'ro' | 'ru' | 'rw' | 're' | 'bl' | 'sh' | 'kn' | 'lc' | 'mf' | 'pm' | 'vc' | 'ws' | 'sm' | 'st' | 'sa' | 'sn' | 'rs' | 'sc' | 'sl' | 'sg' | 'sx' | 'sk' | 'si' | 'sb' | 'so' | 'za' | 'gs' | 'kr' | 'ss' | 'es' | 'lk' | 'ps' | 'sd' | 'sr' | 'sj' | 'se' | 'ch' | 'sy' | 'tw' | 'tj' | 'tz' | 'th' | 'tl' | 'tg' | 'tk' | 'to' | 'tt' | 'tn' | 'tm' | 'tc' | 'tv' | 'tr' | 'ug' | 'ua' | 'ae' | 'gb' | 'um' | 'us' | 'uy' | 'uz' | 'vu' | 've' | 'vn' | 'vg' | 'vi' | 'wf' | 'eh' | 'ye' | 'zm' | 'zw'
+
+  type ISO3166_1_Alpha_2 = 'DO' | 'GY' | 'NO' | 'AE' | 'AZ' | 'EE' | 'GW' | 'AO' | 'BN' | 'IT' | 'VG' | 'CZ' | 'YT' | 'NI' | 'KP' | 'SY' | 'BH' | 'MQ' | 'AL' | 'KI' | 'MZ' | 'AS' | 'PH' | 'LT' | 'PN' | 'CO' | 'SC' | 'BO' | 'MT' | 'GR' | 'LC' | 'KZ' | 'BA' | 'FJ' | 'ME' | 'SA' | 'GS' | 'SZ' | 'KM' | 'MS' | 'NU' | 'VI' | 'GT' | 'PW' | 'GB' | 'DK' | 'DJ' | 'IL' | 'TM' | 'FM' | 'UA' | 'SB' | 'HN' | 'CX' | 'SJ' | 'TJ' | 'KY' | 'IQ' | 'UG' | 'RU' | 'ZW' | 'SD' | 'TC' | 'HT' | 'SE' | 'LA' | 'AD' | 'TR' | 'LS' | 'AI' | 'SK' | 'GH' | 'FI' | 'MA' | 'NE' | 'UY' | 'CL' | 'BB' | 'KH' | 'BF' | 'RW' | 'TT' | 'ST' | 'BD' | 'IN' | 'CG' | 'OM' | 'PY' | 'TG' | 'BG' | 'SV' | 'FO' | 'BW' | 'PF' | 'PT' | 'VE' | 'FR' | 'PG' | 'TW' | 'MD' | 'CI' | 'BL' | 'BR' | 'LB' | 'YE' | 'CW' | 'GM' | 'WF' | 'ET' | 'LK' | 'CM' | 'GG' | 'CF' | 'GF' | 'AW' | 'TF' | 'DZ' | 'MC' | 'AM' | 'CH' | 'PE' | 'IR' | 'SH' | 'SN' | 'PM' | 'VC' | 'ZM' | 'SO' | 'AT' | 'TO' | 'CV' | 'TH' | 'EH' | 'TL' | 'ZA' | 'GQ' | 'GI' | 'BJ' | 'MO' | 'MW' | 'AU' | 'JM' | 'TD' | 'MM' | 'NG' | 'MR' | 'BM' | 'EC' | 'MU' | 'GL' | 'NC' | 'NZ' | 'AR' | 'CR' | 'MK' | 'MH' | 'ML' | 'BZ' | 'KE' | 'AX' | 'JO' | 'MG' | 'VA' | 'ID' | 'IS' | 'BQ' | 'SG' | 'MY' | 'MX' | 'NA' | 'PR' | 'AF' | 'BY' | 'SX' | 'TZ' | 'IM' | 'GE' | 'HR' | 'PK' | 'KW' | 'ES' | 'LI' | 'PA' | 'AG' | 'JP' | 'CD' | 'CN' | 'GP' | 'LY' | 'RO' | 'IE' | 'EG' | 'IO' | 'MF' | 'NF' | 'VN' | 'LV' | 'TN' | 'DE' | 'AQ' | 'WS' | 'HK' | 'MN' | 'QA' | 'CU' | 'US' | 'GN' | 'BS' | 'CK' | 'SI' | 'MP' | 'KR' | 'XK' | 'CA' | 'TK' | 'GU' | 'SS' | 'SR' | 'HU' | 'DM' | 'NP' | 'GA' | 'BE' | 'LR' | 'UM' | 'BT' | 'RE' | 'SL' | 'NL' | 'BV' | 'ER' | 'MV' | 'LU' | 'NR' | 'SM' | 'HM' | 'KN' | 'CC' | 'FK' | 'VU' | 'CY' | 'PS' | 'RS' | 'BI' | 'GD' | 'TV' | 'JE' | 'UZ' | 'KG' | 'PL'
 
   type Y<T> = Exclude<T, undefined | null>
 }

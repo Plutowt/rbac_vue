@@ -51,7 +51,8 @@
   "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
   "i18n-ally.keepFulfilled": true,
   "cSpell.words": [
-    "goip"
+    "goip",
+    "phonenumber"
   ],
   "i18n-ally.sourceLanguage": "zh",
 

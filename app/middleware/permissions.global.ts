@@ -14,9 +14,8 @@ export default defineNuxtRouteMiddleware(
       }
 
       if (auth.info) {
-        const userPermissions = auth.info.permissions
         // 只要具备任意一项权限就可跳转
-        if (requires.some(i => userPermissions.includes(i))) {
+        if (useHasAnyPermission(...requires)) {
           return
         }
 

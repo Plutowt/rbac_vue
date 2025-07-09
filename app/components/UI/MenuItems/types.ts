@@ -1,11 +1,11 @@
-import type { components } from '~/api/v1/types'
+import type { PermissionCode } from '~/api/v1_1'
 
 export type UIAnyNavigationItem = UIGroupNavigationItem | UISubNavigationItem | UINavigationItem
 
 export interface UIGroupNavigationItem {
   label: string
   group: UIAnyNavigationItem[]
-  permissions?: components['schemas']['PermissionCode'][]
+  permissions?: PermissionCode[]
   key?: PropertyKey
   [k: string]: unknown
 }
@@ -14,7 +14,7 @@ export interface UISubNavigationItem {
   icon?: any
   label: string
   children: UIAnyNavigationItem[]
-  permissions?: components['schemas']['PermissionCode'][]
+  permissions?: PermissionCode[]
   key?: PropertyKey
   [k: string]: unknown
 }
@@ -23,7 +23,7 @@ export interface UINavigationItem {
   icon?: any
   label: string
   disabled?: boolean
-  permissions?: components['schemas']['PermissionCode'][]
+  permissions?: PermissionCode[]
   key?: PropertyKey
   to: import('vue-router').RouteLocationNamedI18n
   [k: string]: unknown
