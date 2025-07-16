@@ -21,7 +21,8 @@
   "menu": {
     "home": "仪表盘",
     "roles": "@:{'common.role'}管理",
-    "users": "@:{'common.user'}管理"
+    "users": "@:{'common.user'}管理",
+    "system": "系统管理"
   },
   "id": "ID",
   "uid": "用户 ID",

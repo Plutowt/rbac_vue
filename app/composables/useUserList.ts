@@ -5,7 +5,7 @@ export function useUserList(opts?: { watch?: [WatchSource, WatchCallback] | [Wat
   const options = reactive<{ label: string, value: number }[]>([])
 
   const { userGetPage } = useApiV1Client()
-  const { no, size, nextPage, max } = usePageParams()
+  const { no, size, nextPage, total } = usePageParams()
   const query = reactive<Y<UserGetPageData['query']>>({})
   const { data } = useAsyncData(
     async () => {
@@ -22,7 +22,7 @@ export function useUserList(opts?: { watch?: [WatchSource, WatchCallback] | [Wat
     const result = data.value?.data
 
     if (result) {
-      max.value = result.pageCount
+      total.value = result.count
       if (result.pageNo === 1) {
         options.splice(0)
         options.push(...result.results.map(i => ({ label: i.username, value: i.id })))

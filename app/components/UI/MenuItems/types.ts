@@ -6,7 +6,7 @@ export interface UIGroupNavigationItem {
   label: string
   group: UIAnyNavigationItem[]
   permissions?: PermissionCode[]
-  key?: PropertyKey
+  key?: string
   [k: string]: unknown
 }
 
@@ -15,7 +15,7 @@ export interface UISubNavigationItem {
   label: string
   children: UIAnyNavigationItem[]
   permissions?: PermissionCode[]
-  key?: PropertyKey
+  key?: string
   [k: string]: unknown
 }
 
@@ -24,7 +24,7 @@ export interface UINavigationItem {
   label: string
   disabled?: boolean
   permissions?: PermissionCode[]
-  key?: PropertyKey
+  key?: string
   to: import('vue-router').RouteLocationNamedI18n
   [k: string]: unknown
 }

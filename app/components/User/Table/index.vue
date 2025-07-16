@@ -112,7 +112,7 @@ const { visibleColumns, toggleVisibleColumns } = apiV1TableColumns<Results>([
     },
   },
   {
-    width: 40,
+    width: 55,
     slotName: 'operations',
     title: null,
     fixed: 'right',
