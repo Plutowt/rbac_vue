@@ -4,7 +4,7 @@ export function usePageParams(options?: {
   no?: number
   size?: number
 }) {
-  const defaultValue = { no: options?.no || 1, size: options?.size || 10 }
+  const defaultValue = { no: options?.no || 1, size: options?.size || 15 }
   const total = ref<number>()
 
   const no = ref(defaultValue.no)
@@ -55,6 +55,12 @@ export function usePageParams(options?: {
       showTotal: true,
       showPageSize: true,
       total: total.value,
+      pageSizeOptions: [
+        15,
+        30,
+        50,
+        100,
+      ],
     } satisfies PaginationProps,
     onPageChange,
     onPageSizeChange,

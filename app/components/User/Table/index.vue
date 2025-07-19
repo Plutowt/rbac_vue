@@ -1,85 +1,79 @@
 <script setup lang="tsx">
-import type { GetArgument } from '@yecaoi/arco'
-import type { APIResult } from '~/api/v1'
-import { Button, Form, FormItem, Input, Notification } from '@arco-design/web-vue'
+import type { UserGetPageData } from '@/api/v1_1'
+import { Notification, Tag } from '@arco-design/web-vue'
 import { useTableUtils } from '@yecaoi/arco'
 import IsActive from '~/components/UI/IsActive.vue'
 
-const { d, t } = useI18n()
+const { t, d } = useI18n()
 
 const { userGetPage } = useApiV1Client()
-const query = reactive<Y<GetArgument<typeof userGetPage, 0>['query']>>({})
-const { arcoTablePageAttrs, no, size, total } = usePageParams()
-watchEffect(() => {
-  query.pageNo = no.value
-  query.pageSize = size.value
-})
-const { data, refresh, status } = useAsyncData(
-  () => userGetPage({ query }),
-  { watch: [query, no, size] },
-)
-type Results = Y<Y<typeof data.value>['data']>['results']
-watchEffect(() => {
-  total.value = data.value?.data?.count
-})
 
-const { visibleColumns, toggleVisibleColumns } = apiV1TableColumns<Results>([
+const { visibleColumns, toggleVisibleColumns, filterExpr: filterExprValue } = useTypeTableColumns<typeof userGetPage>([
   {
     dataIndex: 'id',
     minWidth: 120,
     slotName: 'id',
     fixed: 'left',
-
-    filterable: {
-      filter(_filteredValue, _record) {
-        return true
-      },
-      renderContent: (data) => {
-        const { attrs } = useArcoForm<typeof query>({
-          onSubmitSuccess: (_, ev) => {
-            data.handleFilterConfirm(ev)
-          },
-        })
-
-        return (
-          <Form
-            model={attrs.model}
-            onSubmitSuccess={attrs.onSubmitSuccess}
-            class="p-5 bg-arco-bg-5 border border-solid border-arco-border-3 shadow-arco-1-center"
-          >
-            <FormItem field="id">
-              <Input
-                modelValue={data.filterValue[0]}
-                onUpdate:modelValue={v => data.setFilterValue([v])}
-              />
-            </FormItem>
-            <div class="flex items-center">
-              <Button htmlType="button">{t('common.reset')}</Button>
-              <Button htmlType="submit" type="primary">{t('common.confirm')}</Button>
-            </div>
-          </Form>
-        )
-      },
+    filter: {
+      type: 'number',
+      column: true,
     },
     sortable: ['asc', 'desc'],
+    primary: true,
   },
   {
     dataIndex: 'uid',
     minWidth: 400,
-    sortable: ['asc', 'desc'],
+    // sortable: ['asc', 'desc'],
     enableToggleVisible: true,
     defaultVisible: false,
+    filter: {
+      type: 'uuid',
+      column: true,
+    },
   },
   {
     minWidth: 160,
     dataIndex: 'username',
     enableToggleVisible: true,
+    filter: {
+      type: 'string',
+      column: true,
+    },
+  },
+  {
+    dataIndex: 'isActive',
+    width: 120,
+    filter: {
+      type: 'select',
+      options: [
+        { label: t('common.enable'), value: true },
+        { label: t('common.disable'), value: false },
+      ],
+      column: true,
+    },
+    render: ({ record }) => <IsActive ok={record.isActive} />,
   },
   {
     minWidth: 160,
     dataIndex: 'email',
     // width: 250,
     enableToggleVisible: true,
+    filter: {
+      type: 'string',
+      column: true,
+    },
+  },
+  {
+    dataIndex: 'roles',
+    minWidth: 160,
+    render: data => data.record.roles.map((i, idx) => <Tag key={idx}>{i.name}</Tag>),
+    title: t('common.role'),
+    filter: {
+      field: 'roleName',
+      type: 'string',
+      column: true,
+    },
   },
   {
     dataIndex: 'locale',
@@ -94,21 +88,22 @@ const { visibleColumns, toggleVisibleColumns } = apiV1TableColumns<Results>([
     sortable: ['asc', 'desc'],
     render: ({ record }) => d(record.createdAt, 'long'),
     enableToggleVisible: true,
+    filter: {
+      type: 'datetime',
+      column: true,
+    },
   },
   {
     minWidth: 250,
     dataIndex: 'updatedAt',
     // width: 250,
-    sortable: ['asc', 'desc'],
     render: ({ record }) => record.updatedAt && d(record.updatedAt, 'long'),
     enableToggleVisible: true,
     defaultVisible: false,
-  },
-  {
-    dataIndex: 'isActive',
-    width: 120,
-    render({ record }) {
-      return <IsActive ok={record.isActive} />
+    sortable: ['asc', 'desc'],
+    filter: {
+      type: 'datetime',
+      column: true,
     },
   },
   {
@@ -118,15 +113,31 @@ const { visibleColumns, toggleVisibleColumns } = apiV1TableColumns<Results>([
     fixed: 'right',
   },
 ])
-const onSorterChange = apiV1TableOnSorterChange(query)
 
-const { resolveSlot, rowClass } = useTableUtils<Results>()
-
-const operation = ref<APIResult<Results>>()
+const query = reactive<Y<UserGetPageData['query']>>({})
+const { arcoTablePageAttrs, no, size, total } = usePageParams()
 watchEffect(() => {
-  const results = data.value?.data?.results
-  if (results && operation.value) {
-    operation.value = results.find(i => i.id === operation.value?.id)
+  query.pageNo = no.value
+  query.pageSize = size.value
+  query.filter = filterExprValue.value
+})
+const { data, refresh, status } = useAsyncData(
+  () => userGetPage({ query }),
+  { watch: [query, no, size], transform: getApiPageData },
+)
+
+watchEffect(() => {
+  total.value = data.value?.count
+})
+
+const onSorterChange = useTypeTableOnSorterChange(query)
+const { resolveSlot } = useTableUtils<APIPageResult<typeof data>>()
+
+const actionObj = ref<APIPageResult<typeof data>>()
+watchEffect(() => {
+  const results = data.value?.results
+  if (results && actionObj.value) {
+    actionObj.value = results.find(i => i.id === actionObj.value?.id)
   }
 })
 
@@ -137,100 +148,110 @@ const visibleChangePasswordModal = ref(false)
 const { sm } = useArcoBreakpoints()
 
 const selected = ref([])
+
+const tableLoading = ref(false)
+watchEffect(() => {
+  tableLoading.value = status.value === 'pending'
+})
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="flex">
-      <UserCreate v-permissions="['users:create']" />
+  <UITableLayout>
+    <template #header>
+      <UserTableRefresh @click="refresh()" />
+      <PermissionCheckAny :pass="['users:create']">
+        <UserTableCreate />
+      </PermissionCheckAny>
+      <PermissionCheckAny :pass="['users:delete']">
+        <UserTableDelete
+          v-model="selected"
+          v-model:loading="tableLoading"
+          @not-found="id => Notification.error({
+            title: $t('common.deleteUserFailure', { value: id }),
+            content: $t('validation.notFound', { value: id }),
+          })"
+          @done="refresh()"
+        />
+      </PermissionCheckAny>
 
       <div class="ml-auto flex items-center">
         <UITableColumnToggle :columns="toggleVisibleColumns" />
       </div>
-    </div>
+    </template>
 
     <ATable
       v-bind="arcoTablePageAttrs"
       v-model:selected-keys="selected"
       :row-selection="{ type: 'checkbox', showCheckedAll: true }"
       :bordered="{ cell: true }"
-      :data="data?.data?.results"
+      :data="data?.results"
       :columns="visibleColumns"
-      :loading="status === 'pending'"
+      :loading="tableLoading"
       row-key="id"
-      :row-class="rowClass(({ row }) => `data-${row.id}`)"
       @sorter-change="onSorterChange"
     >
-      <template #id="value">
-        <ATypographyText type="primary">
-          {{ resolveSlot(value).row.id }}
-        </ATypographyText>
-      </template>
-
       <template #operations="value">
-        <UITableOperation @click="operation = resolveSlot(value).row">
-          <template v-if="operation">
-            <UserTableUpdateToggleIsActive
-              :id="operation.id"
-              v-permissions="['users:update', 'users']"
-              :is-active="operation.isActive"
-              :disabled="auth.info?.uid === operation.uid"
+        <UITableAction @click="actionObj = resolveSlot(value).row">
+          <template v-if="actionObj">
+            <UserTableActionUpdateToggleIsActive
+              :id="actionObj.id"
+              v-permission="['users:update']"
+              :is-active="actionObj.isActive"
+              :disabled="auth.info?.uid === actionObj.uid"
               @success="refresh()"
             />
-            <UserTableUpdatePassword v-permissions="['users:update', 'users']" @click="visibleChangePasswordModal = true" />
-            <UserTableUpdate v-permissions="['users:update', 'users']" @click="visibleUpdateModal = true" />
-            <UserTableDelete v-permissions="['users:delete', 'users']" @click="visibleDeleteConfirm = true" />
+            <UserTableActionUpdatePassword v-permission="['users:update']" @click="visibleChangePasswordModal = true" />
+            <UserTableActionUpdate v-permission="['users:update']" @click="visibleUpdateModal = true" />
+            <UITableActionDivider />
+            <UserTableActionDelete v-permission="['users:delete']" @click="visibleDeleteConfirm = true" />
           </template>
-        </UITableOperation>
+        </UITableAction>
       </template>
     </ATable>
 
-    <AModal
-      v-if="operation"
-      v-model:visible="visibleChangePasswordModal"
-      :footer="false"
-      :fullscreen="!sm"
-      :title="$t('common.editUserTitle', { value: operation.username })"
-    >
-      <UserTableUpdatePasswordForm
-        :id="operation.id"
-        :old="operation"
-        @success="() => {
-          Notification.success($t('common.changeUserPasswordSuccess', { value: operation?.username }))
-          visibleChangePasswordModal = false
-          refresh()
-        }"
-      />
-    </AModal>
+    <template v-if="actionObj">
+      <AModal
+        v-model:visible="visibleChangePasswordModal"
+        :footer="false"
+        :fullscreen="!sm"
+        :title="$t('common.editUserTitle', { value: actionObj.username })"
+      >
+        <UserTableActionUpdatePasswordForm
+          :id="actionObj.id"
+          :old="actionObj"
+          @success="() => {
+            Notification.success($t('common.changeUserPasswordSuccess', { value: actionObj?.username }))
+            visibleChangePasswordModal = false
+            refresh()
+          }"
+        />
+      </AModal>
 
-    <AModal
-      v-if="operation"
-      v-model:visible="visibleUpdateModal"
-      :footer="false"
-      :fullscreen="!sm"
-      :title="$t('common.editUserTitle', { value: operation.username })"
-    >
-      <UserTableUpdateForm
-        :id="operation.id"
-        :old="operation"
-        @success="() => {
-          Notification.success($t('common.updateUserSuccess', { value: operation?.username }))
-          visibleUpdateModal = false
-          refresh()
-        }"
-      />
-    </AModal>
+      <AModal
+        v-model:visible="visibleUpdateModal"
+        :footer="false"
+        :fullscreen="!sm"
+        :title="$t('common.editUserTitle', { value: actionObj.username })"
+      >
+        <UserTableActionUpdateForm
+          :id="actionObj.id"
+          :old="actionObj"
+          @success="() => {
+            Notification.success($t('common.updateUserSuccess', { value: actionObj?.username }))
+            visibleUpdateModal = false
+            refresh()
+          }"
+        />
+      </AModal>
 
-    <UserTableDeleteConfirm
-      v-if="operation"
-      :id="operation.id"
-      v-model="visibleDeleteConfirm"
-      :uid="operation.uid"
-      :username="operation.username"
-      @success="() => {
-        Notification.success($t('common.deleteUserSuccess', { value: operation?.username }))
-        refresh()
-      }"
-    />
-  </div>
+      <UserTableActionDeleteConfirm
+        :id="actionObj.id"
+        v-model="visibleDeleteConfirm"
+        v-model:loading="tableLoading"
+        :uid="actionObj.uid"
+        :username="actionObj.username"
+        @success="refresh()"
+      />
+    </template>
+  </UITableLayout>
 </template>

@@ -1,9 +1,6 @@
 import type { SetOptional } from 'type-fest'
-import type {
-  UIAnyNavigationItem,
-  UIGroupNavigationItem,
-  UISubNavigationItem,
-} from '@/components/UI/MenuItems/types'
+import type { PermissionCode } from '~/api/v1_1'
+
 import {
   IconDesktop,
   IconHome,
@@ -13,6 +10,35 @@ import {
 import { has } from 'es-toolkit/compat'
 
 import { defineStore } from 'pinia'
+
+type UIAnyNavigationItem = UIGroupNavigationItem | UISubNavigationItem | UINavigationItem
+
+interface UIGroupNavigationItem {
+  label: string
+  group: UIAnyNavigationItem[]
+  permissions?: PermissionCode[]
+  key?: string
+  [k: string]: unknown
+}
+
+interface UISubNavigationItem {
+  icon?: any
+  label: string
+  children: UIAnyNavigationItem[]
+  permissions?: PermissionCode[]
+  key?: string
+  [k: string]: unknown
+}
+
+interface UINavigationItem {
+  icon?: any
+  label: string
+  disabled?: boolean
+  permissions?: PermissionCode[]
+  key?: string
+  to: import('vue-router').RouteLocationNamedI18n
+  [k: string]: unknown
+}
 
 export function isSubNavigationItem(value: UIAnyNavigationItem): value is UISubNavigationItem {
   return has(value, 'children')

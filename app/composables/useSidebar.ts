@@ -1,3 +1,5 @@
+import { layoutSidebarWidth } from '@/constants'
+
 export const useSidebar = defineStore('sidebar', () => {
   const { lg, sm, isSmaller } = useArcoBreakpoints()
 
@@ -10,7 +12,7 @@ export const useSidebar = defineStore('sidebar', () => {
   // 收起后宽度
   const collapsedWidth = 48
   // 展开后宽度
-  const expandedWidth = ref(224)
+  const expandedWidth = ref(layoutSidebarWidth)
 
   // 当前宽度
   const width = computed(

@@ -1,3 +1,7 @@
+<script setup>
+import { appName } from '@/constants'
+</script>
+
 <template>
   <ACard
     class="

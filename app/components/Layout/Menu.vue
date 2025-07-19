@@ -53,7 +53,10 @@ function MenuItems() {
     v-model:open-keys="menu.openKeys"
     :default-open-keys="menu.openKeys"
     :show-collapse-button="sm"
-    class="h-full"
+    class="
+      h-full border-solid border-arco-border-2
+      sm:border-r
+    "
     auto-open
     @collapse="sidebar.toggleCollapse"
     @menu-item-click="menu.select"

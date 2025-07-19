@@ -1,12 +1,11 @@
-@import "tailwindcss";
-@import "./theme.css";
+@import 'tailwindcss';
+@import './theme.css';
 
 html,
 body,
 #__nuxt {
-  @apply size-full bg-arco-fill-2;
+  @apply size-full bg-arco-bg-2;
 }
-
 
 @utility sidebar-drawer {
   .arco-drawer-body {

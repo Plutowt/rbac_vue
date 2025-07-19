@@ -430,16 +430,6 @@ export type ApiUserUpdate = {
 };
 
 /**
- * AuthrolemodelSort
- */
-export type AuthrolemodelSort = 'id.asc' | 'id.desc' | 'updatedAt.asc' | 'updatedAt.desc' | 'enabled.asc' | 'enabled.desc' | 'createdAt.asc' | 'createdAt.desc';
-
-/**
- * AuthusermodelSort
- */
-export type AuthusermodelSort = 'updatedAt.asc' | 'updatedAt.desc' | 'id.asc' | 'id.desc' | 'createdAt.asc' | 'createdAt.desc';
-
-/**
  * ForbiddenModel
  */
 export type ForbiddenModel = {
@@ -460,7 +450,7 @@ export type HttpValidationError = {
     /**
      * code
      */
-    code?: 'ValidationError';
+    code: 'ValidationError';
     /**
      * message
      */
@@ -468,7 +458,7 @@ export type HttpValidationError = {
     /**
      * Detail
      */
-    detail?: Array<ValidationError>;
+    detail: Array<ValidationError>;
 };
 
 /**
@@ -500,9 +490,9 @@ export type NotFoundModel = {
 };
 
 /**
- * RateLimitErrorModel
+ * TooManyModel
  */
-export type RateLimitErrorModel = {
+export type TooManyModel = {
     /**
      * Code
      */
@@ -665,6 +655,10 @@ export type FastapiExtsExceptionsConflictModel7 = {
      * Message
      */
     message: string;
+    /**
+     * Target
+     */
+    target: 'name';
 };
 
 /**
@@ -679,6 +673,10 @@ export type FastapiExtsExceptionsConflictModel8 = {
      * Message
      */
     message: string;
+    /**
+     * Target
+     */
+    target: 'name';
 };
 
 /**
@@ -715,7 +713,7 @@ export type AuthLegacyLoginErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type AuthLegacyLoginError = AuthLegacyLoginErrors[keyof AuthLegacyLoginErrors];
@@ -759,7 +757,7 @@ export type AuthLogoutErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type AuthLogoutError = AuthLogoutErrors[keyof AuthLogoutErrors];
@@ -794,7 +792,7 @@ export type AuthGetCsrfTokenErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type AuthGetCsrfTokenError = AuthGetCsrfTokenErrors[keyof AuthGetCsrfTokenErrors];
@@ -838,7 +836,7 @@ export type AuthenticatedUserGetUserinfoErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type AuthenticatedUserGetUserinfoError = AuthenticatedUserGetUserinfoErrors[keyof AuthenticatedUserGetUserinfoErrors];
@@ -881,7 +879,7 @@ export type AuthenticatedUserUpdateUserinfoErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type AuthenticatedUserUpdateUserinfoError = AuthenticatedUserUpdateUserinfoErrors[keyof AuthenticatedUserUpdateUserinfoErrors];
@@ -914,9 +912,9 @@ export type UserGetPageData = {
          */
         pageNo?: number;
         /**
-         * Sorts
+         * Sort
          */
-        sorts?: Array<AuthusermodelSort> | null;
+        sort?: Array<'id.asc' | 'id.desc' | 'createdAt.asc' | 'createdAt.desc' | 'updatedAt.asc' | 'updatedAt.desc'>;
         /**
          * Filter
          *
@@ -954,7 +952,7 @@ export type UserGetPageErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserGetPageError = UserGetPageErrors[keyof UserGetPageErrors];
@@ -1005,7 +1003,7 @@ export type UserCreateErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserCreateError = UserCreateErrors[keyof UserCreateErrors];
@@ -1061,7 +1059,7 @@ export type UserDeleteErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserDeleteError = UserDeleteErrors[keyof UserDeleteErrors];
@@ -1117,7 +1115,7 @@ export type UserGetErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserGetError = UserGetErrors[keyof UserGetErrors];
@@ -1173,7 +1171,7 @@ export type UserUpdateErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserUpdateError = UserUpdateErrors[keyof UserUpdateErrors];
@@ -1232,7 +1230,7 @@ export type UserSetRolesErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserSetRolesError = UserSetRolesErrors[keyof UserSetRolesErrors];
@@ -1276,7 +1274,7 @@ export type UserPermissionGetAllErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserPermissionGetAllError = UserPermissionGetAllErrors[keyof UserPermissionGetAllErrors];
@@ -1310,9 +1308,26 @@ export type UserRoleGetPageData = {
          */
         pageNo?: number;
         /**
-         * Sorts
+         * Sort
          */
-        sorts?: Array<AuthrolemodelSort> | null;
+        sort?: Array<'id.asc' | 'id.desc' | 'createdAt.asc' | 'createdAt.desc' | 'updatedAt.asc' | 'updatedAt.desc' | 'enabled.asc' | 'enabled.desc'>;
+        /**
+         * Filter
+         *
+         * **过滤器**
+         *
+         * ---
+         *
+         * 支持下述运算符:
+         *
+         * `or` `and` `not` `is_null` `is_not_null` `==` `eq` `!=` `ne` `>` `gt` `<` `lt` `>=` `ge` `<=` `le` `startswith` `endswith` `contains` `blank` `not_blank` `in` `not_in` `between` `not_between`
+         *
+         * ---
+         *
+         * <table><caption><b>fields</b></caption><thead><th>field</th><th>type</th><th>description</th><th>default</th><th>condition</th></thead><tbody><tr><td>id</td><td><code>int</code></td><td></td><td></td><td></td></tr><tr><td>createdAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>updatedAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>enabled</td><td><code>bool</code></td><td></td><td></td><td></td></tr><tr><td>permission</td><td><code>str</code></td><td></td><td></td><td></td></tr></tbody></table>
+         *
+         */
+        filter?: string | null;
     };
     url: '/roles';
 };
@@ -1333,7 +1348,7 @@ export type UserRoleGetPageErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleGetPageError = UserRoleGetPageErrors[keyof UserRoleGetPageErrors];
@@ -1380,7 +1395,7 @@ export type UserRoleCreateErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleCreateError = UserRoleCreateErrors[keyof UserRoleCreateErrors];
@@ -1432,7 +1447,7 @@ export type UserRoleDeleteErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleDeleteError = UserRoleDeleteErrors[keyof UserRoleDeleteErrors];
@@ -1484,7 +1499,7 @@ export type UserRoleGetDetailErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleGetDetailError = UserRoleGetDetailErrors[keyof UserRoleGetDetailErrors];
@@ -1540,7 +1555,7 @@ export type UserRoleUpdateErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleUpdateError = UserRoleUpdateErrors[keyof UserRoleUpdateErrors];
@@ -1595,7 +1610,7 @@ export type UserRoleSetPermissionsErrors = {
     /**
      * Too Many Requests
      */
-    429: RateLimitErrorModel;
+    429: TooManyModel;
 };
 
 export type UserRoleSetPermissionsError = UserRoleSetPermissionsErrors[keyof UserRoleSetPermissionsErrors];

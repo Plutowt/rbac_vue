@@ -35,7 +35,7 @@ const { sm } = useArcoBreakpoints()
         class="h-full"
         :style="{ paddingTop, paddingLeft: sm ? paddingLeft : null }"
       >
-        <a-layout-content class="size-full p-4">
+        <a-layout-content class="size-full">
           <slot />
         </a-layout-content>
         <LayoutFooter />

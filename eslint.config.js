@@ -2,6 +2,7 @@
 import antfu from '@antfu/eslint-config'
 // @ts-ignore
 import tailwind from 'eslint-plugin-better-tailwindcss'
+import { globalIgnores } from 'eslint/config'
 import nuxt from './.nuxt/eslint.config.mjs'
 
 export default nuxt(
@@ -39,4 +40,8 @@ export default nuxt(
     },
   },
 
+  globalIgnores([
+    'app/api/v1_1/**/*',
+    'public/**/*',
+  ]),
 )

@@ -19,5 +19,8 @@
   "notBeValue": "不能是{value}",
   "InvalidCredentials": "@:{'common.username'}或@:{'common.password'}错误",
   "invalidItemFormat": "",
-  "conflictItem": "{value}已存在"
+  "conflictItem": "{value}已存在",
+  "invalidUUID": "无效的 UUID 值",
+  "notFound": "{value}不存在",
+  "invalidUUIDLength": ""
 }

@@ -18,6 +18,10 @@ const rules = computed<FieldRule[]>(() => {
     }
   }
 
+  if (props.required) {
+    results.push({ required: true, message: t('validation.required') })
+  }
+
   if (props.minLength !== undefined) {
     results.push({ minLength: props.minLength, message: t('validation.string.min', { value: props.minLength }) })
   }
@@ -29,15 +33,17 @@ const rules = computed<FieldRule[]>(() => {
   }
   return results
 })
+const label = computed(() => props.label || (props.autoLabel ? t(`common.${props.field}`) : undefined))
 </script>
 
 <template>
   <AFormItem
-    :field="$props.field as string"
-    :label="$props.label || $props.autoLabel ? $t(`common.${$props.field}`) : undefined"
+    :field="($props.field as string)"
+    :label="label"
     :rules="rules"
     :hide-asterisk="$props.hideAsterisk"
     :disabled="$props.disabled"
+    :extra="$props.extra"
   >
     <slot>
       <AInput

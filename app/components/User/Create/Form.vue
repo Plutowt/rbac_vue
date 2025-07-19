@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { ApiUserCreate } from '~/api/v1_1'
 import { Notification } from '@arco-design/web-vue'
 
 const { t } = useI18n()
 const { userCreate } = useApiV1Client()
-const { model, attrs, setField } = useArcoForm<ApiUserCreate>({
+const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
   default: {
     isActive: true,
   },
@@ -82,7 +81,7 @@ const { model, attrs, setField } = useArcoForm<ApiUserCreate>({
 
     <UIFormItem
       v-model="model"
-      v-permissions="['roles:read']"
+      v-any-permission="['roles:read']"
       field="roles"
       type="select"
       auto-label
@@ -96,9 +95,7 @@ const { model, attrs, setField } = useArcoForm<ApiUserCreate>({
       type="switch"
       auto-label
       hide-asterisk
-      :rules="[
-        { required: true, message: $t('validation.required') },
-      ]"
+      required
     />
 
     <UIFormItem
@@ -117,7 +114,7 @@ const { model, attrs, setField } = useArcoForm<ApiUserCreate>({
     />
 
     <div class="flex w-full items-center justify-end gap-4">
-      <AButton>
+      <AButton @click="reset">
         <template #icon>
           <IconRefresh />
         </template>

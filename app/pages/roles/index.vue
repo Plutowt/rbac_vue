@@ -1,8 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
+  permissions: ['roles:read'],
 })
 </script>
 
 <template>
-  <div>2333</div>
+  <UIContentLayout :title="$t('common.menu.roles')">
+    <PermissionCheckAny :pass="['roles:read']">
+      <RoleTable />
+    </PermissionCheckAny>
+  </UIContentLayout>
 </template>

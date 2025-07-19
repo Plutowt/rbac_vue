@@ -31,7 +31,7 @@ const color = useColorMode()
 <template>
   <a-layout-header
     class="
-      flex items-center border-b border-b-arco-border-1 bg-arco-bg-2 pr-5
+      flex items-center border-b border-b-arco-border-2 bg-arco-bg-2 pr-5
       sm:pl-5
     "
     :style="{ height: `${layoutHeaderHeight}px` }"

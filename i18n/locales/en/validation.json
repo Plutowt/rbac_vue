@@ -19,5 +19,8 @@
   "notBeValue": "Cannot be {value}",
   "InvalidCredentials": "Invalid @:{'common.username'} or @:{'common.password'}",
   "invalidFormat": "",
-  "conflictItem": ""
+  "conflictItem": "",
+  "invalidUUIDLength": "length is between 32 - 37 strings",
+  "invalidUUID": "Invalid UUID value",
+  "notFound": ""
 }

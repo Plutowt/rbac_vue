@@ -5,5 +5,5 @@ definePageMeta({
 </script>
 
 <template>
-  <UserCreateForm v-permissions="['users:create']" />
+  <UserCreateForm v-permission="['users:create']" />
 </template>
