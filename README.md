@@ -36,9 +36,9 @@ definePageMeta({
 提供了两种组件进行权限验证，分别是：
 
 - `PermissionCheckAll`：当具备所有所需权限时渲染
-- `PermissionCheckAny`: 当具备任意所需权限时渲染
+- `PermissionCheckAny`：当具备任意所需权限时渲染
 
-示例，如果用户同时具备权限 `a`、`b`、`c` 时，即渲染组件内容：
+示例：
 
 ```vue
 <div>
@@ -57,9 +57,9 @@ definePageMeta({
 类似组件，指令也提供了两种，分别是：
 
 - `v-all-permission`：当具备所有所需权限时渲染
-- `v-any-permission`: 当具备任意所需权限时渲染。因为这种更常用，所以也定义了更短实现 `v-permission`
+- `v-any-permission`：当具备任意所需权限时渲染。因为这种更常用，所以也定义了更短实现 `v-permission`
 
-示例，如果用户同时具备权限 `a`、`b`、`c` 时，即渲染组件内容：
+示例：
 
 ```html
 <div>
@@ -74,11 +74,11 @@ definePageMeta({
 > 如果组件会在挂载前就执行需要相应权限的操作，例如请求接口，那么应该使用组件方式，因为指令是在组件挂载之后才执行的。当指令执行时，组件内可能已经执行完相关权限的操作。
 
 > [!TIP]
-> 除了使用组件，也可以通过 `useHasAnyPermission` 或 `useHasAllPermissions` 来检查当前用户是否具备相关的权限。
+> 除了组件和指令，其实也可以通过可组合项函数 `useHasAnyPermission` 或 `useHasAllPermissions` 来检查当前用户是否具备相关的权限。
 
 ## 菜单
 
-要新增菜单项，需要在 `app/composables/useMenu.s` 中添加。
+要新增菜单项，需要在 `app/composables/useMenu.s` 中添加，当添加菜单项的是页面时，会在生成实际菜单时通过 `permissionFilter` 函数来过滤出用户实际有权限访问的菜单项。如果登录用户只有 `users` 权限，那么他是无法看到需要 `roles` 权限的菜单项的。
 
 ## 安装依赖
 
@@ -106,5 +106,4 @@ git commit
 
 # 更新版本
 pnpm release
-
 ```
