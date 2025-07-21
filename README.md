@@ -4,6 +4,16 @@
 
 ## 权限相关
 
+### 可组合项
+
+#### useHasAnyPermission
+
+`useHasAnyPermission` 函数接收任意数量的权限参数，当前用户只要拥有参数中任意一项权限，函数即返回 `true`，否则 `false`。
+
+#### useHasAllPermissions
+
+`useHasAllPermissions` 函数接收任意数量的权限参数，如果当前用户同时拥有参数所指的权限，函数就返回 `true`，否则 `false`。
+
 ### 通过页面元数据验证用户权限
 
 在页面元数据中定义页面所需的权限，可以实现页面级别的权限校验。当用户尝试请求自己无权限访问的页面时，将会跳转到 `/forbidden` 路由下。另外，菜单中的路由项，也会根据当前用户所具备的权限进行条件渲染。
@@ -63,18 +73,15 @@ definePageMeta({
 
 ```html
 <div>
-  <div v-all-permission="['a', 'b', 'c']">当同时拥有 a b c 权限时，渲染这里的东西</div>
+  <div v-all-permission="['a', 'b', 'c']">当同时拥有 a b c 权限时，显示这里的东西</div>
 
-  <div v-any-permission="['d', 'e', 'f']">当拥有 d e f 任意权限时，渲染这里的东西</div>
-  <div v-permission="['d', 'e', 'f']">当拥有 d e f 任意权限时，渲染这里的东西</div>
+  <div v-any-permission="['d', 'e', 'f']">当拥有 d e f 任意权限时，显示这里的东西</div>
+  <div v-permission="['d', 'e', 'f']">当拥有 d e f 任意权限时，显示这里的东西</div>
 </div>
 ```
 
 > [!WARNING]
-> 如果组件会在挂载前就执行需要相应权限的操作，例如请求接口，那么应该使用组件方式，因为指令是在组件挂载之后才执行的。当指令执行时，组件内可能已经执行完相关权限的操作。
-
-> [!TIP]
-> 除了组件和指令，其实也可以通过可组合项函数 `useHasAnyPermission` 或 `useHasAllPermissions` 来检查当前用户是否具备相关的权限。
+> 如果组件会在挂载前就执行需要相应权限的操作，例如请求接口，那么应该使用组件方式，因为指令是在组件挂载之后才会执行。
 
 ## 菜单
 
@@ -105,5 +112,11 @@ git add {变更文件}
 git commit
 
 # 更新版本
+git push
+```
+
+## 发布新版本
+
+```sh
 pnpm release
 ```
