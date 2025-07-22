@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  permissions: ['_________________________' as any],
+  anyPermissions: ['_________________________' as any],
 })
 </script>
 

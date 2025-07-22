@@ -2,13 +2,20 @@
 import type { SelectOption } from '@arco-design/web-vue'
 
 const { userRoleGetPage } = useApiV1Client()
-const { no, nextPage, max, total } = usePageParams({ size: 20 })
+const { no, nextPage, total } = usePageParams({ size: 20 })
 
 const options = ref<SelectOption[]>([])
+
+const query = reactive<ApiV1SearchParams<typeof userRoleGetPage>>({})
+const roleName = ref('')
+watchEffect(() => {
+  query.pageNo = no.value
+  query.filter = roleName.value ? `name contains ${roleName.value}` : undefined
+})
 const { data, status } = useAsyncData(
-  () => userRoleGetPage({ query: { pageNo: no.value } }),
+  () => userRoleGetPage({ query }),
   {
-    watch: [no],
+    watch: [query],
     transform: (v) => {
       const results = v.data?.results.map(i => ({
         label: i.name,
@@ -24,7 +31,6 @@ const { data, status } = useAsyncData(
 const model = defineModel<string[]>()
 watchEffect(() => {
   const value = data.value
-  max.value = value?.pageCount
   total.value = value?.count
   if (value?.results) {
     if (no.value === 1) {
@@ -35,19 +41,20 @@ watchEffect(() => {
     }
   }
 })
+
+function onSearch(v: string) {
+  roleName.value = v
+}
 </script>
 
 <template>
-  <UIDevPreview :data="{ count: options.length }" />
   <ASelect
     v-model="model"
     :options="options"
     multiple
     :loading="status === 'pending'"
-    @dropdown-reach-bottom="() => {
-      console.log('触发');
-
-      nextPage()
-    }"
+    allow-search
+    @search="onSearch"
+    @dropdown-reach-bottom="nextPage"
   />
 </template>

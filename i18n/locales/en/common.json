@@ -96,19 +96,19 @@
   "deleteUserDescription": "",
   "deleteUserFailure": "",
   "deleteUserTitle": "",
-  "permission": "",
+  "permission": "Permissions",
   "permissionCode": {
-    "permissions:read": "",
-    "roles": "",
-    "roles:create": "",
-    "roles:delete": "",
-    "roles:read": "",
-    "roles:update": "",
-    "users": "",
-    "users:create": "",
-    "users:delete": "",
-    "users:read": "",
-    "users:update": ""
+    "permissions:read": "Permission reading",
+    "roles": "Role Management",
+    "roles:create": "Role creation",
+    "roles:delete": "Role Delete",
+    "roles:read": "Role Reading",
+    "roles:update": "Role update",
+    "users": "User Management",
+    "users:create": "User creation",
+    "users:delete": "User Delete",
+    "users:read": "User read",
+    "users:update": "User updates"
   },
   "refresh": "Refresh",
   "deleteUserRoleConfirm": "Are you sure to delete the role {value}?",
@@ -122,5 +122,10 @@
   "deleteRolesTitle": "Delete {value} roles",
   "deleteRolesConfirm": "Are you sure to delete these roles?",
   "deleteRoleFailure": "Delete role {value} failed",
-  "deleteRoleSuccess": "Delete role {value} successfully"
+  "deleteRoleSuccess": "Delete role {value} successfully",
+  "setUserRoles": "Assign roles",
+  "resource": "",
+  "updateUserRoleSuccess": "Updated user role successfully",
+  "createRoleSuccess": "Create role successfully",
+  "createUserSuccess": "Create user successfully"
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Notification } from '@arco-design/web-vue'
 
+const emit = defineEmits<{ success: [], failure: [] }>()
+
 const { t } = useI18n()
 const { userCreate } = useApiV1Client()
 const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
@@ -8,7 +10,7 @@ const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
     isActive: true,
   },
   onSubmitSuccess: async (values) => {
-    const { data, error } = await userCreate({ body: values })
+    const { error } = await userCreate({ body: values })
     if (error) {
       switch (error.code) {
         case 'Conflict':
@@ -21,9 +23,11 @@ const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
         default:
           break
       }
+      emit('failure')
     }
     else {
-      Notification.success(`创建用户${data.username}成功`)
+      Notification.success(t('common.createUserSuccess'))
+      emit('success')
     }
   },
   onChange: (v) => {
@@ -86,7 +90,7 @@ const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
       type="select"
       auto-label
     >
-      <UIRoleSelect />
+      <UIRoleSelect v-model="(model.roles as string[])" />
     </UIFormItem>
 
     <UIFormItem

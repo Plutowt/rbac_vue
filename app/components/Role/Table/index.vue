@@ -12,7 +12,7 @@ type Result = APIPageResult<typeof userRoleGetPage>
 
 const {
   visibleColumns,
-  toggleVisibleColumns,
+  // toggleVisibleColumns,
   filterExpr,
 } = useTypeTableColumns<typeof userRoleGetPage>([
   {
@@ -20,16 +20,35 @@ const {
     minWidth: 120,
     sortable: ['asc', 'desc'],
     primary: true,
+    filter: {
+      type: 'number',
+      column: true,
+    },
   },
   {
     dataIndex: 'name',
     minWidth: 160,
+    filter: {
+      type: 'string',
+      column: true,
+    },
   },
   {
     dataIndex: 'enabled',
     title: t('common.status'),
     minWidth: 120,
     render: ({ record }) => <IsActive ok={record.enabled} />,
+    filter: {
+      type: 'select',
+      selectProps: {
+        options: [
+          { label: t('common.enable'), value: true },
+          { label: t('common.disable'), value: false },
+        ],
+        multiple: true,
+      },
+      column: true,
+    },
   },
   {
     title: t('common.permission'),
@@ -40,7 +59,10 @@ const {
     filter: {
       field: 'permission',
       type: 'tree-select',
-      options: permissions,
+      treeSelectProps: {
+        data: permissions,
+        multiple: true,
+      },
       column: true,
     },
   },
@@ -49,6 +71,7 @@ const {
     width: 55,
     title: null,
     fixed: 'right',
+    defaultVisible: useHasAnyPermission('roles:update', 'roles:delete'),
   },
 ])
 
@@ -76,24 +99,39 @@ const { resolveSlot: parseRow } = useTableUtils<Result>()
 const actionObj = ref<Result>()
 const actionVisible = reactive({ delete: false, update: false, setPermission: false })
 const { sm } = useArcoBreakpoints()
+
+const visibleCreate = ref(false)
 </script>
 
 <template>
   <UITableLayout>
     <template #header>
       <RoleTableRefresh :loading="status === 'pending'" @click="refresh()" />
-      <RoleTableCreate v-permission="['roles:create']" />
-      <RoleTableDelete
-        v-model="selected"
-        @not-found="id => Notification.error({
-          title: $t('common.deleteRoleFailure', { value: id }),
-          content: $t('validation.notFound', { value: id }),
-        })"
-      />
+      <PermissionCheckAny :pass="['roles:create']">
+        <RoleTableCreate @click="visibleCreate = true" />
 
-      <div class="ml-auto flex items-center">
+        <AModal
+          v-model:visible="visibleCreate"
+          :title="$t('common.createRole')"
+          :footer="false"
+        >
+          <RoleTableCreateForm @success="refresh()" />
+        </AModal>
+      </PermissionCheckAny>
+
+      <PermissionCheckAny :pass="['roles:delete']">
+        <RoleTableDelete
+          v-model="selected"
+          @not-found="id => Notification.error({
+            title: $t('common.deleteRoleFailure', { value: id }),
+            content: $t('validation.notFound', { value: id }),
+          })"
+        />
+      </PermissionCheckAny>
+
+      <!-- <div class="ml-auto flex items-center">
         <UITableColumnToggle :columns="toggleVisibleColumns" />
-      </div>
+      </div> -->
     </template>
 
     <ATable
@@ -117,12 +155,17 @@ const { sm } = useArcoBreakpoints()
           </ATag>
         </AOverflowList>
       </template>
+
       <template #action="value">
         <UITableAction @click="actionObj = value.record">
-          <RoleTableActionUpdate @click="actionVisible.update = true" />
-          <RoleTableActionSetPermissions @click="actionVisible.setPermission = true" />
+          <PermissionCheckAll :pass="['roles:update']">
+            <RoleTableActionUpdate @click="actionVisible.update = true" />
+            <RoleTableActionSetPermissions @click="actionVisible.setPermission = true" />
+          </PermissionCheckAll>
           <UITableActionDivider />
-          <RoleTableActionDelete @click="actionVisible.delete = true" />
+          <PermissionCheckAll :pass="['roles:delete']">
+            <RoleTableActionDelete @click="actionVisible.delete = true" />
+          </PermissionCheckAll>
         </UITableAction>
       </template>
     </ATable>

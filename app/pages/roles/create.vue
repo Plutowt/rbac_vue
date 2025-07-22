@@ -1,9 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
-  permissions: ['roles:create'],
+  anyPermissions: ['roles:create'],
 })
 </script>
 
 <template>
-  <RoleCreateForm v-permission="['roles:create']" />
+  <UIContentLayout :title="$t('common.createRole')">
+    <PermissionCheckAny :pass="['roles:create']">
+      <RoleCreateForm />
+    </PermissionCheckAny>
+  </UIContentLayout>
 </template>

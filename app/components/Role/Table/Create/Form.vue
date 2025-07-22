@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { Notification } from '@arco-design/web-vue'
 
+const emit = defineEmits<{ success: [], failure: [] }>()
+
 const { t } = useI18n()
 const { userRoleCreate } = useApiV1Client()
 const { model, attrs, setField, reset } = useArcoForm<typeof userRoleCreate>({
   onSubmitSuccess: async (values) => {
-    const { data, error } = await userRoleCreate({
+    const { error } = await userRoleCreate({
       body: values,
     })
     if (error) {
@@ -20,9 +22,11 @@ const { model, attrs, setField, reset } = useArcoForm<typeof userRoleCreate>({
         default:
           break
       }
+      emit('failure')
     }
     else {
-      Notification.success(`创建用户${data.name}成功`)
+      Notification.success(t('common.createRoleSuccess'))
+      emit('success')
     }
   },
 })

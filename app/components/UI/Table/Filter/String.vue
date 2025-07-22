@@ -41,17 +41,14 @@ watchEffect(() => {
 
 <template>
   <UITableFilterLayout
-    @cancel="(e) => {
-      objs = [{ operator: 'startswith', value: undefined }]
-      $emit('cancel', e)
-    }"
+    @cancel="(e) => { $emit('cancel', e) }"
     @confirm="e => $emit('confirm', expr, e)"
   >
     <template
       v-for="obj, index in objs" :key="index"
     >
       <a-select
-        v-model="obj.operator"
+        :model-value="obj.operator"
         size="mini"
         class="mb-2"
         :options="[
@@ -65,12 +62,18 @@ watchEffect(() => {
           { label: $t('common.filterExpr.is_null'), value: 'is_null' },
           { label: $t('common.filterExpr.is_not_null'), value: 'is_not_null' },
         ]"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, operator: (v as string) } : o)
+        }"
       />
       <a-input
         v-if="isBinary(obj.operator)"
-        v-model="(obj.value as string | undefined)"
+        :model-value="(obj.value as string | undefined)"
         size="mini"
         @input="v => obj.value = v"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, value: v } : o)
+        }"
       >
         <template #prepend>
           <icon-search />

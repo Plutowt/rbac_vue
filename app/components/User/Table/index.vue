@@ -8,7 +8,11 @@ const { t, d } = useI18n()
 
 const { userGetPage } = useApiV1Client()
 
-const { visibleColumns, toggleVisibleColumns, filterExpr: filterExprValue } = useTypeTableColumns<typeof userGetPage>([
+const {
+  visibleColumns,
+  toggleVisibleColumns,
+  filterExpr: filterExprValue,
+} = useTypeTableColumns<typeof userGetPage>([
   {
     dataIndex: 'id',
     minWidth: 120,
@@ -46,10 +50,12 @@ const { visibleColumns, toggleVisibleColumns, filterExpr: filterExprValue } = us
     width: 120,
     filter: {
       type: 'select',
-      options: [
-        { label: t('common.enable'), value: true },
-        { label: t('common.disable'), value: false },
-      ],
+      selectProps: {
+        options: [
+          { label: t('common.enable'), value: true },
+          { label: t('common.disable'), value: false },
+        ],
+      },
       column: true,
     },
     render: ({ record }) => <IsActive ok={record.isActive} />,
@@ -67,12 +73,13 @@ const { visibleColumns, toggleVisibleColumns, filterExpr: filterExprValue } = us
   {
     dataIndex: 'roles',
     minWidth: 160,
-    render: data => data.record.roles.map((i, idx) => <Tag key={idx}>{i.name}</Tag>),
+    render: data => <div class="flex gap-2">{data.record.roles.map((i, idx) => <Tag key={idx}>{i.name}</Tag>)}</div>,
     title: t('common.role'),
     filter: {
       field: 'roleName',
       type: 'string',
       column: true,
+
     },
   },
   {
@@ -108,9 +115,10 @@ const { visibleColumns, toggleVisibleColumns, filterExpr: filterExprValue } = us
   },
   {
     width: 55,
-    slotName: 'operations',
+    slotName: 'action',
     title: null,
     fixed: 'right',
+    defaultVisible: useHasAnyPermission('users:update', 'users:delete'),
   },
 ])
 
@@ -141,10 +149,13 @@ watchEffect(() => {
   }
 })
 
-const visibleDeleteConfirm = ref(false)
 const auth = useAuth()
-const visibleUpdateModal = ref(false)
-const visibleChangePasswordModal = ref(false)
+const actionVisible = reactive({
+  update: false,
+  changePassword: false,
+  setRoles: false,
+  delete: false,
+})
 const { sm } = useArcoBreakpoints()
 
 const selected = ref([])
@@ -153,6 +164,8 @@ const tableLoading = ref(false)
 watchEffect(() => {
   tableLoading.value = status.value === 'pending'
 })
+
+const visibleCreate = ref(false)
 </script>
 
 <template>
@@ -160,7 +173,14 @@ watchEffect(() => {
     <template #header>
       <UserTableRefresh @click="refresh()" />
       <PermissionCheckAny :pass="['users:create']">
-        <UserTableCreate />
+        <UserTableCreate @click="visibleCreate = true" />
+        <AModal
+          v-model:visible="visibleCreate"
+          :title="$t('common.createUser')"
+          :footer="false"
+        >
+          <UserTableCreateForm @success="refresh()" />
+        </AModal>
       </PermissionCheckAny>
       <PermissionCheckAny :pass="['users:delete']">
         <UserTableDelete
@@ -190,20 +210,24 @@ watchEffect(() => {
       row-key="id"
       @sorter-change="onSorterChange"
     >
-      <template #operations="value">
+      <template #action="value">
         <UITableAction @click="actionObj = resolveSlot(value).row">
           <template v-if="actionObj">
-            <UserTableActionUpdateToggleIsActive
-              :id="actionObj.id"
-              v-permission="['users:update']"
-              :is-active="actionObj.isActive"
-              :disabled="auth.info?.uid === actionObj.uid"
-              @success="refresh()"
-            />
-            <UserTableActionUpdatePassword v-permission="['users:update']" @click="visibleChangePasswordModal = true" />
-            <UserTableActionUpdate v-permission="['users:update']" @click="visibleUpdateModal = true" />
+            <PermissionCheckAll :pass="['users:update']">
+              <UserTableActionUpdateToggleIsActive
+                :id="actionObj.id"
+                :is-active="actionObj.isActive"
+                :disabled="auth.info?.uid === actionObj.uid"
+                @success="refresh()"
+              />
+              <UserTableActionUpdatePassword @click="actionVisible.changePassword = true" />
+              <UserTableActionUpdate @click="actionVisible.update = true" />
+              <UserTableActionUpdateRoles @click="actionVisible.setRoles = true" />
+            </PermissionCheckAll>
             <UITableActionDivider />
-            <UserTableActionDelete v-permission="['users:delete']" @click="visibleDeleteConfirm = true" />
+            <PermissionCheckAll :pass="['users:delete']">
+              <UserTableActionDelete @click="actionVisible.delete = true" />
+            </PermissionCheckAll>
           </template>
         </UITableAction>
       </template>
@@ -211,24 +235,25 @@ watchEffect(() => {
 
     <template v-if="actionObj">
       <AModal
-        v-model:visible="visibleChangePasswordModal"
+        v-model:visible="actionVisible.changePassword"
         :footer="false"
         :fullscreen="!sm"
-        :title="$t('common.editUserTitle', { value: actionObj.username })"
+        :title="$t('common.changePassword')"
       >
         <UserTableActionUpdatePasswordForm
           :id="actionObj.id"
           :old="actionObj"
           @success="() => {
             Notification.success($t('common.changeUserPasswordSuccess', { value: actionObj?.username }))
-            visibleChangePasswordModal = false
+            actionVisible.changePassword = false
             refresh()
           }"
+          @cancel="actionVisible.changePassword = false"
         />
       </AModal>
 
       <AModal
-        v-model:visible="visibleUpdateModal"
+        v-model:visible="actionVisible.update"
         :footer="false"
         :fullscreen="!sm"
         :title="$t('common.editUserTitle', { value: actionObj.username })"
@@ -238,7 +263,24 @@ watchEffect(() => {
           :old="actionObj"
           @success="() => {
             Notification.success($t('common.updateUserSuccess', { value: actionObj?.username }))
-            visibleUpdateModal = false
+            actionVisible.update = false
+            refresh()
+          }"
+        />
+      </AModal>
+
+      <AModal
+        v-model:visible="actionVisible.setRoles"
+        :footer="false"
+        :fullscreen="!sm"
+        :title="$t('common.setUserRoles')"
+      >
+        <UserTableActionUpdateRolesForm
+          :id="actionObj.id"
+          :roles="actionObj.roles.map(i => i.name)"
+          @cancel="actionVisible.setRoles = false"
+          @success="() => {
+            actionVisible.setRoles = false
             refresh()
           }"
         />
@@ -246,7 +288,7 @@ watchEffect(() => {
 
       <UserTableActionDeleteConfirm
         :id="actionObj.id"
-        v-model="visibleDeleteConfirm"
+        v-model="actionVisible.delete"
         v-model:loading="tableLoading"
         :uid="actionObj.uid"
         :username="actionObj.username"

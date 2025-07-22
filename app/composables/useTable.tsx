@@ -1,4 +1,5 @@
-import type { SelectOptionData, SelectOptionGroup, TableColumnData, TableData, TreeNodeData } from '@arco-design/web-vue'
+import type { SelectProps, TableColumnData, TableData } from '@arco-design/web-vue'
+import type { TreeSelectProps } from '@arco-design/web-vue/es/tree-select/interface'
 import type { Paths } from 'type-fest'
 import type { VNodeChild } from 'vue'
 import { remove } from 'es-toolkit'
@@ -11,6 +12,10 @@ import UITableFilterTreeSelect from '~/components/UI/Table/Filter/TreeSelect.vue
 import UITableFilterUUID from '~/components/UI/Table/Filter/UUID.vue'
 
 type TypeTableRecord<T> = TableData & T
+
+type MaybeProps<T extends object> = T extends Array<infer I> ? MaybeRef<I>[] : {
+  [K in keyof T]?: MaybeRef<T[K] | undefined>
+}
 
 interface TypeTableColumnData<APIResultT = unknown, DataIndex = Paths<APIResultT>> {
   dataIndex?: DataIndex
@@ -28,13 +33,13 @@ interface TypeTableColumnData<APIResultT = unknown, DataIndex = Paths<APIResultT
     type: 'number' | 'string' | 'datetime' | 'uuid'
   } | {
     type: 'select'
-    options: MaybeRef<(SelectOptionData | SelectOptionGroup)[]>
+    selectProps: SelectProps
   } | {
     type: 'tree-select'
-    options: MaybeRef<TreeNodeData[]>
+    treeSelectProps: MaybeProps<TreeSelectProps>
   }) & ({ field?: string, column: boolean })
 }
-// (record: TableData, column: TableColumnData, ev: Event) => any
+
 type ExcludeTypeTableColumnData = Omit<TableColumnData, keyof TypeTableColumnData>
 
 const sortMap = { asc: 'ascend', desc: 'descend' }
@@ -43,6 +48,8 @@ type TypeTableColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTable
 type TypeTableAllColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData & { visible: Ref<boolean> })[]
 type TypeTableVisibleColumns = TableColumnData[]
 export type TypeTableToggleVisibleColumns<T> = (TypeTableColumnData<APIResult<T>> & ExcludeTypeTableColumnData & { visible: Ref<boolean>, toggleVisible: () => void })[]
+
+type FieldFilterValue = { operator: string, value: any }[]
 
 export function useTypeTableColumns<T>(
   _columns: TypeTableColumns<APIPageResult<T>>,
@@ -56,6 +63,8 @@ export function useTypeTableColumns<T>(
 
   const filterExpr = reactive<(string | null)[]>([])
   const filterExprValue = computed(() => filterExpr.filter(i => i).join(' and ') || undefined)
+
+  const filterValues = reactive<Record<string, FieldFilterValue>>({})
 
   const allColumns = _columns.map((i, index) => {
     const result = {
@@ -75,11 +84,14 @@ export function useTypeTableColumns<T>(
     if (i.primary)
       result.render = ({ record, column }) => <div class="text-arco-primary-6">{get(record, column.dataIndex)}</div>
 
-    const fObjs = reactive<{ operator: string, value: any }[]>([])
-
     const field = (i.filter?.field || i.dataIndex) as string | undefined
 
     if (field !== undefined) {
+      const model = computed({
+        get: () => filterValues[field]!,
+        set: v => filterValues[field] = v,
+      })
+
       const filterProps = ({
         setFilterValue,
         handleFilterReset,
@@ -89,75 +101,79 @@ export function useTypeTableColumns<T>(
         setFilterValue: (filterValue: string[]) => void
         handleFilterConfirm: (event: Event) => void
         handleFilterReset: (event: Event) => void
-      }) => ({
+      }, initialValue: FieldFilterValue, extra?: any) => ({
         'field': field,
-        'modelValue': fObjs,
-        'onUpdate:modelValue': (v: { operator: string, value: any }[]) => { fObjs.splice(0, 1, ...v) },
+        'modelValue': model.value,
+        'onUpdate:modelValue': (v: FieldFilterValue) => model.value = v,
         'onCancel': (e: Event) => {
           filterExpr[index] = null
+          model.value = initialValue
           handleFilterReset(e)
         },
         'onConfirm': (value: string | null, e: Event) => {
           value && setFilterValue([value])
-          handleFilterConfirm(e)
+          value ? handleFilterConfirm(e) : handleFilterReset(e)
+
           filterExpr[index] = value
         },
+        ...extra,
       })
 
       switch (i.filter?.type) {
         case 'number':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'eq', value: undefined }
+            model.value = [{ operator: 'eq', value: undefined }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterNumber {...filterProps(data)} />,
+              renderContent: data => <UITableFilterNumber {...filterProps(data, [{ operator: 'eq', value: undefined }])} />,
             }
           }
           break
         case 'string':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'eq', value: undefined }
+            model.value = [{ operator: 'eq', value: undefined }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterString {...filterProps(data)} />,
+              renderContent: data => <UITableFilterString {...filterProps(data, [{ operator: 'eq', value: undefined }])} />,
             }
           }
           break
         case 'select':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'in', value: [] }
-            const options = i.filter.options
+            const selectProps = i.filter.selectProps
+            model.value = [{ operator: 'in', value: [] }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterSelect options={toValue(options)} {...filterProps(data)} />,
+              renderContent: data => <UITableFilterSelect {...filterProps(data, [{ operator: 'in', value: [] }], { selectProps })} />,
             }
           }
           break
         case 'tree-select':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'in', value: [] }
-            const options = i.filter.options
+            const treeSelectProps = i.filter.treeSelectProps
+
+            model.value = [{ operator: 'in', value: [] }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterTreeSelect options={toValue(options)} {...filterProps(data)} />,
+              renderContent: data => <UITableFilterTreeSelect {...filterProps(data, [{ operator: 'in', value: [] }], { treeSelectProps })} />,
             }
           }
           break
         case 'datetime':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'eq', value: undefined }
+            model.value = [{ operator: 'eq', value: undefined }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterDatetime {...filterProps(data)} />,
+              renderContent: data => <UITableFilterDatetime {...filterProps(data, [{ operator: 'eq', value: undefined }])} />,
             }
           }
           break
         case 'uuid':
           if (i.filter.column) {
-            fObjs[0] = { operator: 'eq', value: undefined }
+            model.value = [{ operator: 'eq', value: undefined }]
             result.filterable = {
               filter: () => true,
-              renderContent: data => <UITableFilterUUID {...filterProps(data)} />,
+              renderContent: data => <UITableFilterUUID {...filterProps(data, [{ operator: 'eq', value: undefined }])} />,
             }
           }
           break
@@ -225,5 +241,3 @@ export function useTypeTableOnSorterChange(query: MaybeRef<{ sort?: Array<string
 
   return handle
 }
-
-// export function  apiV1TableOnCellContextmenu(record: TypeTableRecord<APIResultT>, column: TableColumnData, ev: Event)

@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware(
     const localePath = useLocalePath()
     const loginPath = localePath({ name: 'auth-login', query: { next: to.path } })
 
-    const requires = to.meta.permissions
+    const requires = to.meta.anyPermissions
     // 如果页面声明了权限
     if (requires?.length) {
       // 如果没登陆 并且刷新 用户信息 失败

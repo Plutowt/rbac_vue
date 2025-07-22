@@ -144,7 +144,7 @@ export const useMenu = defineStore('menu', () => {
         const r = router.options.routes.find(r => r.path === i.key)
 
         if (r) {
-          const requires = r.meta?.permissions
+          const requires = r.meta?.anyPermissions
           // 如果有要求权限
           if (requires?.length) {
           // 登录了就检查

@@ -2,7 +2,11 @@
 import type { ApiUserDetail, ApiUserUpdate } from '~/api/v1_1'
 
 const props = defineProps<{ id: ApiUserDetail['id'] }>()
-const emit = defineEmits<{ success: [], failure: [] }>()
+const emit = defineEmits<{
+  success: []
+  failure: []
+  cancel: []
+}>()
 
 const { t } = useI18n()
 
@@ -93,7 +97,7 @@ const { model, attrs, setField } = useArcoForm<ApiUserUpdate & { passwordAgain?:
     />
 
     <div class="flex w-full items-center justify-end gap-4">
-      <AButton>
+      <AButton @click="$emit('cancel')">
         <template #icon>
           <IconClose />
         </template>

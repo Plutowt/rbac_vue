@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { SelectOptionData } from '@arco-design/web-vue'
+import type { SelectProps } from '@arco-design/web-vue'
 
-const props = defineProps<{ field: string, options: SelectOptionData[] }>()
+const props = defineProps<{ field: string, selectProps: SelectProps }>()
 defineEmits<{ confirm: [string | null, Event], cancel: [Event] }>()
 
 const expr = ref<string | null>(null)
 
 // type Op = 'in' | 'not_in' | 'is_null' | 'is_not_null'
 
-const objs = defineModel<{ operator: string, value: unknown[] }[]>({ default: [{ operator: 'in', value: [] }] })
+const objs = defineModel<{ operator: string, value: unknown | unknown[] }[]>({ default: [{ operator: 'in', value: [] }] })
 
 function isIn(op: string) {
   return ['in', 'not_in'].includes(op)
@@ -20,8 +20,13 @@ watchEffect(() => {
     for (const obj of objs.value) {
       if (obj.operator) {
         if (isIn(obj.operator)) {
-          if (obj.value.length)
-            result.push(`${props.field} ${obj.operator} ${obj.value.join(' ')}`)
+          if (Array.isArray(obj.value)) {
+            if (obj.value.length)
+              result.push(`${props.field} ${obj.operator} ${obj.value.join(' ')}`)
+          }
+          else if (obj.value) {
+            result.push(`${props.field} ${obj.operator} ${obj.value}`)
+          }
         }
         else if (['is_null', 'is_not_null'].includes(obj.operator)) {
           result.push(`${props.field} ${obj.operator}`)
@@ -29,6 +34,7 @@ watchEffect(() => {
       }
     }
   }
+
   if (result.length) {
     expr.value = result.join(' and ')
   }
@@ -48,7 +54,7 @@ watchEffect(() => {
   >
     <template v-for="obj, index in objs" :key="index">
       <a-select
-        v-model="obj.operator"
+        :model-value="obj.operator"
         class="mb-2"
         size="mini"
         :options="[
@@ -57,13 +63,18 @@ watchEffect(() => {
           { label: $t('common.filterExpr.is_null'), value: 'is_null' },
           { label: $t('common.filterExpr.is_not_null'), value: 'is_not_null' },
         ]"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, operator: (v as string) } : o)
+        }"
       />
       <a-select
         v-if="isIn(obj.operator)"
-        v-model="obj.value"
+        :model-value="(obj.value as string | number | string[] | number[] | undefined)"
         size="mini"
-        :options="$props.options"
-        multiple
+        v-bind="Object.entries($props.selectProps).map(([k, v]) => ({ [k]: toValue(v) })).reduce((a, b) => ({ ...a, ...b }), {})"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, value: v } : o)
+        }"
       />
     </template>
   </UITableFilterLayout>

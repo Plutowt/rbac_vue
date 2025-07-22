@@ -57,7 +57,7 @@ watchEffect(() => {
   >
     <template v-for="obj, index in objs" :key="index">
       <a-select
-        v-model="obj.operator"
+        :model-value="obj.operator"
         class="mb-2"
         size="mini"
         :options="[
@@ -72,12 +72,18 @@ watchEffect(() => {
           { label: $t('common.filterExpr.is_null'), value: 'is_null' },
           { label: $t('common.filterExpr.is_not_null'), value: 'is_not_null' },
         ]"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, operator: (v as string) } : o)
+        }"
       />
       <a-input-number
         v-if="isBinary(obj.operator)"
-        v-model="(obj.value as number | undefined)"
+        :model-value="(obj.value as number | undefined)"
         size="mini"
         @input="v => obj.value = v"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, value: v } : o)
+        }"
       >
         <template #prepend>
           <icon-search />
@@ -88,10 +94,13 @@ watchEffect(() => {
           :model-value="(obj.value as [number | undefined, number| undefined])?.[0]"
           size="mini"
           @input="v => {
-            if (!obj.value) {
-              obj.value = Array.from({ length: 2 })
+            if (Array.isArray(objs[index]?.value)) {
+              const values = objs[index].value
+              objs = objs.map((o, i) => i === index ? { ...o, value: [v, values[1]] } : o)
             }
-            (obj.value as [number | undefined, number| undefined])[0] = v
+            else {
+              objs = objs.map((o, i) => i === index ? { ...o, value: [v, undefined] } : o)
+            }
           }"
         >
           <template #prepend>
@@ -102,10 +111,13 @@ watchEffect(() => {
           :model-value="(obj.value as [number | undefined, number| undefined])?.[1]"
           size="mini"
           @input="v => {
-            if (!obj.value) {
-              obj.value = Array.from({ length: 2 })
+            if (Array.isArray(objs[index]?.value)) {
+              const values = objs[index].value
+              objs = objs.map((o, i) => i === index ? { ...o, value: [values[0], v] } : o)
             }
-            (obj.value as [number | undefined, number| undefined])[1] = v
+            else {
+              objs = objs.map((o, i) => i === index ? { ...o, value: [undefined, v] } : o)
+            }
           }"
         >
           <template #prepend>

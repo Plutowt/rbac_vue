@@ -18,7 +18,7 @@ watchEffect(() => {
         if (isBinary(obj.operator)) {
           // 处理空字符串
           if (!obj.value)
-            obj.value = undefined
+            objs.value[index]!.value = undefined
           else
             result.push(`${props.field} ${obj.operator} ${obj.value}`)
         }
@@ -44,13 +44,17 @@ const invalid = ref(false)
       objs = [{ operator: 'eq', value: undefined }]
       $emit('cancel', e)
     }"
-    @confirm="e => !invalid && $emit('confirm', expr, e)"
+    @confirm="e => {
+      if (!invalid) {
+        $emit('confirm', expr, e)
+      }
+    }"
   >
     <template
       v-for="obj, index in objs" :key="index"
     >
       <a-select
-        v-model="obj.operator"
+        :model-value="obj.operator"
         size="mini"
         class="mb-2"
         :options="[
@@ -59,14 +63,20 @@ const invalid = ref(false)
           { label: $t('common.filterExpr.is_null'), value: 'is_null' },
           { label: $t('common.filterExpr.is_not_null'), value: 'is_not_null' },
         ]"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, operator: (v as string) } : o)
+        }"
       />
       <a-input
         v-if="isBinary(obj.operator)"
-        v-model="obj.value"
+        :model-value="(obj.value as string | undefined)"
         size="mini"
         :max-length="37"
         @blur="() => {
           invalid = obj.value !== undefined && !/^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/.test(obj.value)
+        }"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, value: v } : o)
         }"
       >
         <template #prepend>

@@ -604,67 +604,13 @@ export type FastapiExtsExceptionsConflictModel4 = {
     /**
      * Target
      */
-    target: 'username' | 'email';
-};
-
-/**
- * ConflictModel
- */
-export type FastapiExtsExceptionsConflictModel5 = {
-    /**
-     * Code
-     */
-    code: 'Conflict';
-    /**
-     * Message
-     */
-    message: string;
-    /**
-     * Target
-     */
-    target: 'username' | 'email';
-};
-
-/**
- * ConflictModel
- */
-export type FastapiExtsExceptionsConflictModel6 = {
-    /**
-     * Code
-     */
-    code: 'Conflict';
-    /**
-     * Message
-     */
-    message: string;
-    /**
-     * Target
-     */
-    target: 'username' | 'email';
-};
-
-/**
- * ConflictModel
- */
-export type FastapiExtsExceptionsConflictModel7 = {
-    /**
-     * Code
-     */
-    code: 'Conflict';
-    /**
-     * Message
-     */
-    message: string;
-    /**
-     * Target
-     */
     target: 'name';
 };
 
 /**
  * ConflictModel
  */
-export type FastapiExtsExceptionsConflictModel8 = {
+export type FastapiExtsExceptionsConflictModel5 = {
     /**
      * Code
      */
@@ -1049,10 +995,6 @@ export type UserDeleteErrors = {
      */
     404: NotFoundModel;
     /**
-     * Conflict
-     */
-    409: FastapiExtsExceptionsConflictModel4;
-    /**
      * Validation Error
      */
     422: HttpValidationError;
@@ -1104,10 +1046,6 @@ export type UserGetErrors = {
      * Not Found
      */
     404: NotFoundModel;
-    /**
-     * Conflict
-     */
-    409: FastapiExtsExceptionsConflictModel3;
     /**
      * Validation Error
      */
@@ -1163,7 +1101,7 @@ export type UserUpdateErrors = {
     /**
      * Conflict
      */
-    409: FastapiExtsExceptionsConflictModel5;
+    409: FastapiExtsExceptionsConflictModel3;
     /**
      * Validation Error
      */
@@ -1219,10 +1157,6 @@ export type UserSetRolesErrors = {
      * Not Found
      */
     404: NotFoundModel;
-    /**
-     * Conflict
-     */
-    409: FastapiExtsExceptionsConflictModel6;
     /**
      * Validation Error
      */
@@ -1324,7 +1258,7 @@ export type UserRoleGetPageData = {
          *
          * ---
          *
-         * <table><caption><b>fields</b></caption><thead><th>field</th><th>type</th><th>description</th><th>default</th><th>condition</th></thead><tbody><tr><td>id</td><td><code>int</code></td><td></td><td></td><td></td></tr><tr><td>createdAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>updatedAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>enabled</td><td><code>bool</code></td><td></td><td></td><td></td></tr><tr><td>permission</td><td><code>str</code></td><td></td><td></td><td></td></tr></tbody></table>
+         * <table><caption><b>fields</b></caption><thead><th>field</th><th>type</th><th>description</th><th>default</th><th>condition</th></thead><tbody><tr><td>id</td><td><code>int</code></td><td></td><td></td><td></td></tr><tr><td>name</td><td><code>str</code></td><td></td><td></td><td></td></tr><tr><td>createdAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>updatedAt</td><td><code>datetime</code></td><td></td><td></td><td></td></tr><tr><td>enabled</td><td><code>bool</code></td><td></td><td></td><td></td></tr><tr><td>permission</td><td><code>str</code></td><td></td><td></td><td></td></tr></tbody></table>
          *
          */
         filter?: string | null;
@@ -1387,7 +1321,7 @@ export type UserRoleCreateErrors = {
     /**
      * Conflict
      */
-    409: FastapiExtsExceptionsConflictModel7;
+    409: FastapiExtsExceptionsConflictModel4;
     /**
      * Validation Error
      */
@@ -1547,7 +1481,7 @@ export type UserRoleUpdateErrors = {
     /**
      * Conflict
      */
-    409: FastapiExtsExceptionsConflictModel8;
+    409: FastapiExtsExceptionsConflictModel5;
     /**
      * Validation Error
      */

@@ -54,7 +54,7 @@
   "enableUser": "@:{'common.enable'}@:{'common.user'}",
   "disableUser": "@:{'common.disable'}@:{'common.user'}",
   "dangerOperation": "危险操作",
-  "roles": "",
+  "roles": "角色",
   "success": "成功",
   "failure": "失败",
   "changePassword": "修改@:{'common.password'}",
@@ -122,5 +122,10 @@
   "deleteRolesTitle": "删除 {value} 个角色",
   "deleteRolesConfirm": "是否确定删除这些角色？",
   "deleteRoleFailure": "删除角色 {value} 失败",
-  "deleteRoleSuccess": "删除角色 {value} 成功"
+  "deleteRoleSuccess": "删除角色 {value} 成功",
+  "setUserRoles": "分配角色",
+  "resource": "资源",
+  "updateUserRoleSuccess": "更新用户角色成功",
+  "createRoleSuccess": "创建角色成功",
+  "createUserSuccess": "创建用户成功"
 }

@@ -11,3 +11,7 @@ export function useApiV1Client() {
 
   return { ...apiV1SDK }
 }
+
+export type ApiV1SearchParams<T extends () => any> = Exclude<Parameters<T>[0], undefined> extends {
+  query?: infer Q
+} ? Q : T

@@ -4,7 +4,7 @@ import '#app'
 
 declare module '#app' {
   interface PageMeta {
-    permissions?: PermissionCode[]
+    anyPermissions?: PermissionCode[]
     padding?: boolean
   }
 }

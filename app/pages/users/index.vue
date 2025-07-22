@@ -1,10 +1,12 @@
 <script setup lang="ts">
-definePageMeta({ permissions: ['users:read'] })
+definePageMeta({
+  anyPermissions: ['users:read', 'users:create'],
+})
 </script>
 
 <template>
   <UIContentLayout :title="$t('common.menu.users')">
-    <PermissionCheckAny :pass="['users:read']">
+    <PermissionCheckAny :pass="['users:read', 'users:create']">
       <UserTable />
     </PermissionCheckAny>
   </UIContentLayout>

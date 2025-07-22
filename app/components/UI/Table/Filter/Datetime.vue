@@ -50,15 +50,12 @@ watchEffect(() => {
 <template>
   <UITableFilterLayout
     class="w-64"
-    @cancel="(e) => {
-      objs = [{ operator: 'eq', value: undefined }]
-      $emit('cancel', e)
-    }"
+    @cancel="(e) => { $emit('cancel', e) }"
     @confirm="e => $emit('confirm', expr, e)"
   >
     <template v-for="obj, index in objs" :key="index">
       <a-select
-        v-model="obj.operator"
+        :model-value="obj.operator"
         class="mb-2"
         size="mini"
         :options="[
@@ -73,6 +70,9 @@ watchEffect(() => {
           { label: $t('common.filterExpr.is_null'), value: 'is_null' },
           { label: $t('common.filterExpr.is_not_null'), value: 'is_not_null' },
         ]"
+        @update:model-value="v => {
+          objs = objs.map((o, i) => i === index ? { ...o, operator: (v as string) } : o)
+        }"
       />
       <a-date-picker
         v-if="isBinary(obj.operator)"
@@ -83,7 +83,7 @@ watchEffect(() => {
         show-now-btn
         :format="(v) => $d(v, 'long')"
         @update:model-value="(v: string) => {
-          obj.value = new Date(v).getTime()
+          objs = objs.map((o, i) => i === index ? { ...o, value: new Date(v).getTime() } : o)
         }"
       />
 
@@ -94,13 +94,15 @@ watchEffect(() => {
           format="YYYY-MM-DD HH:mm:ss"
           :model-value="!Array.isArray(obj.value) ? undefined : (obj.value as [number, number])"
           @update:model-value="(v) => {
-            const typeV = (v as [string, string] | undefined)
-            if (typeV){
-              obj.value = [new Date(typeV[0]).getTime(), new Date(typeV[1]).getTime()]
-            }
-            else {
-              obj.value = undefined
-            }
+            objs = objs.map((o, i) => {
+              if (i === index) {
+                const typeV = (v as [string, string] | undefined)
+                const value = typeV && ([new Date(typeV[0]).getTime(), new Date(typeV[1]).getTime()] as [number, number])
+                return { ...o, value }
+              }
+
+              return o
+            })
           }"
         />
       </div>
