@@ -1,6 +1,6 @@
 {
   "sessionExpired": "Your login has expired, please log in again",
-  "deleteCurrentUser": "",
-  "deleteCurrentUserTitle": "",
-  "deleteUser": ""
+  "deleteCurrentUser": "You are deleting the currently logged in user. Are you sure you want to delete?",
+  "deleteCurrentUserTitle": "Deleting Current User!",
+  "deleteUser": "Are you sure you want to delete user {value}?"
 }

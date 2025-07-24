@@ -2,14 +2,14 @@
   "required": "This field is required",
   "string": {
     "min": "Must be at least {value} characters",
-    "max": "Cannot exceed {max} characters",
-    "notStart": "Cannot start with {start}",
+    "max": "Cannot exceed {value} characters",
+    "notStart": "Cannot start with {value}",
     "format": "Invalid format",
     "null": "This field cannot be empty"
   },
   "number": {
-    "min": "Cannot be less than {min}",
-    "max": "Cannot be greater than {max}"
+    "min": "Cannot be less than {value}",
+    "max": "Cannot be greater than {value}"
   },
   "invalidItemFormat": "Invalid {item} format",
   "passwordRepeat": "Passwords must be the same",
@@ -18,9 +18,9 @@
   "rateLimit": "Too many requests",
   "notBeValue": "Cannot be {value}",
   "InvalidCredentials": "Invalid @:{'common.username'} or @:{'common.password'}",
-  "invalidFormat": "",
-  "conflictItem": "",
+  "invalidFormat": "Invalid {value} format",
+  "conflictItem": "{value} already exists",
   "invalidUUIDLength": "length is between 32 - 37 strings",
   "invalidUUID": "Invalid UUID value",
-  "notFound": ""
+  "notFound": "{value} not found"
 }

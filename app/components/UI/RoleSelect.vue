@@ -17,13 +17,13 @@ const { data, status } = useAsyncData(
   {
     watch: [query],
     transform: (v) => {
-      const results = v.data?.results.map(i => ({
+      const results = v?.data?.results.map(i => ({
         label: i.name,
         value: i.name,
         disabled: !i.enabled,
       })) satisfies SelectOption[] | undefined
 
-      return { ...v.data, results }
+      return { ...v?.data, results }
     },
   },
 )

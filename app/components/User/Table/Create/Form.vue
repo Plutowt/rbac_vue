@@ -83,15 +83,16 @@ const { model, attrs, setField, reset } = useArcoForm<typeof userCreate>({
       ]"
     />
 
-    <UIFormItem
-      v-model="model"
-      v-any-permission="['roles:read']"
-      field="roles"
-      type="select"
-      auto-label
-    >
-      <UIRoleSelect v-model="(model.roles as string[])" />
-    </UIFormItem>
+    <PermissionCheckAll :pass="['roles:read']">
+      <UIFormItem
+        v-model="model"
+        field="roles"
+        type="select"
+        auto-label
+      >
+        <UIRoleSelect v-model="(model.roles as string[])" />
+      </UIFormItem>
+    </PermissionCheckAll>
 
     <UIFormItem
       v-model="model"

@@ -222,7 +222,9 @@ const visibleCreate = ref(false)
               />
               <UserTableActionUpdatePassword @click="actionVisible.changePassword = true" />
               <UserTableActionUpdate @click="actionVisible.update = true" />
-              <UserTableActionUpdateRoles @click="actionVisible.setRoles = true" />
+              <PermissionCheckAll :pass="['roles:read']">
+                <UserTableActionUpdateRoles @click="actionVisible.setRoles = true" />
+              </PermissionCheckAll>
             </PermissionCheckAll>
             <UITableActionDivider />
             <PermissionCheckAll :pass="['users:delete']">
@@ -269,22 +271,24 @@ const visibleCreate = ref(false)
         />
       </AModal>
 
-      <AModal
-        v-model:visible="actionVisible.setRoles"
-        :footer="false"
-        :fullscreen="!sm"
-        :title="$t('common.setUserRoles')"
-      >
-        <UserTableActionUpdateRolesForm
-          :id="actionObj.id"
-          :roles="actionObj.roles.map(i => i.name)"
-          @cancel="actionVisible.setRoles = false"
-          @success="() => {
-            actionVisible.setRoles = false
-            refresh()
-          }"
-        />
-      </AModal>
+      <PermissionCheckAll :pass="['roles:read']">
+        <AModal
+          v-model:visible="actionVisible.setRoles"
+          :footer="false"
+          :fullscreen="!sm"
+          :title="$t('common.setUserRoles')"
+        >
+          <UserTableActionUpdateRolesForm
+            :id="actionObj.id"
+            :roles="actionObj.roles.map(i => i.name)"
+            @cancel="actionVisible.setRoles = false"
+            @success="() => {
+              actionVisible.setRoles = false
+              refresh()
+            }"
+          />
+        </AModal>
+      </PermissionCheckAll>
 
       <UserTableActionDeleteConfirm
         :id="actionObj.id"
