@@ -1,40 +1,76 @@
 <script setup lang="ts">
+import parsePhoneNumber, { isSupportedCountry } from 'libphonenumber-js'
 import countries from '~/region-data.json'
 
-defineProps<{ placeholder?: string }>()
+defineProps<{
+  placeholder?: string
+  error?: boolean
+}>()
 
-interface Item { cca2: ISO3166_1_Alpha_2, idd: string, name: string }
+interface Item {
+  cca2: ISO3166_1_Alpha_2
+  idd: string
+  name: string
+}
 
-const values = countries.map(i => ({ ...i, hidden: false })).filter(i => i.idd) as (Item & { hidden: boolean, alt: string })[]
+const values = countries.map(i => ({ ...i, hidden: false })).filter(i => i.idd && isSupportedCountry(i.cca2)) as (Item & { hidden: boolean, alt: string })[]
 
 const ipInfo = useIpInfo()
 
 const model = defineModel<string | null>()
+const innerModel = reactive<{ country?: string, number?: string }>({})
 
-const iddPattern = /tel:(?<idd>\+\d+)-/
-const modelPhoneNumber = computed({
-  get: () => model.value?.replace(iddPattern, ''),
+const model_ = computed({
+  get: () => {
+    let country: string | undefined = innerModel.country
+    let number: string | undefined = innerModel.number
+
+    if (country === undefined && number === undefined) {
+      const modelInfo = model.value ? parsePhoneNumber(model.value) : undefined
+      if (modelInfo) {
+        country = modelInfo.country
+        number = modelInfo.nationalNumber
+      }
+    }
+
+    return { country, number }
+  },
   set: (value) => {
-    const currentIDD = model.value?.match(iddPattern)?.[0]
-    if (currentIDD) {
-      if (value)
-        model.value = `${currentIDD}${value}`
-      else
-        model.value = currentIDD
+    innerModel.country = value.country
+    innerModel.number = value.number
+
+    let result: string | undefined
+    if (value.country && value.number) {
+      if (isSupportedCountry(value.country))
+        result = parsePhoneNumber(value.number, value.country)?.getURI()
+    }
+
+    if (result) {
+      model.value = result
     }
     else {
-      model.value = undefined
+      model.value = null
     }
+  },
+})
+
+const modelPhoneNumber = computed({
+  get: () => model_.value.number,
+  set: (value) => {
+    if (value === undefined)
+      return
+
+    // eslint-disable-next-line ts/no-use-before-define
+    model_.value = { country: model_.value.country || modelIDD.value.cca2, number: value }
   },
 })
 
 const modelIDD = computed(
   {
     get: () => {
-      const modelValues = model.value?.match(iddPattern)?.groups
       let idd: Item | undefined
-      if (modelValues?.idd) {
-        idd = values.find(i => i.idd === modelValues.idd)
+      if (model_.value.country) {
+        idd = values.find(i => model_.value.country ? i.cca2 === model_.value.country : false)
       }
 
       // 取当前 ip 的 IDD
@@ -47,19 +83,7 @@ const modelIDD = computed(
       return idd
     },
     set: (idd) => {
-      const currentPhoneNumber = model.value?.replace(iddPattern, '')
-      let _result = ''
-      if (idd.idd)
-        _result = `tel:${idd.idd}-`
-
-      if (currentPhoneNumber !== undefined) {
-        _result += currentPhoneNumber
-      }
-
-      if (_result)
-        model.value = _result
-      else
-        model.value = undefined
+      model_.value = { number: model_.value.number, country: idd.cca2 }
     },
   },
 )
@@ -94,32 +118,32 @@ watchEffect(() => {
 const options = computed(() => {
   if (filterValue.value) {
     const f = filterValue.value.toLowerCase()
-    return values.map(i => ({ ...i, hidden: !i.cca2.toLowerCase().includes(f) && !i.idd.toLowerCase().includes(f) && !i.name.toLowerCase().includes(f) }))
+    return values.map(i => ({
+      ...i,
+      hidden: !i.cca2.toLowerCase().includes(f) && !i.idd.toLowerCase().includes(f) && !i.name.toLowerCase().includes(f),
+    }))
   }
   else {
     return values
   }
 })
-
-// 现在要考虑的是怎么把 model 的值同步到 IDD 和 value 中
 </script>
 
 <template>
   <div ref="container" class="flex h-8 w-full items-center">
-    <div v-show="visible" ref="source">
-      <AInput v-model="filterValue" class="sticky top-0">
-        <template #prepend>
-          <IconSearch />
-        </template>
-      </AInput>
-      <ul
-        class="border border-arco-border-3 bg-arco-bg-1 text-[12px] text-arco-text-2"
+    <div
+      v-show="visible" ref="source" class="text-[14px] text-arco-text-1"
+    >
+      <input
+        v-model="filterValue"
+        class="sticky top-0 h-7 w-full bg-arco-fill-1 px-3 outline-0"
       >
+      <ul>
         <li
           v-for="v, index in options"
           :key="index"
           class="
-            flex items-center gap-2 px-1 py-2
+            flex items-center gap-2 px-3 py-2
             hover:cursor-pointer hover:bg-arco-fill-2
           "
           :class="[
@@ -148,7 +172,13 @@ const options = computed(() => {
         v-model:popup-visible="visible" trigger="click"
         position="bl"
       >
-        <AButton class="flex items-center gap-1 text-arco-text-2">
+        <AButton
+          class="flex items-center gap-1 text-arco-text-2"
+          :class="visible ? `
+            !border-arco-primary-6 !bg-arco-bg-2 !shadow-[0_0_0_0_--color-primary-light-2]
+          ` : undefined"
+          :status="error ? 'danger' : undefined"
+        >
           <UIFlag
             v-if="modelIDD"
             :iso="modelIDD.cca2"
@@ -159,10 +189,14 @@ const options = computed(() => {
         <template #content>
           <AScrollbar
             v-if="visible" ref="target" :style="{ width: `${width}px` }"
-            class="max-h-96 overflow-y-scroll shadow-sm"
+            class="
+              max-h-96 overflow-y-scroll rounded border border-arco-fill-3
+              bg-[var(--color-bg-popup)] shadow-sm
+            "
           />
         </template>
       </ATrigger>
+
       <AInput
         v-model="modelPhoneNumber"
         class="!w-full flex-1"

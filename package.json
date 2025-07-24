@@ -46,6 +46,7 @@
     "eslint-plugin-better-tailwindcss": "^3.6.2",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
+    "libphonenumber-js": "^1.12.10",
     "lint-staged": "^16.1.2",
     "nanoid": "^5.1.5",
     "nuxt": "^4.0.0",

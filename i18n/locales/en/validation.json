@@ -22,5 +22,6 @@
   "conflictItem": "{value} already exists",
   "invalidUUIDLength": "length is between 32 - 37 strings",
   "invalidUUID": "Invalid UUID value",
-  "notFound": "{value} not found"
+  "notFound": "{value} not found",
+  "invalidPhoneNumberFormat": "Phone number format error"
 }

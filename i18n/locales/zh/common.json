@@ -127,5 +127,14 @@
   "resource": "资源",
   "updateUserRoleSuccess": "更新用户角色成功",
   "createRoleSuccess": "创建角色成功",
-  "createUserSuccess": "创建用户成功"
+  "createUserSuccess": "创建用户成功",
+  "back": "",
+  "exception": {
+    "code": "",
+    "data": "",
+    "label": ""
+  },
+  "return": "",
+  "tokenManage": "",
+  "userCenter": ""
 }

@@ -2,6 +2,7 @@
 import type { FieldRule } from '@arco-design/web-vue'
 import type { UIFormItemProps } from './types'
 import { get, set } from 'es-toolkit/compat'
+import parsePhoneNumber from 'libphonenumber-js/max'
 
 const props = defineProps<UIFormItemProps<T>>()
 
@@ -31,13 +32,28 @@ const rules = computed<FieldRule[]>(() => {
   if (props.pattern !== undefined) {
     results.push({ match: props.pattern, message: t('validation.invalidFormat', { value: t(`common.${props.field}`) }) })
   }
+  if (props.type === 'input-phonenumber') {
+    results.push({ validator: (value, callback) => {
+      if (value === undefined) {
+        callback()
+      }
+      else if (parsePhoneNumber(value)?.isValid()) {
+        callback()
+      }
+      else {
+        callback(t('validation.invalidPhoneNumberFormat'))
+      }
+    } })
+  }
   return results
 })
 const label = computed(() => props.label || (props.autoLabel ? t(`common.${props.field}`) : undefined))
+const el = useTemplateRef('el')
 </script>
 
 <template>
   <AFormItem
+    ref="el"
     :field="($props.field as string)"
     :label="label"
     :rules="rules"
@@ -64,7 +80,10 @@ const label = computed(() => props.label || (props.autoLabel ? t(`common.${props
         v-else-if="$props.type === 'input-phonenumber'"
         :model-value="field ? get(model, field) : visibleValue"
         :placeholder="$props.placeholder || ($props.autoLabel ? $t(`common.placeholderInput`, { value: $t(`common.${$props.field}`) }) : undefined)"
-        @update:model-value="v => { model !== undefined && field && set(model, field, v) }"
+        :error="el?.isError"
+        @update:model-value="v => {
+          model !== undefined && field && set(model, field, v)
+        }"
       />
       <ASwitch
         v-else-if="$props.type === 'switch'"

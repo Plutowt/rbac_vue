@@ -85,8 +85,6 @@ watchEffect(() => {
 
 <template>
   <AForm layout="vertical" :disabled="loading" v-bind="attrs">
-    <UIDevPreview :data="model" />
-
     <UIFormItem
       :model-value="{ id: $props.id.toString() }"
       field="id"
@@ -104,16 +102,6 @@ watchEffect(() => {
       :max-length="64"
       :pattern="/^[a-zA-Z][a-zA-Z0-9_-]{2,64}$/"
     />
-    <!--
-    <UIFormItem
-      v-model="model"
-      field="password"
-      auto-label
-      type="input-password"
-      :min-length="6"
-      :max-length="128"
-      :pattern="/^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{}|;:,.<>?]{6,128}$/"
-    /> -->
 
     <UIFormItem
       v-model="model"
@@ -126,6 +114,7 @@ watchEffect(() => {
       ]"
     />
 
+    {{ }}
     <UIFormItem
       v-model="model"
       field="email"
