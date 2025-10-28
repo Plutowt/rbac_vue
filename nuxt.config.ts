@@ -1,4 +1,16 @@
+import fs from 'node:fs'
+import dotenv from 'dotenv'
+
 import { pwa } from './config/pwa'
+
+// eslint-disable-next-line node/prefer-global/process
+const env = process.env.NODE_ENV || 'development'
+if (fs.existsSync(`.env.${env}`)) {
+  dotenv.config({ path: `.env.${env}` })
+}
+else {
+  dotenv.config()
+}
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -91,6 +103,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiV1Base: '',
+      apiProxyTarget: '',
     },
   },
 
@@ -101,16 +114,16 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    // server: {
-    //   proxy: {
-    //     '/api': {
-    //       // eslint-disable-next-line node/prefer-global/process
-    //       target: process.env.NUXT_PUBLIC_API_V1_BASE,
-    //       changeOrigin: true,
-    //       rewrite: path => path.replace(/^\/api/, ''),
-    //     },
-    //   },
-    // },
+    server: {
+      proxy: {
+        '/api': {
+          // eslint-disable-next-line node/prefer-global/process
+          target: process.env.NUXT_PUBLIC_API_PROXY_TARGET,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, ''),
+        },
+      },
+    },
   },
 
   compatibilityDate: '2025-02-12',

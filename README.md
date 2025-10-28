@@ -2,6 +2,68 @@
 
 这是 FastAPI RBAC Template 项目的 Vue 前端实现，除了实现基本的用户、角色管理功能，还配置了一些额外的实用工具。
 
+## 从 OpenAPI 生成 SDK
+
+根据 package.json 里面定义的 `openapi-ts` 命令可以用于从 OpenAPI 规范生成 SDK。
+
+如果觉得麻烦的话也可以不用这个，自己用fetch或者axios什么的，但是那样的话要注意处理没登陆的情况还有登录身份失效的情况。
+
+### openapi-ts 命令
+
+`openapi-ts` 命令会读取 openapi-ts.config.ts 文件里的配置，根据里面的配置从指定的 OpenAPI 规范生成 SDK，生成后的代码会存到 app/api/v1_1 下面。
+
+openapi-ts.config.ts 文件会从 .env[.development|production] 文件的 `OPENAPI_SPEC_URL` 读取 OpenAPI 规范地址。对于开发者来说，可以创建一个 .env.development 文件，然后填 `OPENAPI_SPEC_URL=(后端的 openapi.json 文件地址)`。
+
+### SDK 调用
+
+可以通过 app/composables/useApiV1Client.ts 文件里自动导出的 `useApiV1Client` 函数来调用生成的 SDK。在后端项目模板中，有一个用于创建用户的接口，他的 openapi operation id 是 user_create（具体的生成规则可以参考仓库里的 [id生成函数](https://github.com/wisetelecom/fastapi-rbac-template/blob/8456c3b9c71aff8cdb934bb71ac36aa0230320ef/src/main.py#L15)），经过 SDK 生成器时，snake 命名法会被转为驼峰命名法，因为此为 `userCreate`，调用方式如下：
+
+```ts
+const { userCreate } = useApiV1Client()
+
+const {
+  // 响应体
+  data,
+  // 响应异常内容(如400、401、403等响应码的响应体内容)
+  error
+} = await userCreate({ body: { 请求体 } })
+
+console.log(data, error)
+```
+
+> [!WARNING] 警告
+> `data` 和 `error` 通常只有一个值有效，当其中一个有值时，另一个通常是 `undefined`。
+
+### 可能的问题
+
+#### CORS ...？
+
+生成 SDK 的过程是调用命令行程序访问 OpenAPI 规范，所以无需考虑跨域问题，但是调用 SDK 时所请求的后端接口地址，则需要考虑。
+
+#### 修改请求的后端接口地址
+
+考虑到调用时处于 nuxt 的运行时状态，所以在 app/composables/useApiV1Client.ts 中配置了请求的后端接口地址从 `useRuntimeConfig().config.public.apiV1Base` 获取。由于这是一个从环境变量获取的配置，所以也可以在 `.env[.development|production]` 中修改 `NUXT_PUBLIC_API_V1_BASE` 值。
+
+#### OpenAPI 规范文件和后端接口地址不一致会怎么样？
+
+不会怎么样，类似 调用函数与传给函数的参数 这种行为，typescript 提示参数异常，非要执行后端接口应该也会报错。生成
+
+## CORS 问题
+
+当前端与后端不在同一 host 地址下时会出现这个问题，例如前端在 192.168.1.10:3000 这个页面上访问 192.168.1.11:8000 这个后端，那么就会出现跨域资源请求（CORS）的问题。要解决这个问题，nuxt 有一个给开发者准备的解决方案。
+
+在 `nuxt.config.ts` 中，可以配置 `vite.server.proxy` 来代理后端地址，项目默认配置使用 `/api` 代理环境变量下 `NUXT_PUBLIC_API_PROXY_TARGET` 的值。
+
+因此，假设你的前端运行在 `192.168.1.10:3000` 下，后端运行在 `192.168.1.11:8000`，那么可以像这样配置环境变量：
+
+```
+NUXT_PUBLIC_API_V1_BASE=/api
+NUXT_PUBLIC_API_PROXY_TARGET=http://192.168.1.11:8000
+OPENAPI_SPEC_URL=http://192.168.1.11:8000/openapi.json
+```
+
+前端此时调用 SDK 就会去访问 `/api`，而非 `192.168.1.11:8000`，因此也就避免了 CORS 的问题。
+
 ## 权限相关
 
 ### 可组合项
@@ -120,3 +182,7 @@ git push
 ```sh
 pnpm release
 ```
+
+## 其他
+
+package.json 中有个 `openapi` 命令，这个因为一些历史原因遗留下来的，具体功能已经弃用，不应再使用，会在后续版本中随时删除，不要使用。
