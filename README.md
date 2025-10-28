@@ -31,8 +31,8 @@ const {
 console.log(data, error)
 ```
 
-> [!WARNING] 警告
-> `data` 和 `error` 通常只有一个值有效，当其中一个有值时，另一个通常是 `undefined`。
+> [!WARNING]
+> 值 `data` 和 `error` 通常只有一个值有效，当其中一个有值时，另一个通常是 `undefined`。
 
 ### 可能的问题
 
