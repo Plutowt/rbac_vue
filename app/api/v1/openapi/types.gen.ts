@@ -3,1508 +3,1508 @@
 /**
  * APIConflictModel
  */
-export type ApiConflictModel = {
-    /**
-     * code
-     */
-    code: 'Conflict';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiConflictModel {
+  /**
+   * code
+   */
+  code: 'Conflict'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APIForbiddenModel
  */
-export type ApiForbiddenModel = {
-    /**
-     * code
-     */
-    code: 'Forbidden';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiForbiddenModel {
+  /**
+   * code
+   */
+  code: 'Forbidden'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APIInvalidLoginCredentialsModel
  */
-export type ApiInvalidLoginCredentialsModel = {
-    /**
-     * code
-     */
-    code: 'Unauthorized';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiInvalidLoginCredentialsModel {
+  /**
+   * code
+   */
+  code: 'Unauthorized'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APIInvalidSessionModel
  */
-export type ApiInvalidSessionModel = {
-    /**
-     * code
-     */
-    code: 'Unauthorized';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiInvalidSessionModel {
+  /**
+   * code
+   */
+  code: 'Unauthorized'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APILegacyLoginCredentials
  */
-export type ApiLegacyLoginCredentials = {
-    /**
-     * csrfToken
-     */
-    _token: string | null;
-    /**
-     * username
-     */
-    username: string;
-    /**
-     * password
-     */
-    password: string;
-};
+export interface ApiLegacyLoginCredentials {
+  /**
+   * csrfToken
+   */
+  _token: string | null
+  /**
+   * username
+   */
+  username: string
+  /**
+   * password
+   */
+  password: string
+}
 
 /**
  * APINotEnoughPermissionsModel
  */
-export type ApiNotEnoughPermissionsModel = {
-    /**
-     * code
-     */
-    code: 'Forbidden';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiNotEnoughPermissionsModel {
+  /**
+   * code
+   */
+  code: 'Forbidden'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APINotFoundModel
  */
-export type ApiNotFoundModel = {
-    /**
-     * code
-     */
-    code: 'NotFound';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiNotFoundModel {
+  /**
+   * code
+   */
+  code: 'NotFound'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APIPage[APIRoleResult]
  */
-export type ApiPageApiRoleResult = {
-    /**
-     * pageSize
-     * page size
-     */
-    pageSize: number;
-    /**
-     * pageNo
-     * page number
-     */
-    pageNo: number;
-    /**
-     * pageCount
-     * page count
-     */
-    pageCount: number;
-    /**
-     * count
-     * result count
-     */
-    count: number;
-    /**
-     * results
-     * results
-     */
-    results: Array<ApiRoleResult>;
-};
+export interface ApiPageApiRoleResult {
+  /**
+   * pageSize
+   * page size
+   */
+  pageSize: number
+  /**
+   * pageNo
+   * page number
+   */
+  pageNo: number
+  /**
+   * pageCount
+   * page count
+   */
+  pageCount: number
+  /**
+   * count
+   * result count
+   */
+  count: number
+  /**
+   * results
+   * results
+   */
+  results: Array<ApiRoleResult>
+}
 
 /**
  * APIPage[APIUserDetail]
  */
-export type ApiPageApiUserDetail = {
-    /**
-     * pageSize
-     * page size
-     */
-    pageSize: number;
-    /**
-     * pageNo
-     * page number
-     */
-    pageNo: number;
-    /**
-     * pageCount
-     * page count
-     */
-    pageCount: number;
-    /**
-     * count
-     * result count
-     */
-    count: number;
-    /**
-     * results
-     * results
-     */
-    results: Array<ApiUserDetail>;
-};
+export interface ApiPageApiUserDetail {
+  /**
+   * pageSize
+   * page size
+   */
+  pageSize: number
+  /**
+   * pageNo
+   * page number
+   */
+  pageNo: number
+  /**
+   * pageCount
+   * page count
+   */
+  pageCount: number
+  /**
+   * count
+   * result count
+   */
+  count: number
+  /**
+   * results
+   * results
+   */
+  results: Array<ApiUserDetail>
+}
 
 /**
  * APIPermissionResult
  */
-export type ApiPermissionResult = {
-    /**
-     * code
-     */
-    code: string;
-    /**
-     * description
-     */
-    description?: string | null;
-};
+export interface ApiPermissionResult {
+  /**
+   * code
+   */
+  code: string
+  /**
+   * description
+   */
+  description?: string | null
+}
 
 /**
  * APIRoleBasicInfo
  */
-export type ApiRoleBasicInfo = {
-    /**
-     * name
-     */
-    name: string;
-    /**
-     * description
-     */
-    description?: string | null;
-    /**
-     * permissions
-     */
-    permissions: Array<ApiPermissionResult>;
-};
+export interface ApiRoleBasicInfo {
+  /**
+   * name
+   */
+  name: string
+  /**
+   * description
+   */
+  description?: string | null
+  /**
+   * permissions
+   */
+  permissions: Array<ApiPermissionResult>
+}
 
 /**
  * APIRoleCreate
  */
-export type ApiRoleCreate = {
-    /**
-     * name
-     */
-    name: string;
-    /**
-     * description
-     */
-    description?: string | null;
-    /**
-     * permissions
-     */
-    permissions: Array<string>;
-};
+export interface ApiRoleCreate {
+  /**
+   * name
+   */
+  name: string
+  /**
+   * description
+   */
+  description?: string | null
+  /**
+   * permissions
+   */
+  permissions: Array<string>
+}
 
 /**
  * APIRoleResult
  */
-export type ApiRoleResult = {
-    /**
-     * id
-     */
-    id: number;
-    /**
-     * name
-     */
-    name: string;
-    /**
-     * description
-     */
-    description?: string | null;
-    /**
-     * permissions
-     */
-    permissions: Array<ApiPermissionResult>;
-};
+export interface ApiRoleResult {
+  /**
+   * id
+   */
+  id: number
+  /**
+   * name
+   */
+  name: string
+  /**
+   * description
+   */
+  description?: string | null
+  /**
+   * permissions
+   */
+  permissions: Array<ApiPermissionResult>
+}
 
 /**
  * APIRoleUpdate
  */
-export type ApiRoleUpdate = {
-    /**
-     * name
-     */
-    name?: string | null;
-    /**
-     * description
-     */
-    description?: string | null;
-};
+export interface ApiRoleUpdate {
+  /**
+   * name
+   */
+  name?: string | null
+  /**
+   * description
+   */
+  description?: string | null
+}
 
 /**
  * APIUnauthorizedModel
  */
-export type ApiUnauthorizedModel = {
-    /**
-     * code
-     */
-    code: 'Unauthorized';
-    /**
-     * message
-     */
-    message: string;
-};
+export interface ApiUnauthorizedModel {
+  /**
+   * code
+   */
+  code: 'Unauthorized'
+  /**
+   * message
+   */
+  message: string
+}
 
 /**
  * APIUserConflictModel
  */
-export type ApiUserConflictModel = {
-    /**
-     * code
-     */
-    code: 'Conflict';
-    /**
-     * message
-     */
-    message: string;
-    /**
-     * target
-     */
-    target: 'username' | 'email';
-};
+export interface ApiUserConflictModel {
+  /**
+   * code
+   */
+  code: 'Conflict'
+  /**
+   * message
+   */
+  message: string
+  /**
+   * target
+   */
+  target: 'username' | 'email'
+}
 
 /**
  * APIUserCreate
  */
-export type ApiUserCreate = {
-    /**
-     * nickname
-     */
-    nickname?: string | null;
-    /**
-     * bio
-     */
-    bio?: string | null;
-    /**
-     * zoneinfo
-     */
-    zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null;
-    /**
-     * locale
-     */
-    locale?: string | null;
-    /**
-     * phoneNumber
-     */
-    phoneNumber?: string | null;
-    /**
-     * email
-     */
-    email: string;
-    /**
-     * username
-     */
-    username: string;
-    /**
-     * isActive
-     */
-    isActive: boolean;
-    /**
-     * roles
-     */
-    roles?: Array<string> | null;
-    /**
-     * password
-     */
-    password: string;
-};
+export interface ApiUserCreate {
+  /**
+   * nickname
+   */
+  nickname?: string | null
+  /**
+   * bio
+   */
+  bio?: string | null
+  /**
+   * zoneinfo
+   */
+  zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null
+  /**
+   * locale
+   */
+  locale?: string | null
+  /**
+   * phoneNumber
+   */
+  phoneNumber?: string | null
+  /**
+   * email
+   */
+  email: string
+  /**
+   * username
+   */
+  username: string
+  /**
+   * isActive
+   */
+  isActive: boolean
+  /**
+   * roles
+   */
+  roles?: Array<string> | null
+  /**
+   * password
+   */
+  password: string
+}
 
 /**
  * APIUserDetail
  */
-export type ApiUserDetail = {
-    /**
-     * id
-     */
-    id: number;
-    /**
-     * createdAt
-     */
-    createdAt: string;
-    /**
-     * updatedAt
-     */
-    updatedAt?: string | null;
-    /**
-     * nickname
-     */
-    nickname?: string | null;
-    /**
-     * bio
-     */
-    bio?: string | null;
-    /**
-     * zoneinfo
-     */
-    zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null;
-    /**
-     * locale
-     */
-    locale?: string | null;
-    /**
-     * phoneNumber
-     */
-    phoneNumber?: string | null;
-    /**
-     * uid
-     */
-    uid: string;
-    /**
-     * email
-     */
-    email: string;
-    /**
-     * username
-     */
-    username: string;
-    /**
-     * isActive
-     */
-    isActive: boolean;
-    /**
-     * roles
-     */
-    roles: Array<ApiRoleBasicInfo>;
-};
+export interface ApiUserDetail {
+  /**
+   * id
+   */
+  id: number
+  /**
+   * createdAt
+   */
+  createdAt: string
+  /**
+   * updatedAt
+   */
+  updatedAt?: string | null
+  /**
+   * nickname
+   */
+  nickname?: string | null
+  /**
+   * bio
+   */
+  bio?: string | null
+  /**
+   * zoneinfo
+   */
+  zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null
+  /**
+   * locale
+   */
+  locale?: string | null
+  /**
+   * phoneNumber
+   */
+  phoneNumber?: string | null
+  /**
+   * uid
+   */
+  uid: string
+  /**
+   * email
+   */
+  email: string
+  /**
+   * username
+   */
+  username: string
+  /**
+   * isActive
+   */
+  isActive: boolean
+  /**
+   * roles
+   */
+  roles: Array<ApiRoleBasicInfo>
+}
 
 /**
  * APIUserInfo
  */
-export type ApiUserInfo = {
-    /**
-     * createdAt
-     */
-    createdAt: string;
-    /**
-     * updatedAt
-     */
-    updatedAt?: string | null;
-    /**
-     * nickname
-     */
-    nickname?: string | null;
-    /**
-     * bio
-     */
-    bio?: string | null;
-    /**
-     * zoneinfo
-     */
-    zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null;
-    /**
-     * locale
-     */
-    locale?: string | null;
-    /**
-     * phoneNumber
-     */
-    phoneNumber?: string | null;
-    /**
-     * uid
-     */
-    uid: string;
-    /**
-     * email
-     */
-    email: string;
-    /**
-     * username
-     */
-    username: string;
-    /**
-     * isActive
-     */
-    isActive: boolean;
-    /**
-     * roles
-     */
-    roles: Array<string>;
-    /**
-     * permissions
-     */
-    permissions: Array<PermissionCode>;
-};
+export interface ApiUserInfo {
+  /**
+   * createdAt
+   */
+  createdAt: string
+  /**
+   * updatedAt
+   */
+  updatedAt?: string | null
+  /**
+   * nickname
+   */
+  nickname?: string | null
+  /**
+   * bio
+   */
+  bio?: string | null
+  /**
+   * zoneinfo
+   */
+  zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null
+  /**
+   * locale
+   */
+  locale?: string | null
+  /**
+   * phoneNumber
+   */
+  phoneNumber?: string | null
+  /**
+   * uid
+   */
+  uid: string
+  /**
+   * email
+   */
+  email: string
+  /**
+   * username
+   */
+  username: string
+  /**
+   * isActive
+   */
+  isActive: boolean
+  /**
+   * roles
+   */
+  roles: Array<string>
+  /**
+   * permissions
+   */
+  permissions: Array<PermissionCode>
+}
 
 /**
  * APIUserResult
  * 用户结果
  */
-export type ApiUserResult = {
-    /**
-     * createdAt
-     */
-    createdAt: string;
-    /**
-     * updatedAt
-     */
-    updatedAt?: string | null;
-    /**
-     * nickname
-     */
-    nickname?: string | null;
-    /**
-     * bio
-     */
-    bio?: string | null;
-    /**
-     * zoneinfo
-     */
-    zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null;
-    /**
-     * locale
-     */
-    locale?: string | null;
-    /**
-     * phoneNumber
-     */
-    phoneNumber?: string | null;
-    /**
-     * uid
-     */
-    uid: string;
-    /**
-     * email
-     */
-    email: string;
-    /**
-     * username
-     */
-    username: string;
-    /**
-     * isActive
-     */
-    isActive: boolean;
-};
+export interface ApiUserResult {
+  /**
+   * createdAt
+   */
+  createdAt: string
+  /**
+   * updatedAt
+   */
+  updatedAt?: string | null
+  /**
+   * nickname
+   */
+  nickname?: string | null
+  /**
+   * bio
+   */
+  bio?: string | null
+  /**
+   * zoneinfo
+   */
+  zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null
+  /**
+   * locale
+   */
+  locale?: string | null
+  /**
+   * phoneNumber
+   */
+  phoneNumber?: string | null
+  /**
+   * uid
+   */
+  uid: string
+  /**
+   * email
+   */
+  email: string
+  /**
+   * username
+   */
+  username: string
+  /**
+   * isActive
+   */
+  isActive: boolean
+}
 
 /**
  * APIUserUpdate
  */
-export type ApiUserUpdate = {
-    /**
-     * nickname
-     */
-    nickname?: string | null;
-    /**
-     * bio
-     */
-    bio?: string | null;
-    /**
-     * zoneinfo
-     */
-    zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null;
-    /**
-     * locale
-     */
-    locale?: string | null;
-    /**
-     * phoneNumber
-     */
-    phoneNumber?: string | null;
-    /**
-     * email
-     */
-    email?: string | null;
-    /**
-     * username
-     */
-    username?: string | null;
-    /**
-     * isActive
-     */
-    isActive?: boolean | null;
-    /**
-     * password
-     */
-    password?: string | null;
-};
+export interface ApiUserUpdate {
+  /**
+   * nickname
+   */
+  nickname?: string | null
+  /**
+   * bio
+   */
+  bio?: string | null
+  /**
+   * zoneinfo
+   */
+  zoneinfo?: ('Africa/Abidjan' | 'Africa/Accra' | 'Africa/Addis_Ababa' | 'Africa/Algiers' | 'Africa/Asmara' | 'Africa/Asmera' | 'Africa/Bamako' | 'Africa/Bangui' | 'Africa/Banjul' | 'Africa/Bissau' | 'Africa/Blantyre' | 'Africa/Brazzaville' | 'Africa/Bujumbura' | 'Africa/Cairo' | 'Africa/Casablanca' | 'Africa/Ceuta' | 'Africa/Conakry' | 'Africa/Dakar' | 'Africa/Dar_es_Salaam' | 'Africa/Djibouti' | 'Africa/Douala' | 'Africa/El_Aaiun' | 'Africa/Freetown' | 'Africa/Gaborone' | 'Africa/Harare' | 'Africa/Johannesburg' | 'Africa/Juba' | 'Africa/Kampala' | 'Africa/Khartoum' | 'Africa/Kigali' | 'Africa/Kinshasa' | 'Africa/Lagos' | 'Africa/Libreville' | 'Africa/Lome' | 'Africa/Luanda' | 'Africa/Lubumbashi' | 'Africa/Lusaka' | 'Africa/Malabo' | 'Africa/Maputo' | 'Africa/Maseru' | 'Africa/Mbabane' | 'Africa/Mogadishu' | 'Africa/Monrovia' | 'Africa/Nairobi' | 'Africa/Ndjamena' | 'Africa/Niamey' | 'Africa/Nouakchott' | 'Africa/Ouagadougou' | 'Africa/Porto-Novo' | 'Africa/Sao_Tome' | 'Africa/Timbuktu' | 'Africa/Tripoli' | 'Africa/Tunis' | 'Africa/Windhoek' | 'America/Adak' | 'America/Anchorage' | 'America/Anguilla' | 'America/Antigua' | 'America/Araguaina' | 'America/Argentina/Buenos_Aires' | 'America/Argentina/Catamarca' | 'America/Argentina/ComodRivadavia' | 'America/Argentina/Cordoba' | 'America/Argentina/Jujuy' | 'America/Argentina/La_Rioja' | 'America/Argentina/Mendoza' | 'America/Argentina/Rio_Gallegos' | 'America/Argentina/Salta' | 'America/Argentina/San_Juan' | 'America/Argentina/San_Luis' | 'America/Argentina/Tucuman' | 'America/Argentina/Ushuaia' | 'America/Aruba' | 'America/Asuncion' | 'America/Atikokan' | 'America/Atka' | 'America/Bahia' | 'America/Bahia_Banderas' | 'America/Barbados' | 'America/Belem' | 'America/Belize' | 'America/Blanc-Sablon' | 'America/Boa_Vista' | 'America/Bogota' | 'America/Boise' | 'America/Buenos_Aires' | 'America/Cambridge_Bay' | 'America/Campo_Grande' | 'America/Cancun' | 'America/Caracas' | 'America/Catamarca' | 'America/Cayenne' | 'America/Cayman' | 'America/Chicago' | 'America/Chihuahua' | 'America/Ciudad_Juarez' | 'America/Coral_Harbour' | 'America/Cordoba' | 'America/Costa_Rica' | 'America/Coyhaique' | 'America/Creston' | 'America/Cuiaba' | 'America/Curacao' | 'America/Danmarkshavn' | 'America/Dawson' | 'America/Dawson_Creek' | 'America/Denver' | 'America/Detroit' | 'America/Dominica' | 'America/Edmonton' | 'America/Eirunepe' | 'America/El_Salvador' | 'America/Ensenada' | 'America/Fort_Nelson' | 'America/Fort_Wayne' | 'America/Fortaleza' | 'America/Glace_Bay' | 'America/Godthab' | 'America/Goose_Bay' | 'America/Grand_Turk' | 'America/Grenada' | 'America/Guadeloupe' | 'America/Guatemala' | 'America/Guayaquil' | 'America/Guyana' | 'America/Halifax' | 'America/Havana' | 'America/Hermosillo' | 'America/Indiana/Indianapolis' | 'America/Indiana/Knox' | 'America/Indiana/Marengo' | 'America/Indiana/Petersburg' | 'America/Indiana/Tell_City' | 'America/Indiana/Vevay' | 'America/Indiana/Vincennes' | 'America/Indiana/Winamac' | 'America/Indianapolis' | 'America/Inuvik' | 'America/Iqaluit' | 'America/Jamaica' | 'America/Jujuy' | 'America/Juneau' | 'America/Kentucky/Louisville' | 'America/Kentucky/Monticello' | 'America/Knox_IN' | 'America/Kralendijk' | 'America/La_Paz' | 'America/Lima' | 'America/Los_Angeles' | 'America/Louisville' | 'America/Lower_Princes' | 'America/Maceio' | 'America/Managua' | 'America/Manaus' | 'America/Marigot' | 'America/Martinique' | 'America/Matamoros' | 'America/Mazatlan' | 'America/Mendoza' | 'America/Menominee' | 'America/Merida' | 'America/Metlakatla' | 'America/Mexico_City' | 'America/Miquelon' | 'America/Moncton' | 'America/Monterrey' | 'America/Montevideo' | 'America/Montreal' | 'America/Montserrat' | 'America/Nassau' | 'America/New_York' | 'America/Nipigon' | 'America/Nome' | 'America/Noronha' | 'America/North_Dakota/Beulah' | 'America/North_Dakota/Center' | 'America/North_Dakota/New_Salem' | 'America/Nuuk' | 'America/Ojinaga' | 'America/Panama' | 'America/Pangnirtung' | 'America/Paramaribo' | 'America/Phoenix' | 'America/Port-au-Prince' | 'America/Port_of_Spain' | 'America/Porto_Acre' | 'America/Porto_Velho' | 'America/Puerto_Rico' | 'America/Punta_Arenas' | 'America/Rainy_River' | 'America/Rankin_Inlet' | 'America/Recife' | 'America/Regina' | 'America/Resolute' | 'America/Rio_Branco' | 'America/Rosario' | 'America/Santa_Isabel' | 'America/Santarem' | 'America/Santiago' | 'America/Santo_Domingo' | 'America/Sao_Paulo' | 'America/Scoresbysund' | 'America/Shiprock' | 'America/Sitka' | 'America/St_Barthelemy' | 'America/St_Johns' | 'America/St_Kitts' | 'America/St_Lucia' | 'America/St_Thomas' | 'America/St_Vincent' | 'America/Swift_Current' | 'America/Tegucigalpa' | 'America/Thule' | 'America/Thunder_Bay' | 'America/Tijuana' | 'America/Toronto' | 'America/Tortola' | 'America/Vancouver' | 'America/Virgin' | 'America/Whitehorse' | 'America/Winnipeg' | 'America/Yakutat' | 'America/Yellowknife' | 'Antarctica/Casey' | 'Antarctica/Davis' | 'Antarctica/DumontDUrville' | 'Antarctica/Macquarie' | 'Antarctica/Mawson' | 'Antarctica/McMurdo' | 'Antarctica/Palmer' | 'Antarctica/Rothera' | 'Antarctica/South_Pole' | 'Antarctica/Syowa' | 'Antarctica/Troll' | 'Antarctica/Vostok' | 'Arctic/Longyearbyen' | 'Asia/Aden' | 'Asia/Almaty' | 'Asia/Amman' | 'Asia/Anadyr' | 'Asia/Aqtau' | 'Asia/Aqtobe' | 'Asia/Ashgabat' | 'Asia/Ashkhabad' | 'Asia/Atyrau' | 'Asia/Baghdad' | 'Asia/Bahrain' | 'Asia/Baku' | 'Asia/Bangkok' | 'Asia/Barnaul' | 'Asia/Beirut' | 'Asia/Bishkek' | 'Asia/Brunei' | 'Asia/Calcutta' | 'Asia/Chita' | 'Asia/Choibalsan' | 'Asia/Chongqing' | 'Asia/Chungking' | 'Asia/Colombo' | 'Asia/Dacca' | 'Asia/Damascus' | 'Asia/Dhaka' | 'Asia/Dili' | 'Asia/Dubai' | 'Asia/Dushanbe' | 'Asia/Famagusta' | 'Asia/Gaza' | 'Asia/Harbin' | 'Asia/Hebron' | 'Asia/Ho_Chi_Minh' | 'Asia/Hong_Kong' | 'Asia/Hovd' | 'Asia/Irkutsk' | 'Asia/Istanbul' | 'Asia/Jakarta' | 'Asia/Jayapura' | 'Asia/Jerusalem' | 'Asia/Kabul' | 'Asia/Kamchatka' | 'Asia/Karachi' | 'Asia/Kashgar' | 'Asia/Kathmandu' | 'Asia/Katmandu' | 'Asia/Khandyga' | 'Asia/Kolkata' | 'Asia/Krasnoyarsk' | 'Asia/Kuala_Lumpur' | 'Asia/Kuching' | 'Asia/Kuwait' | 'Asia/Macao' | 'Asia/Macau' | 'Asia/Magadan' | 'Asia/Makassar' | 'Asia/Manila' | 'Asia/Muscat' | 'Asia/Nicosia' | 'Asia/Novokuznetsk' | 'Asia/Novosibirsk' | 'Asia/Omsk' | 'Asia/Oral' | 'Asia/Phnom_Penh' | 'Asia/Pontianak' | 'Asia/Pyongyang' | 'Asia/Qatar' | 'Asia/Qostanay' | 'Asia/Qyzylorda' | 'Asia/Rangoon' | 'Asia/Riyadh' | 'Asia/Saigon' | 'Asia/Sakhalin' | 'Asia/Samarkand' | 'Asia/Seoul' | 'Asia/Shanghai' | 'Asia/Singapore' | 'Asia/Srednekolymsk' | 'Asia/Taipei' | 'Asia/Tashkent' | 'Asia/Tbilisi' | 'Asia/Tehran' | 'Asia/Tel_Aviv' | 'Asia/Thimbu' | 'Asia/Thimphu' | 'Asia/Tokyo' | 'Asia/Tomsk' | 'Asia/Ujung_Pandang' | 'Asia/Ulaanbaatar' | 'Asia/Ulan_Bator' | 'Asia/Urumqi' | 'Asia/Ust-Nera' | 'Asia/Vientiane' | 'Asia/Vladivostok' | 'Asia/Yakutsk' | 'Asia/Yangon' | 'Asia/Yekaterinburg' | 'Asia/Yerevan' | 'Atlantic/Azores' | 'Atlantic/Bermuda' | 'Atlantic/Canary' | 'Atlantic/Cape_Verde' | 'Atlantic/Faeroe' | 'Atlantic/Faroe' | 'Atlantic/Jan_Mayen' | 'Atlantic/Madeira' | 'Atlantic/Reykjavik' | 'Atlantic/South_Georgia' | 'Atlantic/St_Helena' | 'Atlantic/Stanley' | 'Australia/ACT' | 'Australia/Adelaide' | 'Australia/Brisbane' | 'Australia/Broken_Hill' | 'Australia/Canberra' | 'Australia/Currie' | 'Australia/Darwin' | 'Australia/Eucla' | 'Australia/Hobart' | 'Australia/LHI' | 'Australia/Lindeman' | 'Australia/Lord_Howe' | 'Australia/Melbourne' | 'Australia/NSW' | 'Australia/North' | 'Australia/Perth' | 'Australia/Queensland' | 'Australia/South' | 'Australia/Sydney' | 'Australia/Tasmania' | 'Australia/Victoria' | 'Australia/West' | 'Australia/Yancowinna' | 'Brazil/Acre' | 'Brazil/DeNoronha' | 'Brazil/East' | 'Brazil/West' | 'CET' | 'CST6CDT' | 'Canada/Atlantic' | 'Canada/Central' | 'Canada/Eastern' | 'Canada/Mountain' | 'Canada/Newfoundland' | 'Canada/Pacific' | 'Canada/Saskatchewan' | 'Canada/Yukon' | 'Chile/Continental' | 'Chile/EasterIsland' | 'Cuba' | 'EET' | 'EST' | 'EST5EDT' | 'Egypt' | 'Eire' | 'Etc/GMT' | 'Etc/GMT+0' | 'Etc/GMT+1' | 'Etc/GMT+10' | 'Etc/GMT+11' | 'Etc/GMT+12' | 'Etc/GMT+2' | 'Etc/GMT+3' | 'Etc/GMT+4' | 'Etc/GMT+5' | 'Etc/GMT+6' | 'Etc/GMT+7' | 'Etc/GMT+8' | 'Etc/GMT+9' | 'Etc/GMT-0' | 'Etc/GMT-1' | 'Etc/GMT-10' | 'Etc/GMT-11' | 'Etc/GMT-12' | 'Etc/GMT-13' | 'Etc/GMT-14' | 'Etc/GMT-2' | 'Etc/GMT-3' | 'Etc/GMT-4' | 'Etc/GMT-5' | 'Etc/GMT-6' | 'Etc/GMT-7' | 'Etc/GMT-8' | 'Etc/GMT-9' | 'Etc/GMT0' | 'Etc/Greenwich' | 'Etc/UCT' | 'Etc/UTC' | 'Etc/Universal' | 'Etc/Zulu' | 'Europe/Amsterdam' | 'Europe/Andorra' | 'Europe/Astrakhan' | 'Europe/Athens' | 'Europe/Belfast' | 'Europe/Belgrade' | 'Europe/Berlin' | 'Europe/Bratislava' | 'Europe/Brussels' | 'Europe/Bucharest' | 'Europe/Budapest' | 'Europe/Busingen' | 'Europe/Chisinau' | 'Europe/Copenhagen' | 'Europe/Dublin' | 'Europe/Gibraltar' | 'Europe/Guernsey' | 'Europe/Helsinki' | 'Europe/Isle_of_Man' | 'Europe/Istanbul' | 'Europe/Jersey' | 'Europe/Kaliningrad' | 'Europe/Kiev' | 'Europe/Kirov' | 'Europe/Kyiv' | 'Europe/Lisbon' | 'Europe/Ljubljana' | 'Europe/London' | 'Europe/Luxembourg' | 'Europe/Madrid' | 'Europe/Malta' | 'Europe/Mariehamn' | 'Europe/Minsk' | 'Europe/Monaco' | 'Europe/Moscow' | 'Europe/Nicosia' | 'Europe/Oslo' | 'Europe/Paris' | 'Europe/Podgorica' | 'Europe/Prague' | 'Europe/Riga' | 'Europe/Rome' | 'Europe/Samara' | 'Europe/San_Marino' | 'Europe/Sarajevo' | 'Europe/Saratov' | 'Europe/Simferopol' | 'Europe/Skopje' | 'Europe/Sofia' | 'Europe/Stockholm' | 'Europe/Tallinn' | 'Europe/Tirane' | 'Europe/Tiraspol' | 'Europe/Ulyanovsk' | 'Europe/Uzhgorod' | 'Europe/Vaduz' | 'Europe/Vatican' | 'Europe/Vienna' | 'Europe/Vilnius' | 'Europe/Volgograd' | 'Europe/Warsaw' | 'Europe/Zagreb' | 'Europe/Zaporozhye' | 'Europe/Zurich' | 'Factory' | 'GB' | 'GB-Eire' | 'GMT' | 'GMT+0' | 'GMT-0' | 'GMT0' | 'Greenwich' | 'HST' | 'Hongkong' | 'Iceland' | 'Indian/Antananarivo' | 'Indian/Chagos' | 'Indian/Christmas' | 'Indian/Cocos' | 'Indian/Comoro' | 'Indian/Kerguelen' | 'Indian/Mahe' | 'Indian/Maldives' | 'Indian/Mauritius' | 'Indian/Mayotte' | 'Indian/Reunion' | 'Iran' | 'Israel' | 'Jamaica' | 'Japan' | 'Kwajalein' | 'Libya' | 'MET' | 'MST' | 'MST7MDT' | 'Mexico/BajaNorte' | 'Mexico/BajaSur' | 'Mexico/General' | 'NZ' | 'NZ-CHAT' | 'Navajo' | 'PRC' | 'PST8PDT' | 'Pacific/Apia' | 'Pacific/Auckland' | 'Pacific/Bougainville' | 'Pacific/Chatham' | 'Pacific/Chuuk' | 'Pacific/Easter' | 'Pacific/Efate' | 'Pacific/Enderbury' | 'Pacific/Fakaofo' | 'Pacific/Fiji' | 'Pacific/Funafuti' | 'Pacific/Galapagos' | 'Pacific/Gambier' | 'Pacific/Guadalcanal' | 'Pacific/Guam' | 'Pacific/Honolulu' | 'Pacific/Johnston' | 'Pacific/Kanton' | 'Pacific/Kiritimati' | 'Pacific/Kosrae' | 'Pacific/Kwajalein' | 'Pacific/Majuro' | 'Pacific/Marquesas' | 'Pacific/Midway' | 'Pacific/Nauru' | 'Pacific/Niue' | 'Pacific/Norfolk' | 'Pacific/Noumea' | 'Pacific/Pago_Pago' | 'Pacific/Palau' | 'Pacific/Pitcairn' | 'Pacific/Pohnpei' | 'Pacific/Ponape' | 'Pacific/Port_Moresby' | 'Pacific/Rarotonga' | 'Pacific/Saipan' | 'Pacific/Samoa' | 'Pacific/Tahiti' | 'Pacific/Tarawa' | 'Pacific/Tongatapu' | 'Pacific/Truk' | 'Pacific/Wake' | 'Pacific/Wallis' | 'Pacific/Yap' | 'Poland' | 'Portugal' | 'ROC' | 'ROK' | 'Singapore' | 'Turkey' | 'UCT' | 'US/Alaska' | 'US/Aleutian' | 'US/Arizona' | 'US/Central' | 'US/East-Indiana' | 'US/Eastern' | 'US/Hawaii' | 'US/Indiana-Starke' | 'US/Michigan' | 'US/Mountain' | 'US/Pacific' | 'US/Samoa' | 'UTC' | 'Universal' | 'W-SU' | 'WET' | 'Zulu' | 'localtime') | null
+  /**
+   * locale
+   */
+  locale?: string | null
+  /**
+   * phoneNumber
+   */
+  phoneNumber?: string | null
+  /**
+   * email
+   */
+  email?: string | null
+  /**
+   * username
+   */
+  username?: string | null
+  /**
+   * isActive
+   */
+  isActive?: boolean | null
+  /**
+   * password
+   */
+  password?: string | null
+}
 
 /**
  * AuthusermodelSort
  */
-export type AuthusermodelSort = 'updatedAt.asc' | 'updatedAt.desc' | 'id.asc' | 'id.desc' | 'createdAt.asc' | 'createdAt.desc';
+export type AuthusermodelSort = 'updatedAt.asc' | 'updatedAt.desc' | 'id.asc' | 'id.desc' | 'createdAt.asc' | 'createdAt.desc'
 
 /**
  * HTTPValidationError
  */
-export type HttpValidationError = {
-    /**
-     * Detail
-     */
-    detail?: Array<ValidationError>;
-};
+export interface HttpValidationError {
+  /**
+   * Detail
+   */
+  detail?: Array<ValidationError>
+}
 
 /**
  * InvalidCSRFTokenModel
  */
-export type InvalidCsrfTokenModel = {
-    /**
-     * Code
-     */
-    code: 'InvalidCSRFToken';
-    /**
-     * Message
-     */
-    message: string;
-};
+export interface InvalidCsrfTokenModel {
+  /**
+   * Code
+   */
+  code: 'InvalidCSRFToken'
+  /**
+   * Message
+   */
+  message: string
+}
 
 /**
  * PermissionCode
  */
-export type PermissionCode = 'users' | 'users:read' | 'users:create' | 'users:update' | 'users:delete' | 'roles' | 'roles:read' | 'roles:create' | 'roles:update' | 'roles:delete' | 'permissions:read';
+export type PermissionCode = 'users' | 'users:read' | 'users:create' | 'users:update' | 'users:delete' | 'roles' | 'roles:read' | 'roles:create' | 'roles:update' | 'roles:delete' | 'permissions:read'
 
 /**
  * RateLimitErrorModel
  */
-export type RateLimitErrorModel = {
-    /**
-     * Code
-     */
-    code: 'TooMany';
-    /**
-     * Message
-     */
-    message: string;
-};
+export interface RateLimitErrorModel {
+  /**
+   * Code
+   */
+  code: 'TooMany'
+  /**
+   * Message
+   */
+  message: string
+}
 
 /**
  * ValidationError
  */
-export type ValidationError = {
-    /**
-     * Location
-     */
-    loc: Array<string | number>;
-    /**
-     * Message
-     */
-    msg: string;
-    /**
-     * Error Type
-     */
-    type: string;
-};
-
-export type LegacyLoginAuthLoginPostData = {
-    body: ApiLegacyLoginCredentials;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/auth/login';
-};
-
-export type LegacyLoginAuthLoginPostErrors = {
-    /**
-     * Bad Request
-     */
-    400: InvalidCsrfTokenModel;
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidLoginCredentialsModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type LegacyLoginAuthLoginPostError = LegacyLoginAuthLoginPostErrors[keyof LegacyLoginAuthLoginPostErrors];
-
-export type LegacyLoginAuthLoginPostResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserInfo;
-};
-
-export type LegacyLoginAuthLoginPostResponse = LegacyLoginAuthLoginPostResponses[keyof LegacyLoginAuthLoginPostResponses];
-
-export type LogoutAuthLogoutPostData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/auth/logout';
-};
-
-export type LogoutAuthLogoutPostErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiUnauthorizedModel;
-    /**
-     * Response 403 Logout Auth Logout Post
-     * Forbidden
-     */
-    403: ApiForbiddenModel | ApiNotEnoughPermissionsModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type LogoutAuthLogoutPostError = LogoutAuthLogoutPostErrors[keyof LogoutAuthLogoutPostErrors];
-
-export type LogoutAuthLogoutPostResponses = {
-    /**
-     * Successful Response
-     */
-    204: void;
-};
-
-export type LogoutAuthLogoutPostResponse = LogoutAuthLogoutPostResponses[keyof LogoutAuthLogoutPostResponses];
-
-export type GetCsrfTokenAuthCsrfTokenGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/auth/csrf-token';
-};
-
-export type GetCsrfTokenAuthCsrfTokenGetErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetCsrfTokenAuthCsrfTokenGetError = GetCsrfTokenAuthCsrfTokenGetErrors[keyof GetCsrfTokenAuthCsrfTokenGetErrors];
-
-export type GetCsrfTokenAuthCsrfTokenGetResponses = {
-    /**
-     * Response Get Csrf Token Auth Csrf Token Get
-     * Successful Response
-     */
-    200: string;
-};
-
-export type GetCsrfTokenAuthCsrfTokenGetResponse = GetCsrfTokenAuthCsrfTokenGetResponses[keyof GetCsrfTokenAuthCsrfTokenGetResponses];
-
-export type GetAuthenticatedUserinfoUserGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/user';
-};
-
-export type GetAuthenticatedUserinfoUserGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetAuthenticatedUserinfoUserGetError = GetAuthenticatedUserinfoUserGetErrors[keyof GetAuthenticatedUserinfoUserGetErrors];
-
-export type GetAuthenticatedUserinfoUserGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserInfo;
-};
-
-export type GetAuthenticatedUserinfoUserGetResponse = GetAuthenticatedUserinfoUserGetResponses[keyof GetAuthenticatedUserinfoUserGetResponses];
-
-export type UpdateAuthenticatedUserinfoUserPatchData = {
-    body: ApiUserUpdate;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/user';
-};
-
-export type UpdateAuthenticatedUserinfoUserPatchErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiUnauthorizedModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type UpdateAuthenticatedUserinfoUserPatchError = UpdateAuthenticatedUserinfoUserPatchErrors[keyof UpdateAuthenticatedUserinfoUserPatchErrors];
-
-export type UpdateAuthenticatedUserinfoUserPatchResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserResult;
-};
-
-export type UpdateAuthenticatedUserinfoUserPatchResponse = UpdateAuthenticatedUserinfoUserPatchResponses[keyof UpdateAuthenticatedUserinfoUserPatchResponses];
-
-export type GetUsersUsersGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: {
-        /**
-         * Pagesize
-         */
-        pageSize?: number;
-        /**
-         * Pageno
-         */
-        pageNo?: number;
-        /**
-         * Sorts
-         */
-        sorts?: Array<AuthusermodelSort> | null;
-    };
-    url: '/users';
-};
-
-export type GetUsersUsersGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetUsersUsersGetError = GetUsersUsersGetErrors[keyof GetUsersUsersGetErrors];
-
-export type GetUsersUsersGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiPageApiUserDetail;
-};
-
-export type GetUsersUsersGetResponse = GetUsersUsersGetResponses[keyof GetUsersUsersGetResponses];
-
-export type CreateUserUsersPostData = {
-    body: ApiUserCreate;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/users';
-};
-
-export type CreateUserUsersPostErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type CreateUserUsersPostError = CreateUserUsersPostErrors[keyof CreateUserUsersPostErrors];
-
-export type CreateUserUsersPostResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserInfo;
-};
-
-export type CreateUserUsersPostResponse = CreateUserUsersPostResponses[keyof CreateUserUsersPostResponses];
-
-export type DeleteUserUsersUserIdDeleteData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * User Id
-         */
-        user_id: number;
-    };
-    query?: never;
-    url: '/users/{user_id}';
-};
-
-export type DeleteUserUsersUserIdDeleteErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type DeleteUserUsersUserIdDeleteError = DeleteUserUsersUserIdDeleteErrors[keyof DeleteUserUsersUserIdDeleteErrors];
-
-export type DeleteUserUsersUserIdDeleteResponses = {
-    /**
-     * Successful Response
-     */
-    204: void;
-};
-
-export type DeleteUserUsersUserIdDeleteResponse = DeleteUserUsersUserIdDeleteResponses[keyof DeleteUserUsersUserIdDeleteResponses];
-
-export type GetUserUsersUserIdGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * User Id
-         */
-        user_id: number;
-    };
-    query?: never;
-    url: '/users/{user_id}';
-};
-
-export type GetUserUsersUserIdGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetUserUsersUserIdGetError = GetUserUsersUserIdGetErrors[keyof GetUserUsersUserIdGetErrors];
-
-export type GetUserUsersUserIdGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserDetail;
-};
-
-export type GetUserUsersUserIdGetResponse = GetUserUsersUserIdGetResponses[keyof GetUserUsersUserIdGetResponses];
-
-export type UpdateUserUsersUserIdPatchData = {
-    body: ApiUserUpdate;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * User Id
-         */
-        user_id: number;
-    };
-    query?: never;
-    url: '/users/{user_id}';
-};
-
-export type UpdateUserUsersUserIdPatchErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type UpdateUserUsersUserIdPatchError = UpdateUserUsersUserIdPatchErrors[keyof UpdateUserUsersUserIdPatchErrors];
-
-export type UpdateUserUsersUserIdPatchResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiUserResult;
-};
-
-export type UpdateUserUsersUserIdPatchResponse = UpdateUserUsersUserIdPatchResponses[keyof UpdateUserUsersUserIdPatchResponses];
-
-export type SetUserRolesUsersUserIdRolesPutData = {
-    /**
-     * Update Roles
-     */
-    body: Array<string>;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * User Id
-         */
-        user_id: number;
-    };
-    query?: never;
-    url: '/users/{user_id}/roles';
-};
-
-export type SetUserRolesUsersUserIdRolesPutErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiUserConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type SetUserRolesUsersUserIdRolesPutError = SetUserRolesUsersUserIdRolesPutErrors[keyof SetUserRolesUsersUserIdRolesPutErrors];
-
-export type SetUserRolesUsersUserIdRolesPutResponses = {
-    /**
-     * Response Set User Roles Users  User Id  Roles Put
-     * Successful Response
-     */
-    200: Array<ApiRoleBasicInfo>;
-};
-
-export type SetUserRolesUsersUserIdRolesPutResponse = SetUserRolesUsersUserIdRolesPutResponses[keyof SetUserRolesUsersUserIdRolesPutResponses];
-
-export type GetAllPermissionsPermissionsGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/permissions';
-};
-
-export type GetAllPermissionsPermissionsGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetAllPermissionsPermissionsGetError = GetAllPermissionsPermissionsGetErrors[keyof GetAllPermissionsPermissionsGetErrors];
-
-export type GetAllPermissionsPermissionsGetResponses = {
-    /**
-     * Response Get All Permissions Permissions Get
-     * Successful Response
-     */
-    200: Array<ApiPermissionResult>;
-};
-
-export type GetAllPermissionsPermissionsGetResponse = GetAllPermissionsPermissionsGetResponses[keyof GetAllPermissionsPermissionsGetResponses];
-
-export type GetRolesRolesGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: {
-        /**
-         * Pagesize
-         */
-        pageSize?: number;
-        /**
-         * Pageno
-         */
-        pageNo?: number;
-    };
-    url: '/roles';
-};
-
-export type GetRolesRolesGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetRolesRolesGetError = GetRolesRolesGetErrors[keyof GetRolesRolesGetErrors];
-
-export type GetRolesRolesGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiPageApiRoleResult;
-};
-
-export type GetRolesRolesGetResponse = GetRolesRolesGetResponses[keyof GetRolesRolesGetResponses];
-
-export type CreateRoleRolesPostData = {
-    body: ApiRoleCreate;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path?: never;
-    query?: never;
-    url: '/roles';
-};
-
-export type CreateRoleRolesPostErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Conflict
-     */
-    409: ApiConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type CreateRoleRolesPostError = CreateRoleRolesPostErrors[keyof CreateRoleRolesPostErrors];
-
-export type CreateRoleRolesPostResponses = {
-    /**
-     * Successful Response
-     */
-    201: ApiRoleResult;
-};
-
-export type CreateRoleRolesPostResponse = CreateRoleRolesPostResponses[keyof CreateRoleRolesPostResponses];
-
-export type DeleteRoleRolesRoleIdDeleteData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * Role Id
-         */
-        role_id: number;
-    };
-    query?: never;
-    url: '/roles/{role_id}';
-};
-
-export type DeleteRoleRolesRoleIdDeleteErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type DeleteRoleRolesRoleIdDeleteError = DeleteRoleRolesRoleIdDeleteErrors[keyof DeleteRoleRolesRoleIdDeleteErrors];
-
-export type DeleteRoleRolesRoleIdDeleteResponses = {
-    /**
-     * Successful Response
-     */
-    204: void;
-};
-
-export type DeleteRoleRolesRoleIdDeleteResponse = DeleteRoleRolesRoleIdDeleteResponses[keyof DeleteRoleRolesRoleIdDeleteResponses];
-
-export type GetRoleDetailRolesRoleIdGetData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * Role Id
-         */
-        role_id: number;
-    };
-    query?: never;
-    url: '/roles/{role_id}';
-};
-
-export type GetRoleDetailRolesRoleIdGetErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type GetRoleDetailRolesRoleIdGetError = GetRoleDetailRolesRoleIdGetErrors[keyof GetRoleDetailRolesRoleIdGetErrors];
-
-export type GetRoleDetailRolesRoleIdGetResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiRoleResult;
-};
-
-export type GetRoleDetailRolesRoleIdGetResponse = GetRoleDetailRolesRoleIdGetResponses[keyof GetRoleDetailRolesRoleIdGetResponses];
-
-export type UpdateRoleRolesRoleIdPatchData = {
-    body: ApiRoleUpdate;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * Role Id
-         */
-        role_id: number;
-    };
-    query?: never;
-    url: '/roles/{role_id}';
-};
-
-export type UpdateRoleRolesRoleIdPatchErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Conflict
-     */
-    409: ApiConflictModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type UpdateRoleRolesRoleIdPatchError = UpdateRoleRolesRoleIdPatchErrors[keyof UpdateRoleRolesRoleIdPatchErrors];
-
-export type UpdateRoleRolesRoleIdPatchResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiRoleResult;
-};
-
-export type UpdateRoleRolesRoleIdPatchResponse = UpdateRoleRolesRoleIdPatchResponses[keyof UpdateRoleRolesRoleIdPatchResponses];
-
-export type SetRolePermissionsRolesRoleIdPermissionsPutData = {
-    /**
-     * Data
-     */
-    body: Array<string>;
-    headers?: {
-        /**
-         * X-Request-Id
-         */
-        'X-Request-ID'?: string | null;
-    };
-    path: {
-        /**
-         * Role Id
-         */
-        role_id: number;
-    };
-    query?: never;
-    url: '/roles/{role_id}/permissions';
-};
-
-export type SetRolePermissionsRolesRoleIdPermissionsPutErrors = {
-    /**
-     * Unauthorized
-     */
-    401: ApiInvalidSessionModel;
-    /**
-     * Forbidden
-     */
-    403: ApiForbiddenModel;
-    /**
-     * Not Found
-     */
-    404: ApiNotFoundModel;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-    /**
-     * Too Many Requests
-     */
-    429: RateLimitErrorModel;
-};
-
-export type SetRolePermissionsRolesRoleIdPermissionsPutError = SetRolePermissionsRolesRoleIdPermissionsPutErrors[keyof SetRolePermissionsRolesRoleIdPermissionsPutErrors];
-
-export type SetRolePermissionsRolesRoleIdPermissionsPutResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiRoleResult;
-};
-
-export type SetRolePermissionsRolesRoleIdPermissionsPutResponse = SetRolePermissionsRolesRoleIdPermissionsPutResponses[keyof SetRolePermissionsRolesRoleIdPermissionsPutResponses];
-
-export type ClientOptions = {
-    baseURL: 'http://127.0.0.1:8000/' | (string & {});
-};
+export interface ValidationError {
+  /**
+   * Location
+   */
+  loc: Array<string | number>
+  /**
+   * Message
+   */
+  msg: string
+  /**
+   * Error Type
+   */
+  type: string
+}
+
+export interface LegacyLoginAuthLoginPostData {
+  body: ApiLegacyLoginCredentials
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/auth/login'
+}
+
+export interface LegacyLoginAuthLoginPostErrors {
+  /**
+   * Bad Request
+   */
+  400: InvalidCsrfTokenModel
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidLoginCredentialsModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type LegacyLoginAuthLoginPostError = LegacyLoginAuthLoginPostErrors[keyof LegacyLoginAuthLoginPostErrors]
+
+export interface LegacyLoginAuthLoginPostResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserInfo
+}
+
+export type LegacyLoginAuthLoginPostResponse = LegacyLoginAuthLoginPostResponses[keyof LegacyLoginAuthLoginPostResponses]
+
+export interface LogoutAuthLogoutPostData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/auth/logout'
+}
+
+export interface LogoutAuthLogoutPostErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiUnauthorizedModel
+  /**
+   * Response 403 Logout Auth Logout Post
+   * Forbidden
+   */
+  403: ApiForbiddenModel | ApiNotEnoughPermissionsModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type LogoutAuthLogoutPostError = LogoutAuthLogoutPostErrors[keyof LogoutAuthLogoutPostErrors]
+
+export interface LogoutAuthLogoutPostResponses {
+  /**
+   * Successful Response
+   */
+  204: void
+}
+
+export type LogoutAuthLogoutPostResponse = LogoutAuthLogoutPostResponses[keyof LogoutAuthLogoutPostResponses]
+
+export interface GetCsrfTokenAuthCsrfTokenGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/auth/csrf-token'
+}
+
+export interface GetCsrfTokenAuthCsrfTokenGetErrors {
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetCsrfTokenAuthCsrfTokenGetError = GetCsrfTokenAuthCsrfTokenGetErrors[keyof GetCsrfTokenAuthCsrfTokenGetErrors]
+
+export interface GetCsrfTokenAuthCsrfTokenGetResponses {
+  /**
+   * Response Get Csrf Token Auth Csrf Token Get
+   * Successful Response
+   */
+  200: string
+}
+
+export type GetCsrfTokenAuthCsrfTokenGetResponse = GetCsrfTokenAuthCsrfTokenGetResponses[keyof GetCsrfTokenAuthCsrfTokenGetResponses]
+
+export interface GetAuthenticatedUserinfoUserGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/user'
+}
+
+export interface GetAuthenticatedUserinfoUserGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetAuthenticatedUserinfoUserGetError = GetAuthenticatedUserinfoUserGetErrors[keyof GetAuthenticatedUserinfoUserGetErrors]
+
+export interface GetAuthenticatedUserinfoUserGetResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserInfo
+}
+
+export type GetAuthenticatedUserinfoUserGetResponse = GetAuthenticatedUserinfoUserGetResponses[keyof GetAuthenticatedUserinfoUserGetResponses]
+
+export interface UpdateAuthenticatedUserinfoUserPatchData {
+  body: ApiUserUpdate
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/user'
+}
+
+export interface UpdateAuthenticatedUserinfoUserPatchErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiUnauthorizedModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type UpdateAuthenticatedUserinfoUserPatchError = UpdateAuthenticatedUserinfoUserPatchErrors[keyof UpdateAuthenticatedUserinfoUserPatchErrors]
+
+export interface UpdateAuthenticatedUserinfoUserPatchResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserResult
+}
+
+export type UpdateAuthenticatedUserinfoUserPatchResponse = UpdateAuthenticatedUserinfoUserPatchResponses[keyof UpdateAuthenticatedUserinfoUserPatchResponses]
+
+export interface GetUsersUsersGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: {
+    /**
+     * Pagesize
+     */
+    pageSize?: number
+    /**
+     * Pageno
+     */
+    pageNo?: number
+    /**
+     * Sorts
+     */
+    sorts?: Array<AuthusermodelSort> | null
+  }
+  url: '/users'
+}
+
+export interface GetUsersUsersGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetUsersUsersGetError = GetUsersUsersGetErrors[keyof GetUsersUsersGetErrors]
+
+export interface GetUsersUsersGetResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiPageApiUserDetail
+}
+
+export type GetUsersUsersGetResponse = GetUsersUsersGetResponses[keyof GetUsersUsersGetResponses]
+
+export interface CreateUserUsersPostData {
+  body: ApiUserCreate
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/users'
+}
+
+export interface CreateUserUsersPostErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type CreateUserUsersPostError = CreateUserUsersPostErrors[keyof CreateUserUsersPostErrors]
+
+export interface CreateUserUsersPostResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserInfo
+}
+
+export type CreateUserUsersPostResponse = CreateUserUsersPostResponses[keyof CreateUserUsersPostResponses]
+
+export interface DeleteUserUsersUserIdDeleteData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * User Id
+     */
+    user_id: number
+  }
+  query?: never
+  url: '/users/{user_id}'
+}
+
+export interface DeleteUserUsersUserIdDeleteErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type DeleteUserUsersUserIdDeleteError = DeleteUserUsersUserIdDeleteErrors[keyof DeleteUserUsersUserIdDeleteErrors]
+
+export interface DeleteUserUsersUserIdDeleteResponses {
+  /**
+   * Successful Response
+   */
+  204: void
+}
+
+export type DeleteUserUsersUserIdDeleteResponse = DeleteUserUsersUserIdDeleteResponses[keyof DeleteUserUsersUserIdDeleteResponses]
+
+export interface GetUserUsersUserIdGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * User Id
+     */
+    user_id: number
+  }
+  query?: never
+  url: '/users/{user_id}'
+}
+
+export interface GetUserUsersUserIdGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetUserUsersUserIdGetError = GetUserUsersUserIdGetErrors[keyof GetUserUsersUserIdGetErrors]
+
+export interface GetUserUsersUserIdGetResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserDetail
+}
+
+export type GetUserUsersUserIdGetResponse = GetUserUsersUserIdGetResponses[keyof GetUserUsersUserIdGetResponses]
+
+export interface UpdateUserUsersUserIdPatchData {
+  body: ApiUserUpdate
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * User Id
+     */
+    user_id: number
+  }
+  query?: never
+  url: '/users/{user_id}'
+}
+
+export interface UpdateUserUsersUserIdPatchErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type UpdateUserUsersUserIdPatchError = UpdateUserUsersUserIdPatchErrors[keyof UpdateUserUsersUserIdPatchErrors]
+
+export interface UpdateUserUsersUserIdPatchResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiUserResult
+}
+
+export type UpdateUserUsersUserIdPatchResponse = UpdateUserUsersUserIdPatchResponses[keyof UpdateUserUsersUserIdPatchResponses]
+
+export interface SetUserRolesUsersUserIdRolesPutData {
+  /**
+   * Update Roles
+   */
+  body: Array<string>
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * User Id
+     */
+    user_id: number
+  }
+  query?: never
+  url: '/users/{user_id}/roles'
+}
+
+export interface SetUserRolesUsersUserIdRolesPutErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiUserConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type SetUserRolesUsersUserIdRolesPutError = SetUserRolesUsersUserIdRolesPutErrors[keyof SetUserRolesUsersUserIdRolesPutErrors]
+
+export interface SetUserRolesUsersUserIdRolesPutResponses {
+  /**
+   * Response Set User Roles Users  User Id  Roles Put
+   * Successful Response
+   */
+  200: Array<ApiRoleBasicInfo>
+}
+
+export type SetUserRolesUsersUserIdRolesPutResponse = SetUserRolesUsersUserIdRolesPutResponses[keyof SetUserRolesUsersUserIdRolesPutResponses]
+
+export interface GetAllPermissionsPermissionsGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/permissions'
+}
+
+export interface GetAllPermissionsPermissionsGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetAllPermissionsPermissionsGetError = GetAllPermissionsPermissionsGetErrors[keyof GetAllPermissionsPermissionsGetErrors]
+
+export interface GetAllPermissionsPermissionsGetResponses {
+  /**
+   * Response Get All Permissions Permissions Get
+   * Successful Response
+   */
+  200: Array<ApiPermissionResult>
+}
+
+export type GetAllPermissionsPermissionsGetResponse = GetAllPermissionsPermissionsGetResponses[keyof GetAllPermissionsPermissionsGetResponses]
+
+export interface GetRolesRolesGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: {
+    /**
+     * Pagesize
+     */
+    pageSize?: number
+    /**
+     * Pageno
+     */
+    pageNo?: number
+  }
+  url: '/roles'
+}
+
+export interface GetRolesRolesGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetRolesRolesGetError = GetRolesRolesGetErrors[keyof GetRolesRolesGetErrors]
+
+export interface GetRolesRolesGetResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiPageApiRoleResult
+}
+
+export type GetRolesRolesGetResponse = GetRolesRolesGetResponses[keyof GetRolesRolesGetResponses]
+
+export interface CreateRoleRolesPostData {
+  body: ApiRoleCreate
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path?: never
+  query?: never
+  url: '/roles'
+}
+
+export interface CreateRoleRolesPostErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Conflict
+   */
+  409: ApiConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type CreateRoleRolesPostError = CreateRoleRolesPostErrors[keyof CreateRoleRolesPostErrors]
+
+export interface CreateRoleRolesPostResponses {
+  /**
+   * Successful Response
+   */
+  201: ApiRoleResult
+}
+
+export type CreateRoleRolesPostResponse = CreateRoleRolesPostResponses[keyof CreateRoleRolesPostResponses]
+
+export interface DeleteRoleRolesRoleIdDeleteData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * Role Id
+     */
+    role_id: number
+  }
+  query?: never
+  url: '/roles/{role_id}'
+}
+
+export interface DeleteRoleRolesRoleIdDeleteErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type DeleteRoleRolesRoleIdDeleteError = DeleteRoleRolesRoleIdDeleteErrors[keyof DeleteRoleRolesRoleIdDeleteErrors]
+
+export interface DeleteRoleRolesRoleIdDeleteResponses {
+  /**
+   * Successful Response
+   */
+  204: void
+}
+
+export type DeleteRoleRolesRoleIdDeleteResponse = DeleteRoleRolesRoleIdDeleteResponses[keyof DeleteRoleRolesRoleIdDeleteResponses]
+
+export interface GetRoleDetailRolesRoleIdGetData {
+  body?: never
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * Role Id
+     */
+    role_id: number
+  }
+  query?: never
+  url: '/roles/{role_id}'
+}
+
+export interface GetRoleDetailRolesRoleIdGetErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type GetRoleDetailRolesRoleIdGetError = GetRoleDetailRolesRoleIdGetErrors[keyof GetRoleDetailRolesRoleIdGetErrors]
+
+export interface GetRoleDetailRolesRoleIdGetResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiRoleResult
+}
+
+export type GetRoleDetailRolesRoleIdGetResponse = GetRoleDetailRolesRoleIdGetResponses[keyof GetRoleDetailRolesRoleIdGetResponses]
+
+export interface UpdateRoleRolesRoleIdPatchData {
+  body: ApiRoleUpdate
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * Role Id
+     */
+    role_id: number
+  }
+  query?: never
+  url: '/roles/{role_id}'
+}
+
+export interface UpdateRoleRolesRoleIdPatchErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Conflict
+   */
+  409: ApiConflictModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type UpdateRoleRolesRoleIdPatchError = UpdateRoleRolesRoleIdPatchErrors[keyof UpdateRoleRolesRoleIdPatchErrors]
+
+export interface UpdateRoleRolesRoleIdPatchResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiRoleResult
+}
+
+export type UpdateRoleRolesRoleIdPatchResponse = UpdateRoleRolesRoleIdPatchResponses[keyof UpdateRoleRolesRoleIdPatchResponses]
+
+export interface SetRolePermissionsRolesRoleIdPermissionsPutData {
+  /**
+   * Data
+   */
+  body: Array<string>
+  headers?: {
+    /**
+     * X-Request-Id
+     */
+    'X-Request-ID'?: string | null
+  }
+  path: {
+    /**
+     * Role Id
+     */
+    role_id: number
+  }
+  query?: never
+  url: '/roles/{role_id}/permissions'
+}
+
+export interface SetRolePermissionsRolesRoleIdPermissionsPutErrors {
+  /**
+   * Unauthorized
+   */
+  401: ApiInvalidSessionModel
+  /**
+   * Forbidden
+   */
+  403: ApiForbiddenModel
+  /**
+   * Not Found
+   */
+  404: ApiNotFoundModel
+  /**
+   * Validation Error
+   */
+  422: HttpValidationError
+  /**
+   * Too Many Requests
+   */
+  429: RateLimitErrorModel
+}
+
+export type SetRolePermissionsRolesRoleIdPermissionsPutError = SetRolePermissionsRolesRoleIdPermissionsPutErrors[keyof SetRolePermissionsRolesRoleIdPermissionsPutErrors]
+
+export interface SetRolePermissionsRolesRoleIdPermissionsPutResponses {
+  /**
+   * Successful Response
+   */
+  200: ApiRoleResult
+}
+
+export type SetRolePermissionsRolesRoleIdPermissionsPutResponse = SetRolePermissionsRolesRoleIdPermissionsPutResponses[keyof SetRolePermissionsRolesRoleIdPermissionsPutResponses]
+
+export interface ClientOptions {
+  baseURL: 'http://127.0.0.1:8000/' | (string & {})
+}

@@ -1,12 +1,12 @@
+import type { Client, Config } from './types'
 import {
   useAsyncData,
   useFetch,
   useLazyAsyncData,
   useLazyFetch,
-} from 'nuxt/app';
-import { reactive, ref, watch } from 'vue';
+} from 'nuxt/app'
 
-import type { Client, Config } from './types';
+import { reactive, ref, watch } from 'vue'
 import {
   buildUrl,
   createConfig,
@@ -16,24 +16,24 @@ import {
   mergeInterceptors,
   serializeBody,
   setAuthParams,
-} from './utils';
+} from './utils'
 
-export const createClient = (config: Config = {}): Client => {
-  let _config = mergeConfigs(createConfig(), config);
+export function createClient(config: Config = {}): Client {
+  let _config = mergeConfigs(createConfig(), config)
 
-  const getConfig = (): Config => ({ ..._config });
+  const getConfig = (): Config => ({ ..._config })
 
   const setConfig = (config: Config): Config => {
-    _config = mergeConfigs(_config, config);
-    return getConfig();
-  };
+    _config = mergeConfigs(_config, config)
+    return getConfig()
+  }
 
   const request: Client['request'] = ({
     asyncDataOptions,
     composable,
     ...options
   }) => {
-    const key = options.key;
+    const key = options.key
     const opts = {
       ..._config,
       ...options,
@@ -41,14 +41,14 @@ export const createClient = (config: Config = {}): Client => {
       headers: mergeHeaders(_config.headers, options.headers),
       onRequest: mergeInterceptors(_config.onRequest, options.onRequest),
       onResponse: mergeInterceptors(_config.onResponse, options.onResponse),
-    };
+    }
 
     const {
       requestValidator,
       responseTransformer,
       responseValidator,
       security,
-    } = opts;
+    } = opts
     if (requestValidator || security) {
       // auth must happen in interceptors otherwise we'd need to require
       // asyncContext enabled
@@ -61,15 +61,15 @@ export const createClient = (config: Config = {}): Client => {
               headers: options.headers,
               query: options.query,
               security,
-            });
+            })
           }
 
           if (requestValidator) {
-            await requestValidator(options);
+            await requestValidator(options)
           }
         },
         ...opts.onRequest,
-      ];
+      ]
     }
 
     if (responseTransformer || responseValidator) {
@@ -77,80 +77,80 @@ export const createClient = (config: Config = {}): Client => {
         ...opts.onResponse,
         async ({ options, response }) => {
           if (options.responseType && options.responseType !== 'json') {
-            return;
+            return
           }
 
           if (!response.ok) {
-            return;
+            return
           }
 
           if (responseValidator) {
-            await responseValidator(response._data);
+            await responseValidator(response._data)
           }
 
           if (responseTransformer) {
-            response._data = await responseTransformer(response._data);
+            response._data = await responseTransformer(response._data)
           }
         },
-      ];
+      ]
     }
 
     // remove Content-Type header if body is empty to avoid sending invalid requests
     if (opts.body === undefined || opts.body === '') {
-      opts.headers.delete('Content-Type');
+      opts.headers.delete('Content-Type')
     }
 
-    const fetchFn = opts.$fetch;
+    const fetchFn = opts.$fetch
 
     if (composable === '$fetch') {
-      return executeFetchFn(opts, fetchFn);
+      return executeFetchFn(opts, fetchFn)
     }
 
     if (composable === 'useFetch' || composable === 'useLazyFetch') {
       const bodyParams = reactive({
         body: opts.body,
         bodySerializer: opts.bodySerializer,
-      });
-      const body = ref(serializeBody(opts));
-      opts.body = body;
+      })
+      const body = ref(serializeBody(opts))
+      opts.body = body
       watch(bodyParams, (changed) => {
-        body.value = serializeBody(changed);
-      });
+        body.value = serializeBody(changed)
+      })
       return composable === 'useLazyFetch'
         ? useLazyFetch(() => buildUrl(opts), opts)
-        : useFetch(() => buildUrl(opts), opts);
+        : useFetch(() => buildUrl(opts), opts)
     }
 
-    const handler: any = () => executeFetchFn(opts, fetchFn);
+    const handler: any = () => executeFetchFn(opts, fetchFn)
 
     if (composable === 'useAsyncData') {
       return key
         ? useAsyncData(key, handler, asyncDataOptions)
-        : useAsyncData(handler, asyncDataOptions);
+        : useAsyncData(handler, asyncDataOptions)
     }
 
     if (composable === 'useLazyAsyncData') {
       return key
         ? useLazyAsyncData(key, handler, asyncDataOptions)
-        : useLazyAsyncData(handler, asyncDataOptions);
+        : useLazyAsyncData(handler, asyncDataOptions)
     }
 
-    return undefined as any;
-  };
+    return undefined as any
+  }
 
   return {
     buildUrl,
-    connect: (options) => request({ ...options, method: 'CONNECT' }),
-    delete: (options) => request({ ...options, method: 'DELETE' }),
-    get: (options) => request({ ...options, method: 'GET' }),
+    connect: options => request({ ...options, method: 'CONNECT' }),
+    delete: options => request({ ...options, method: 'DELETE' }),
+    get: options => request({ ...options, method: 'GET' }),
     getConfig,
-    head: (options) => request({ ...options, method: 'HEAD' }),
-    options: (options) => request({ ...options, method: 'OPTIONS' }),
-    patch: (options) => request({ ...options, method: 'PATCH' }),
-    post: (options) => request({ ...options, method: 'POST' }),
-    put: (options) => request({ ...options, method: 'PUT' }),
+    head: options => request({ ...options, method: 'HEAD' }),
+    options: options => request({ ...options, method: 'OPTIONS' }),
+    patch: options => request({ ...options, method: 'PATCH' }),
+    post: options => request({ ...options, method: 'POST' }),
+    put: options => request({ ...options, method: 'PUT' }),
     request,
     setConfig,
-    trace: (options) => request({ ...options, method: 'TRACE' }),
-  };
-};
+    trace: options => request({ ...options, method: 'TRACE' }),
+  }
+}

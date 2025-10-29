@@ -9,7 +9,7 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-/* 
+/*
   see: https://tailwindcss.com/docs/theme#defining-animation-keyframes
 
   TODO: 背景颜色需要调整
@@ -41,7 +41,7 @@
         const row = i.parentElement.parentElement.parentElement.parentElement.parentElement
         const value = row.querySelector('span.token-value').textContent
         const desc = row.children[3].textContent
-        
+
         if (name)
             result.push(`/--* ${desc} *--/\n${name}: ${value};`.replace(/\/--|--\//g, '/'))
     })
@@ -52,258 +52,258 @@
   ⬆️ arco 设计变量在 https://arco.design/vue/docs/token 的控制台执行上述代码获取 ⬆️
 */
 @theme inline {
-      /* 常规 */
-    --color-arco-primary-6: rgb(var(--arcoblue-6));
+  /* 常规 */
+  --color-arco-primary-6: rgb(var(--arcoblue-6));
 
-    /* 悬浮（hover） */
-    --color-arco-primary-5: rgb(var(--arcoblue-5));
+  /* 悬浮（hover） */
+  --color-arco-primary-5: rgb(var(--arcoblue-5));
 
-    /* 点击（click） */
-    --color-arco-primary-7: rgb(var(--arcoblue-7));
+  /* 点击（click） */
+  --color-arco-primary-7: rgb(var(--arcoblue-7));
 
-    /* 特殊场景 */
-    --color-arco-primary-4: rgb(var(--arcoblue-4));
+  /* 特殊场景 */
+  --color-arco-primary-4: rgb(var(--arcoblue-4));
 
-    /* 一般禁用 */
-    --color-arco-primary-3: rgb(var(--arcoblue-3));
+  /* 一般禁用 */
+  --color-arco-primary-3: rgb(var(--arcoblue-3));
 
-    /* 文字禁用 */
-    --color-arco-primary-2: rgb(var(--arcoblue-2));
+  /* 文字禁用 */
+  --color-arco-primary-2: rgb(var(--arcoblue-2));
 
-    /* 浅色/白底悬浮 */
-    --color-arco-primary-1: rgb(var(--arcoblue-1));
+  /* 浅色/白底悬浮 */
+  --color-arco-primary-1: rgb(var(--arcoblue-1));
 
-    /* 常规 */
-    --color-arco-success-6: rgb(var(--green-6));
+  /* 常规 */
+  --color-arco-success-6: rgb(var(--green-6));
 
-    /* 悬浮（hover） */
-    --color-arco-success-5: rgb(var(--green-5));
+  /* 悬浮（hover） */
+  --color-arco-success-5: rgb(var(--green-5));
 
-    /* 点击（click） */
-    --color-arco-success-7: rgb(var(--green-7));
+  /* 点击（click） */
+  --color-arco-success-7: rgb(var(--green-7));
 
-    /* 特殊场景 */
-    --color-arco-success-4: rgb(var(--green-4));
+  /* 特殊场景 */
+  --color-arco-success-4: rgb(var(--green-4));
 
-    /* 一般禁用 */
-    --color-arco-success-3: rgb(var(--green-3));
+  /* 一般禁用 */
+  --color-arco-success-3: rgb(var(--green-3));
 
-    /* 文字禁用 */
-    --color-arco-success-2: rgb(var(--green-2));
+  /* 文字禁用 */
+  --color-arco-success-2: rgb(var(--green-2));
 
-    /* 浅色/白底悬浮 */
-    --color-arco-success-1: rgb(var(--green-1));
+  /* 浅色/白底悬浮 */
+  --color-arco-success-1: rgb(var(--green-1));
 
-    /* 常规 */
-    --color-arco-warning-6: rgb(var(--orange-6));
+  /* 常规 */
+  --color-arco-warning-6: rgb(var(--orange-6));
 
-    /* 悬浮（hover） */
-    --color-arco-warning-5: rgb(var(--orange-5));
+  /* 悬浮（hover） */
+  --color-arco-warning-5: rgb(var(--orange-5));
 
-    /* 点击（click） */
-    --color-arco-warning-7: rgb(var(--orange-7));
+  /* 点击（click） */
+  --color-arco-warning-7: rgb(var(--orange-7));
 
-    /* 特殊场景 */
-    --color-arco-warning-4: rgb(var(--orange-4));
+  /* 特殊场景 */
+  --color-arco-warning-4: rgb(var(--orange-4));
 
-    /* 一般禁用 */
-    --color-arco-warning-3: rgb(var(--orange-3));
+  /* 一般禁用 */
+  --color-arco-warning-3: rgb(var(--orange-3));
 
-    /* 文字禁用 */
-    --color-arco-warning-2: rgb(var(--orange-2));
+  /* 文字禁用 */
+  --color-arco-warning-2: rgb(var(--orange-2));
 
-    /* 浅色/白底悬浮 */
-    --color-arco-warning-1: rgb(var(--orange-1));
+  /* 浅色/白底悬浮 */
+  --color-arco-warning-1: rgb(var(--orange-1));
 
-    /* 常规 */
-    --color-arco-danger-6: rgb(var(--red-6));
+  /* 常规 */
+  --color-arco-danger-6: rgb(var(--red-6));
 
-    /* 悬浮（hover） */
-    --color-arco-danger-5: rgb(var(--red-5));
+  /* 悬浮（hover） */
+  --color-arco-danger-5: rgb(var(--red-5));
 
-    /* 点击（click） */
-    --color-arco-danger-7: rgb(var(--red-7));
+  /* 点击（click） */
+  --color-arco-danger-7: rgb(var(--red-7));
 
-    /* 特殊场景 */
-    --color-arco-danger-4: rgb(var(--red-4));
+  /* 特殊场景 */
+  --color-arco-danger-4: rgb(var(--red-4));
 
-    /* 一般禁用 */
-    --color-arco-danger-3: rgb(var(--red-3));
+  /* 一般禁用 */
+  --color-arco-danger-3: rgb(var(--red-3));
 
-    /* 文字禁用 */
-    --color-arco-danger-2: rgb(var(--red-2));
+  /* 文字禁用 */
+  --color-arco-danger-2: rgb(var(--red-2));
 
-    /* 浅色/白底悬浮 */
-    --color-arco-danger-1: rgb(var(--red-1));
+  /* 浅色/白底悬浮 */
+  --color-arco-danger-1: rgb(var(--red-1));
 
-    /* 常规 */
-    --color-arco-link-6: rgb(var(--arcoblue-6));
+  /* 常规 */
+  --color-arco-link-6: rgb(var(--arcoblue-6));
 
-    /* 悬浮（hover） */
-    --color-arco-link-5: rgb(var(--arcoblue-5));
+  /* 悬浮（hover） */
+  --color-arco-link-5: rgb(var(--arcoblue-5));
 
-    /* 点击（click） */
-    --color-arco-link-7: rgb(var(--arcoblue-7));
+  /* 点击（click） */
+  --color-arco-link-7: rgb(var(--arcoblue-7));
 
-    /* 特殊场景 */
-    --color-arco-link-4: rgb(var(--arcoblue-4));
+  /* 特殊场景 */
+  --color-arco-link-4: rgb(var(--arcoblue-4));
 
-    /* 一般禁用 */
-    --color-arco-link-3: rgb(var(--arcoblue-3));
+  /* 一般禁用 */
+  --color-arco-link-3: rgb(var(--arcoblue-3));
 
-    /* 文字禁用 */
-    --color-arco-link-2: rgb(var(--arcoblue-2));
+  /* 文字禁用 */
+  --color-arco-link-2: rgb(var(--arcoblue-2));
 
-    /* 浅色/白底悬浮 */
-    --color-arco-link-1: rgb(var(--arcoblue-1));
+  /* 浅色/白底悬浮 */
+  --color-arco-link-1: rgb(var(--arcoblue-1));
 
-    /* 浅色 */
-    --color-arco-border-1: var(--color-neutral-2);
+  /* 浅色 */
+  --color-arco-border-1: var(--color-neutral-2);
 
-    /* 一般 */
-    --color-arco-border-2: var(--color-neutral-3);
+  /* 一般 */
+  --color-arco-border-2: var(--color-neutral-3);
 
-    /* 深/悬浮 */
-    --color-arco-border-3: var(--color-neutral-4);
+  /* 深/悬浮 */
+  --color-arco-border-3: var(--color-neutral-4);
 
-    /* 重/按钮描边 */
-    --color-arco-border-4: var(--color-neutral-6);
+  /* 重/按钮描边 */
+  --color-arco-border-4: var(--color-neutral-6);
 
-    /* 浅/禁用 */
-    --color-arco-fill-1: var(--color-neutral-1);
+  /* 浅/禁用 */
+  --color-arco-fill-1: var(--color-neutral-1);
 
-    /* 常规/白底悬浮 */
-    --color-arco-fill-2: var(--color-neutral-2);
+  /* 常规/白底悬浮 */
+  --color-arco-fill-2: var(--color-neutral-2);
 
-    /* 深/灰底悬浮 */
-    --color-arco-fill-3: var(--color-neutral-3);
+  /* 深/灰底悬浮 */
+  --color-arco-fill-3: var(--color-neutral-3);
 
-    /* 重/特殊场景 */
-    --color-arco-fill-4: var(--color-neutral-4);
+  /* 重/特殊场景 */
+  --color-arco-fill-4: var(--color-neutral-4);
 
-    /* 强调/正文标题 */
-    --color-arco-text-1: var(--color-neutral-10);
+  /* 强调/正文标题 */
+  --color-arco-text-1: var(--color-neutral-10);
 
-    /* 次强调/正文标题 */
-    --color-arco-text-2: var(--color-neutral-8);
+  /* 次强调/正文标题 */
+  --color-arco-text-2: var(--color-neutral-8);
 
-    /* 次要信息 */
-    --color-arco-text-3: var(--color-neutral-6);
+  /* 次要信息 */
+  --color-arco-text-3: var(--color-neutral-6);
 
-    /* 置灰信息 */
-    --color-arco-text-4: var(--color-neutral-4);
+  /* 置灰信息 */
+  --color-arco-text-4: var(--color-neutral-4);
 
-    /* 整体背景色 */
-    --color-arco-bg-1: var(--color-bg-1);
+  /* 整体背景色 */
+  --color-arco-bg-1: var(--color-bg-1);
 
-    /* 一级容器背景 */
-    --color-arco-bg-2: var(--color-bg-2);
+  /* 一级容器背景 */
+  --color-arco-bg-2: var(--color-bg-2);
 
-    /* 二级容器背景 */
-    --color-arco-bg-3: var(--color-bg-3);
+  /* 二级容器背景 */
+  --color-arco-bg-3: var(--color-bg-3);
 
-    /* 三级容器背景 */
-    --color-arco-bg-4: var(--color-bg-4);
+  /* 三级容器背景 */
+  --color-arco-bg-4: var(--color-bg-4);
 
-    /* 下拉弹出框、Tooltip 背景颜色 */
-    --color-arco-bg-5: var(--color-bg-5);
+  /* 下拉弹出框、Tooltip 背景颜色 */
+  --color-arco-bg-5: var(--color-bg-5);
 
-    /* 白色背景 */
-    --color-arco-bg-white: var(--color-bg-white);
+  /* 白色背景 */
+  --color-arco-bg-white: var(--color-bg-white);
 
-    /* 正文-常规 */
-    --font-size-arco-body-3: 14px;
+  /* 正文-常规 */
+  --font-size-arco-body-3: 14px;
 
-    /* 正文-常规-小 */
-    --font-size-arco-body-2: 13px;
+  /* 正文-常规-小 */
+  --font-size-arco-body-2: 13px;
 
-    /* 辅助文案/次要文案 */
-    --font-size-arco-body-1: 12px;
+  /* 辅助文案/次要文案 */
+  --font-size-arco-body-1: 12px;
 
-    /* 水印文本 */
-    --font-size-arco-caption: 12px;
+  /* 水印文本 */
+  --font-size-arco-caption: 12px;
 
-    /* 标题-小 */
-    --font-size-arco-title-1: 16px;
+  /* 标题-小 */
+  --font-size-arco-title-1: 16px;
 
-    /* 标题-中 */
-    --font-size-arco-title-2: 20px;
+  /* 标题-中 */
+  --font-size-arco-title-2: 20px;
 
-    /* 标题-大 */
-    --font-size-arco-title-3: 24px;
+  /* 标题-大 */
+  --font-size-arco-title-3: 24px;
 
-    /* 运营标题-小 */
-    --font-size-arco-display-1: 36px;
+  /* 运营标题-小 */
+  --font-size-arco-display-1: 36px;
 
-    /* 运营标题-中 */
-    --font-size-arco-display-2: 48px;
+  /* 运营标题-中 */
+  --font-size-arco-display-2: 48px;
 
-    /* 运营标题-大 */
-    --font-size-arco-display-3: 56px;
+  /* 运营标题-大 */
+  --font-size-arco-display-3: 56px;
 
-    /* 常规 */
-    --font-weight-arco-400: 400;
+  /* 常规 */
+  --font-weight-arco-400: 400;
 
-    /* 中等（加粗） */
-    --font-weight-arco-500: 500;
+  /* 中等（加粗） */
+  --font-weight-arco-500: 500;
 
-    /* 半粗 */
-    --font-weight-arco-600: 600;
+  /* 半粗 */
+  --font-weight-arco-600: 600;
 
-    /* 粗体 */
-    --font-weight-arco-700: 700;
+  /* 粗体 */
+  --font-weight-arco-700: 700;
 
-    /* 中黑 */
-    --font-weight-arco-800: 800;
+  /* 中黑 */
+  --font-weight-arco-800: 800;
 
-    /* 黑体 */
-    --font-weight-arco-900: 900;
+  /* 黑体 */
+  --font-weight-arco-900: 900;
 
-    /* 细体 */
-    --font-weight-arco-300: 300;
+  /* 细体 */
+  --font-weight-arco-300: 300;
 
-    /* 纤细 */
-    --font-weight-arco-200: 200;
+  /* 纤细 */
+  --font-weight-arco-200: 200;
 
-    /* 极细 */
-    --font-weight-arco-100: 100;
+  /* 极细 */
+  --font-weight-arco-100: 100;
 
-    /* 无边框 */
-    --border-arco-none: 0;
+  /* 无边框 */
+  --border-arco-none: 0;
 
-    /* 常规 */
-    --border-arco-1: 1px;
+  /* 常规 */
+  --border-arco-1: 1px;
 
-    /* 较粗 */
-    --border-arco-2: 2px;
+  /* 较粗 */
+  --border-arco-2: 2px;
 
-    /* 粗 */
-    --border-arco-3: 3px;
+  /* 粗 */
+  --border-arco-3: 3px;
 
-    /* 直角 */
-    --border-radius-arco-none: 0;
+  /* 直角 */
+  --border-radius-arco-none: 0;
 
-    /* 圆角-常规 */
-    --border-radius-arco-small: 2px;
+  /* 圆角-常规 */
+  --border-radius-arco-small: 2px;
 
-    /* 圆角-中等 */
-    --border-radius-arco-medium: 4px;
+  /* 圆角-中等 */
+  --border-radius-arco-medium: 4px;
 
-    /* 圆角-较大 */
-    --border-radius-arco-large: 8px;
+  /* 圆角-较大 */
+  --border-radius-arco-large: 8px;
 
-    /* 圆角-全圆角 */
-    --border-radius-arco-circle: 50%;
+  /* 圆角-全圆角 */
+  --border-radius-arco-circle: 50%;
 
-    /* 特殊阴影 */
-    --shadow-arco-special: 0 0 1px rgba(0, 0, 0, 0.3);
+  /* 特殊阴影 */
+  --shadow-arco-special: 0 0 1px rgba(0, 0, 0, 0.3);
 
-    /* 阴影样式1 */
-    --shadow-arco-1-center: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  /* 阴影样式1 */
+  --shadow-arco-1-center: 0 -2px 5px rgba(0, 0, 0, 0.1);
 
-    /* 阴影样式2 */
-    --shadow-arco-2-center: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* 阴影样式2 */
+  --shadow-arco-2-center: 0 0 10px rgba(0, 0, 0, 0.1);
 
-    /* 阴影样式3 */
-    --shadow-arco-3-center: 0 0 20px rgba(0, 0, 0, 0.1);
+  /* 阴影样式3 */
+  --shadow-arco-3-center: 0 0 20px rgba(0, 0, 0, 0.1);
 }
