@@ -17,6 +17,10 @@ export type ApiExcelConcatResult = {
  */
 export type ApiExcelUploadResultReadable = {
     /**
+     * id
+     */
+    id: number;
+    /**
      * userId
      */
     userId: number;
@@ -60,6 +64,10 @@ export type ApiExcelUploadResultReadable = {
  * Excel文件上传模型
  */
 export type ApiExcelUploadResultWritable = {
+    /**
+     * id
+     */
+    id: number;
     /**
      * userId
      */
@@ -750,6 +758,20 @@ export type ApiUserUpdate = {
      * password
      */
     password?: string;
+};
+
+/**
+ * Body_audit_image
+ */
+export type BodyAuditImage = {
+    /**
+     * Image Id
+     */
+    image_id: number;
+    /**
+     * Audit Status
+     */
+    audit_status: string;
 };
 
 /**
@@ -1993,7 +2015,7 @@ export type ListImagesResponses = {
 export type ListImagesResponse = ListImagesResponses[keyof ListImagesResponses];
 
 export type AuditImageData = {
-    body?: never;
+    body: BodyAuditImage;
     headers?: {
         /**
          * X-Correlation-Id
@@ -2001,16 +2023,7 @@ export type AuditImageData = {
         'X-Correlation-ID'?: string;
     };
     path?: never;
-    query: {
-        /**
-         * Image Id
-         */
-        image_id: number;
-        /**
-         * Audit Status
-         */
-        audit_status: string;
-    };
+    query?: never;
     url: '/joint/images/audit';
 };
 
@@ -2041,19 +2054,16 @@ export type UploadExcelData = {
         'X-Correlation-ID'?: string;
     };
     path?: never;
-    query?: never;
+    query?: {
+        /**
+         * User Id
+         */
+        user_id?: number;
+    };
     url: '/joint/excel/upload';
 };
 
 export type UploadExcelErrors = {
-    /**
-     * Unauthorized
-     */
-    401: UnauthorizedModel;
-    /**
-     * Forbidden
-     */
-    403: ForbiddenModel;
     /**
      * Validation Error
      */
@@ -2085,11 +2095,11 @@ export type JointContentData = {
          */
         excel_id: number;
     };
-    query: {
+    query?: {
         /**
          * Image Id
          */
-        image_id: number | null;
+        image_id?: number | null;
     };
     url: '/joint/excel/{excel_id}/out';
 };

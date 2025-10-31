@@ -395,7 +395,11 @@ export const listImages = <ThrowOnError extends boolean = false>(options?: Optio
 export const auditImage = <ThrowOnError extends boolean = false>(options: Options<AuditImageData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<AuditImageResponses, AuditImageErrors, ThrowOnError>({
         url: '/joint/images/audit',
-        ...options
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
     });
 };
 
@@ -406,13 +410,6 @@ export const auditImage = <ThrowOnError extends boolean = false>(options: Option
 export const uploadExcel = <ThrowOnError extends boolean = false>(options: Options<UploadExcelData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<UploadExcelResponses, UploadExcelErrors, ThrowOnError>({
         ...formDataBodySerializer,
-        security: [
-            {
-                in: 'cookie',
-                name: 'session',
-                type: 'apiKey'
-            }
-        ],
         url: '/joint/excel/upload',
         ...options,
         headers: {
