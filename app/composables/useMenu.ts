@@ -6,6 +6,7 @@ import {
   IconHome,
   IconLock,
   IconUserGroup,
+  IconMessage,
 } from '@arco-design/web-vue/es/icon'
 import { has } from 'es-toolkit/compat'
 
@@ -78,6 +79,27 @@ export const useMenu = defineStore('menu', () => {
           to: 'users',
         },
       ],
+    },
+    {
+          icon: IconMessage,
+          label: '短信管理',
+          children: [
+              {
+                icon: IconMessage,
+                label: '短信任务列表',
+                to: 'sms-sms_list',
+              },
+              {
+                icon: IconMessage,
+                label:'图片上传',
+                to: 'joint-image_upload'
+              },
+              {
+                icon: IconMessage,
+                label:'任务添加',
+                to: 'joint-excel_upload'
+              }
+        ],
     },
     {
     // icon: IconUserGroup,

@@ -8,6 +8,7 @@ const excelFile = ref(null)
 const excelId = ref(null)
 const selectedImageId = ref(null)
 const selectedImage = ref(null)
+const localtaskname = ref(null)
 const showImageSelector = ref(false)
 const showSuccessModal = ref(false)
 const successMessage = ref('')
@@ -15,20 +16,24 @@ const submitting = ref(false)
 const uploadingExcel = ref(false)
 const auditFilter = ref('all')
 
-// 步骤状态
-const currentStep = computed(() => {
-  if (excelFile.value)
-    return 2
-  return 0
-})
+
 
 // 图片列表相关状态
 const images = ref([])
 const loadingImages = ref(false)
 const loadingMore = ref(false)
-const pageSize = 12
-const lastCreatedAt = ref(null)
+const pageSize = 2
+const lastcreatedAt = ref(null)
 const hasMoreImages = ref(true)
+
+// 步骤状态
+const currentStep = computed(() => {
+  if (!excelFile.value) return 1
+  if (!selectedImage.value) return 2
+  if (!localtaskname.value) return 3
+  return 4
+})
+
 
 // 过滤后的图片
 const filteredImages = computed(() => {
@@ -39,7 +44,7 @@ const filteredImages = computed(() => {
 
 // 是否可以提交 - 修改：只需要excelId即可提交，图片为可选
 const canSubmit = computed(() => {
-  return !!excelId.value
+  return excelId.value 
 })
 
 // 获取图片列表
@@ -53,11 +58,12 @@ async function fetchImages(loadMore = false) {
 
   try {
     const { listImages } = useApiV1Client()
+    // console.log(lastcreatedAt.value)
     const { data, error } = await listImages({
       query: {
-        auditStatus: auditFilter.value === 'all' ? undefined : auditFilter.value,
+        audit_status: auditFilter.value === 'all' ? undefined : auditFilter.value,
         limit: pageSize,
-        lastCreatedAt: lastCreatedAt.value,
+        last_created_at: lastcreatedAt.value,
       },
     })
 
@@ -72,7 +78,8 @@ async function fetchImages(loadMore = false) {
       else {
         images.value = data
       }
-      lastCreatedAt.value = data[data.length - 1]?.createdAt || null
+      lastcreatedAt.value = data[data.length - 1]?.createdAt || null
+      // console.log(lastcreatedAt.value)
       hasMoreImages.value = data.length === pageSize
     }
     else if (loadMore) {
@@ -103,6 +110,7 @@ async function handleExcelUpload(options) {
 
     if (excelFile.value) {
       Message.success('Excel文件上传成功')
+      excelId.value = true
     }
   }
   catch (error) {
@@ -140,10 +148,12 @@ async function submitForm() {
   submitting.value = true
   try {
     const { jointContent } = useApiV1Client()
+    console.log(localtaskname.value)
     const { data, error } = await jointContent({
       body: {
-        excelId: excelId.value,
-        imageId: selectedImageId.value, // 图片ID为可选，可为null
+        file: excelFile.value,
+        image_id: selectedImageId.value, // 图片ID为可选，可为null
+        local_task_name: localtaskname.value
       },
     })
 
@@ -152,7 +162,7 @@ async function submitForm() {
     }
 
     successMessage.value = data.isSucceed
-      ? (selectedImageId.value ? 'Excel和图片拼接成功' : 'Excel文件提交成功')
+      ? (selectedImageId.value ? '任务上传成功' : 'Excel文件提交成功')
       : '提交失败'
     showSuccessModal.value = true
   }
@@ -179,8 +189,9 @@ function handleSuccessConfirm() {
   selectedImageId.value = null
   selectedImage.value = null
   images.value = []
-  lastCreatedAt.value = null
+  lastcreatedAt.value = null
   hasMoreImages.value = true
+  localtaskname.value = null
 }
 
 // 处理图片加载错误
@@ -191,7 +202,7 @@ function handleImageError(event) {
 // 处理筛选变化
 function handleFilterChange() {
   images.value = []
-  lastCreatedAt.value = null
+  lastcreatedAt.value = null
   hasMoreImages.value = true
   fetchImages(false)
 }
@@ -245,13 +256,14 @@ onMounted(() => {
   <div class="upload-container">
     <a-card class="upload-card" :bordered="false">
       <template #title>
-        <h2>文件上传管理</h2>
+        <h2>SMS任务上传管理</h2>
       </template>
 
       <div class="upload-steps">
         <a-steps :current="currentStep">
           <a-step title="上传Excel" />
           <a-step title="选择图片（可选）" />
+          <a-step title="输入任务名称(可选)"/>
           <a-step title="完成提交" />
         </a-steps>
       </div>
@@ -276,13 +288,13 @@ onMounted(() => {
           已上传文件: {{ excelFile.name }} ({{ formatFileSize(excelFile.size) }})
         </p>
         <p v-else class="file-info hint">
-          支持 .xls, .xlsx, .csv 格式，最大 5MB
+          支持 .xls, .xlsx, .csv 格式，最大 15MB
         </p>
       </div>
 
       <div class="upload-section">
         <h3>2. 选择图片（可选）</h3>
-        <a-button type="primary" :disabled="!excelFile" @click="showImageSelector = true">
+        <a-button type="primary" @click="showImageSelector = true">
           <template #icon>
             <icon-picture />
           </template>
@@ -292,6 +304,7 @@ onMounted(() => {
           图片为可选内容，可不选择直接提交
         </p>
 
+        <!-- 模态框 -->
         <a-modal
           v-model:visible="showImageSelector"
           title="选择图片"
@@ -399,7 +412,21 @@ onMounted(() => {
             </div>
           </div>
         </div>
+
       </div>
+      
+        <div class="task-name-section">
+          <h3>3. 输入任务名称（可选）</h3>
+          <a-input
+          v-model="localtaskname"
+          placeholder="请输入任务名称(可选)"
+          :max-length="50"
+          allow-clear
+          style="max-width: 500px;"/>
+          <p class="optional-hint">
+            任务名称为可选内容
+          </p>
+        </div>
 
       <div class="submit-section">
         <a-button
@@ -446,7 +473,6 @@ onMounted(() => {
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .upload-card {
@@ -689,6 +715,23 @@ onMounted(() => {
   padding: 20px 0;
 }
 
+.task-name-section {
+  margin-bottom: 32px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e5e5;
+}
+
+.task-name-section h3 {
+  color: #1d2129;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
 @media (max-width: 768px) {
   .upload-container {
     padding: 10px;
@@ -705,4 +748,5 @@ onMounted(() => {
     text-align: center;
   }
 }
+
 </style>

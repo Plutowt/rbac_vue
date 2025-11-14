@@ -12,97 +12,6 @@ export type ApiExcelConcatResult = {
 };
 
 /**
- * APIExcelUploadResult
- * Excel文件上传模型
- */
-export type ApiExcelUploadResultReadable = {
-    /**
-     * id
-     */
-    id: number;
-    /**
-     * userId
-     */
-    userId: number;
-    /**
-     * filename
-     */
-    filename: string;
-    /**
-     * originalFilename
-     */
-    originalFilename: string;
-    /**
-     * fileSize
-     */
-    fileSize: number;
-    /**
-     * mimeType
-     */
-    mimeType: string;
-    /**
-     * storagePath
-     */
-    storagePath: string;
-    /**
-     * imageId
-     */
-    imageId?: number | null;
-    /**
-     * createdAt
-     */
-    createdAt: string;
-    /**
-     * fileUrl
-     * 获取文件访问URL
-     */
-    readonly fileUrl: string;
-};
-
-/**
- * APIExcelUploadResult
- * Excel文件上传模型
- */
-export type ApiExcelUploadResultWritable = {
-    /**
-     * id
-     */
-    id: number;
-    /**
-     * userId
-     */
-    userId: number;
-    /**
-     * filename
-     */
-    filename: string;
-    /**
-     * originalFilename
-     */
-    originalFilename: string;
-    /**
-     * fileSize
-     */
-    fileSize: number;
-    /**
-     * mimeType
-     */
-    mimeType: string;
-    /**
-     * storagePath
-     */
-    storagePath: string;
-    /**
-     * imageId
-     */
-    imageId?: number | null;
-    /**
-     * createdAt
-     */
-    createdAt: string;
-};
-
-/**
  * APIImageAuditRequest
  * 图片审核模型
  */
@@ -350,6 +259,47 @@ export type ApiLegacyLoginCredentials = {
 };
 
 /**
+ * APIPageSmsTaskResponse
+ * 分页的数据模型
+ */
+export type ApiPageSmsTaskResponse = {
+    /**
+     * items
+     */
+    items: Array<ApiSmSTaskListResponse>;
+    /**
+     * total
+     * 用户的总任务数
+     */
+    total: number;
+    /**
+     * page
+     * 当前页码
+     */
+    page: number;
+    /**
+     * pageSize
+     * 每页数量
+     */
+    pageSize: number;
+    /**
+     * totalPages
+     * 总页数
+     */
+    totalPages: number;
+    /**
+     * isPrev
+     * 是否有上一页
+     */
+    isPrev: boolean;
+    /**
+     * isNext
+     * 是否有下一页
+     */
+    isNext: boolean;
+};
+
+/**
  * APIPage[APIRoleResult]
  */
 export type ApiPageApiRoleResult = {
@@ -503,6 +453,45 @@ export type ApiRoleUpdate = {
      * enabled
      */
     enabled?: boolean;
+};
+
+/**
+ * APISmSTaskListResponse
+ * SmS任务的响应模型
+ */
+export type ApiSmSTaskListResponse = {
+    /**
+     * localTaskName
+     */
+    localTaskName: string;
+    /**
+     * fileName
+     */
+    fileName: string;
+    /**
+     * bindPicture
+     */
+    bindPicture?: string | null;
+    /**
+     * totalCount
+     */
+    totalCount: number;
+    /**
+     * successCount
+     */
+    successCount: number;
+    /**
+     * failedCount
+     */
+    failedCount: number;
+    /**
+     * state
+     */
+    state: number;
+    /**
+     * createdAt
+     */
+    createdAt: string;
 };
 
 /**
@@ -775,14 +764,24 @@ export type BodyAuditImage = {
 };
 
 /**
- * Body_upload_excel
+ * Body_joint_content
  */
-export type BodyUploadExcel = {
+export type BodyJointContent = {
+    /**
+     * Image Id
+     * 选择的图片
+     */
+    image_id?: number | null;
     /**
      * File
      * Excel文件
      */
     file: Blob | File;
+    /**
+     * Local Task Name
+     * 本地表示的任务名称
+     */
+    local_task_name?: string | null;
 };
 
 /**
@@ -855,6 +854,11 @@ export type NotFoundModel = {
      */
     message: string;
 };
+
+/**
+ * SortDirection
+ */
+export type SortDirection = 'asc' | 'desc';
 
 /**
  * TooManyModel
@@ -995,7 +999,7 @@ export type FastapiExtsExceptionsConflictModel5 = {
 /**
  * PermissionCode
  */
-export type PermissionCode = 'users' | 'users:read' | 'users:create' | 'users:update' | 'users:delete' | 'roles' | 'roles:read' | 'roles:create' | 'roles:update' | 'roles:delete' | 'permissions:read' | 'joint' | 'joint:read' | 'joint:upload' | 'joint:update' | 'joint:delete' | 'joint:audit' | 'excel' | 'excel:read' | 'excel:upload' | 'excel:update' | 'excel:delete';
+export type PermissionCode = 'users' | 'users:read' | 'users:create' | 'users:update' | 'users:delete' | 'roles' | 'roles:read' | 'roles:create' | 'roles:update' | 'roles:delete' | 'permissions:read';
 
 export type AuthLegacyLoginData = {
     body: ApiLegacyLoginCredentials;
@@ -1934,16 +1938,19 @@ export type UploadImageData = {
         'X-Correlation-ID'?: string;
     };
     path?: never;
-    query?: {
-        /**
-         * User Id
-         */
-        user_id?: number;
-    };
+    query?: never;
     url: '/joint/images/upload';
 };
 
 export type UploadImageErrors = {
+    /**
+     * Unauthorized
+     */
+    401: UnauthorizedModel;
+    /**
+     * Forbidden
+     */
+    403: ForbiddenModel;
     /**
      * Validation Error
      */
@@ -2045,8 +2052,8 @@ export type AuditImageResponses = {
 
 export type AuditImageResponse = AuditImageResponses[keyof AuditImageResponses];
 
-export type UploadExcelData = {
-    body: BodyUploadExcel;
+export type JointContentData = {
+    body: BodyJointContent;
     headers?: {
         /**
          * X-Correlation-Id
@@ -2060,59 +2067,10 @@ export type UploadExcelData = {
          */
         user_id?: number;
     };
-    url: '/joint/excel/upload';
-};
-
-export type UploadExcelErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type UploadExcelError = UploadExcelErrors[keyof UploadExcelErrors];
-
-export type UploadExcelResponses = {
-    /**
-     * Successful Response
-     */
-    200: ApiExcelUploadResultReadable;
-};
-
-export type UploadExcelResponse = UploadExcelResponses[keyof UploadExcelResponses];
-
-export type JointContentData = {
-    body?: never;
-    headers?: {
-        /**
-         * X-Correlation-Id
-         */
-        'X-Correlation-ID'?: string;
-    };
-    path: {
-        /**
-         * Excel Id
-         */
-        excel_id: number;
-    };
-    query?: {
-        /**
-         * Image Id
-         */
-        image_id?: number | null;
-    };
-    url: '/joint/excel/{excel_id}/out';
+    url: '/joint/excel/out';
 };
 
 export type JointContentErrors = {
-    /**
-     * Unauthorized
-     */
-    401: UnauthorizedModel;
-    /**
-     * Forbidden
-     */
-    403: ForbiddenModel;
     /**
      * Validation Error
      */
@@ -2130,6 +2088,65 @@ export type JointContentResponses = {
 
 export type JointContentResponse = JointContentResponses[keyof JointContentResponses];
 
+export type SmsGetSmsListData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: {
+        /**
+         * Page
+         * 默认为1，页面
+         */
+        page?: number;
+        /**
+         * Page Size
+         * 每页数据量
+         */
+        page_size?: number;
+        /**
+         * Sort By
+         * 排序字段
+         */
+        sort_by?: string | null;
+        /**
+         * 默认降序，DESC和ASC
+         */
+        sort_direction?: SortDirection;
+    };
+    url: '/sms/list';
+};
+
+export type SmsGetSmsListErrors = {
+    /**
+     * Unauthorized
+     */
+    401: UnauthorizedModel;
+    /**
+     * Forbidden
+     */
+    403: ForbiddenModel;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type SmsGetSmsListError = SmsGetSmsListErrors[keyof SmsGetSmsListErrors];
+
+export type SmsGetSmsListResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiPageSmsTaskResponse;
+};
+
+export type SmsGetSmsListResponse = SmsGetSmsListResponses[keyof SmsGetSmsListResponses];
+
 export type ClientOptions = {
-    baseUrl: 'http://localhost:8000' | (string & {});
+    baseUrl: 'http://localhost:8002' | (string & {});
 };
