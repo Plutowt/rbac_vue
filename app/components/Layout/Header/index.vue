@@ -3,6 +3,8 @@ import type { DotLottieVueInstance } from '@lottiefiles/dotlottie-vue'
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { layoutHeaderHeight } from '~/constants'
 
+import LayoutHeaderBalance from './Balance.vue'
+
 const { sm } = useArcoBreakpoints()
 const sidebar = useSidebar()
 
@@ -60,6 +62,7 @@ const color = useColorMode()
         <LanguageToggle />
         <ColorModeToggle />
         <!-- <Settings /> -->
+         <LayoutHeaderBalance />
         <LayoutHeaderUser />
       </ASpace>
     </div>

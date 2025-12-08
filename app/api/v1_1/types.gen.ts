@@ -750,6 +750,36 @@ export type ApiUserUpdate = {
 };
 
 /**
+ * Balance_add_or_del_ResponseModel
+ * 余额增加和删除的响应模型
+ */
+export type BalanceAddOrDelResponseModel = {
+    /**
+     * status
+     */
+    status: boolean;
+};
+
+/**
+ * Balance_lookup_account_ResponseModel
+ * 余额查询的响应模型
+ */
+export type BalanceLookupAccountResponseModel = {
+    /**
+     * userId
+     */
+    userId: string;
+    /**
+     * postedBalance
+     */
+    postedBalance: string;
+    /**
+     * pendingBalance
+     */
+    pendingBalance: string;
+};
+
+/**
  * Body_audit_image
  */
 export type BodyAuditImage = {
@@ -761,6 +791,142 @@ export type BodyAuditImage = {
      * Audit Status
      */
     audit_status: string;
+};
+
+/**
+ * Body_business_attr_business_attr_add
+ */
+export type BodyBusinessAttrBusinessAttrAdd = {
+    /**
+     * Business Type Id
+     * 业务类型id
+     */
+    business_type_id: number;
+    /**
+     * Name
+     * 业务属性名字
+     */
+    name: string;
+    /**
+     * Value
+     * 业务属性值
+     */
+    value: string;
+    /**
+     * Is Active
+     * 是否激活,默认激活状态
+     */
+    is_active?: boolean;
+};
+
+/**
+ * Body_business_attr_business_attr_del
+ */
+export type BodyBusinessAttrBusinessAttrDel = {
+    /**
+     * Business Type Id
+     * 业务类型id
+     */
+    business_type_id: number;
+    /**
+     * Name
+     * 业务属性名字
+     */
+    name: string;
+    /**
+     * Value
+     * 业务属性值
+     */
+    value: string;
+};
+
+/**
+ * Body_business_attr_business_attr_update
+ */
+export type BodyBusinessAttrBusinessAttrUpdate = {
+    /**
+     * Id
+     * 业务属性id
+     */
+    id: number;
+    /**
+     * Name
+     * 修改后业务属性名字
+     */
+    name: string;
+    /**
+     * Value
+     * 修改后业务属性值
+     */
+    value: string;
+    /**
+     * Is Active
+     * 是否激活,默认激活状态
+     */
+    is_active?: boolean;
+};
+
+/**
+ * Body_business_type_business_type_add
+ */
+export type BodyBusinessTypeBusinessTypeAdd = {
+    /**
+     * Name
+     * 业务类型名字
+     */
+    name: string;
+    /**
+     * Description
+     * 业务类型描述
+     */
+    description: string;
+    /**
+     * Is Active
+     * 是否激活
+     */
+    is_active: boolean;
+};
+
+/**
+ * Body_business_type_business_type_del
+ */
+export type BodyBusinessTypeBusinessTypeDel = {
+    /**
+     * Id
+     * 业务类型id
+     */
+    id: number;
+    /**
+     * Name
+     * 业务类型名字
+     */
+    name: string;
+};
+
+/**
+ * Body_business_type_business_type_update
+ */
+export type BodyBusinessTypeBusinessTypeUpdate = {
+    /**
+     * Id
+     * 业务类型id
+     */
+    id: number;
+    /**
+     * Name
+     * 业务类型名字
+     */
+    name: string;
+    /**
+     * Description
+     * 业务类型描述
+     */
+    description: string;
+    /**
+     * Is Active
+     * 是否激活,默认激活状态
+     */
+    is_active?: boolean;
 };
 
 /**
@@ -785,6 +951,103 @@ export type BodyJointContent = {
 };
 
 /**
+ * Body_rate_group_rate_group_add
+ */
+export type BodyRateGroupRateGroupAdd = {
+    /**
+     * Business Type Id
+     * 业务类型id
+     */
+    business_type_id: number;
+    /**
+     * Name
+     * 费率组名称
+     */
+    name: string;
+    /**
+     * Attrs
+     * 费率组属性字典
+     */
+    attrs: {
+        [key: string]: string;
+    };
+    /**
+     * Priority
+     * 优先级
+     */
+    priority: number;
+    /**
+     * Description
+     * 费率组描述
+     */
+    description?: string;
+    /**
+     * Is Active
+     * 是否激活,默认激活状态
+     */
+    is_active?: boolean;
+};
+
+/**
+ * Body_rate_group_rate_group_del
+ */
+export type BodyRateGroupRateGroupDel = {
+    /**
+     * Rate Group Id
+     * 费率组id
+     */
+    rate_group_id: number;
+    /**
+     * Business Type Id
+     * 业务类型id
+     */
+    business_type_id: number;
+};
+
+/**
+ * Body_rate_group_rate_group_update
+ */
+export type BodyRateGroupRateGroupUpdate = {
+    /**
+     * Rate Group Id
+     * 费率组id
+     */
+    rate_group_id: number;
+    /**
+     * Business Type Id
+     * 业务类型id
+     */
+    business_type_id: number;
+    /**
+     * Name
+     * 费率组名称
+     */
+    name: string;
+    /**
+     * Attrs
+     * 费率组属性字典
+     */
+    attrs: {
+        [key: string]: string;
+    };
+    /**
+     * Priority
+     * 优先级
+     */
+    priority: number;
+    /**
+     * Description
+     * 费率组描述
+     */
+    description?: string;
+    /**
+     * Is Active
+     * 是否激活,默认激活状态
+     */
+    is_active?: boolean;
+};
+
+/**
  * Body_upload_image
  */
 export type BodyUploadImage = {
@@ -793,6 +1056,245 @@ export type BodyUploadImage = {
      * 图片文件
      */
     file: Blob | File;
+};
+
+/**
+ * Body_user_rate_add_uesr_rate_association
+ */
+export type BodyUserRateAddUesrRateAssociation = {
+    /**
+     * User Id
+     * 增加关联的用户id
+     */
+    user_id: number;
+    /**
+     * Rate Group Id
+     * 费率组id
+     */
+    rate_group_id: number;
+};
+
+/**
+ * Body_user_rate_del_uesr_rate_association
+ */
+export type BodyUserRateDelUesrRateAssociation = {
+    /**
+     * User Id
+     * 删除关联的用户id
+     */
+    user_id: number;
+    /**
+     * Rate Group Id
+     * 费率组id
+     */
+    rate_group_id: number;
+};
+
+/**
+ * Business_attr_add_or_del_ResponseModel
+ */
+export type BusinessAttrAddOrDelResponseModel = {
+    /**
+     * id
+     * 业务类型属性id
+     */
+    id?: number;
+    /**
+     * status
+     * 业务类型属性是否添加或者删除成功
+     */
+    status?: boolean;
+    /**
+     * err
+     * 业务类型属性添加失败原因
+     */
+    err?: string;
+};
+
+/**
+ * Business_attr_lookup_ResponseModel
+ */
+export type BusinessAttrLookupResponseModel = {
+    /**
+     * id
+     * 业务类型属性id
+     */
+    id?: number;
+    /**
+     * attributeName
+     * 业务类型属性名称
+     */
+    attributeName?: string;
+    /**
+     * attributeValue
+     * 业务类型属性值
+     */
+    attributeValue?: string;
+    /**
+     * isActive
+     * 业务类型属性是否激活
+     */
+    isActive?: boolean;
+    /**
+     * err
+     * 业务类型属性查询失败原因
+     */
+    err?: string;
+};
+
+/**
+ * Business_attr_update_ResponseModel
+ */
+export type BusinessAttrUpdateResponseModel = {
+    /**
+     * id
+     * 业务类型属性id
+     */
+    id?: number;
+    /**
+     * name
+     * 业务类型属性名称
+     */
+    name?: string;
+    /**
+     * value
+     * 业务类型属性值
+     */
+    value?: string;
+    /**
+     * isActive
+     * 业务类型属性是否激活
+     */
+    isActive?: boolean;
+    /**
+     * status
+     * 业务类型属性是否更新成功
+     */
+    status?: boolean;
+    /**
+     * err
+     * 业务类型属性更新失败原因
+     */
+    err?: string;
+};
+
+/**
+ * Business_type_add_or_del_ResponseModel
+ * 业务类型增加和删除的响应模型
+ */
+export type BusinessTypeAddOrDelResponseModel = {
+    /**
+     * id
+     * 业务类型id
+     */
+    id?: number;
+    /**
+     * status
+     */
+    status: boolean;
+    /**
+     * err
+     */
+    err?: string | null;
+};
+
+/**
+ * Business_type_lookup_DataModel
+ * 业务类型查询的数据模型
+ */
+export type BusinessTypeLookupDataModel = {
+    /**
+     * id
+     */
+    id: number;
+    /**
+     * name
+     */
+    name: string;
+    /**
+     * description
+     */
+    description: string;
+    /**
+     * isActive
+     */
+    isActive: boolean;
+    /**
+     * createdAt
+     */
+    createdAt: string;
+};
+
+/**
+ * Business_type_lookup_ResponseModel
+ * 业务类型查询的响应模型
+ */
+export type BusinessTypeLookupResponseModel = {
+    /**
+     * data
+     */
+    data: Array<BusinessTypeLookupDataModel>;
+    /**
+     * total
+     * 业务类型总数
+     */
+    total: number;
+    /**
+     * page
+     * 当前页码
+     */
+    page: number;
+    /**
+     * pageSize
+     * 每页数量
+     */
+    pageSize: number;
+    /**
+     * isPrev
+     * 是否有上一页
+     */
+    isPrev: boolean;
+    /**
+     * isNext
+     * 是否有下一页
+     */
+    isNext: boolean;
+};
+
+/**
+ * Business_type_update_ResponseModel
+ */
+export type BusinessTypeUpdateResponseModel = {
+    /**
+     * id
+     * 业务类型id
+     */
+    id?: number;
+    /**
+     * name
+     * 业务类型名称
+     */
+    name?: string;
+    /**
+     * description
+     * 业务类型描述
+     */
+    description?: string;
+    /**
+     * isActive
+     * 业务类型是否激活
+     */
+    isActive?: boolean;
+    /**
+     * status
+     * 业务类型是否更新成功
+     */
+    status?: boolean;
+    /**
+     * err
+     * 业务类型更新失败原因
+     */
+    err?: string;
 };
 
 /**
@@ -856,6 +1358,149 @@ export type NotFoundModel = {
 };
 
 /**
+ * Rate_group_add_or_del_ResponseModel
+ */
+export type RateGroupAddOrDelResponseModel = {
+    /**
+     * id
+     * 费率组id
+     */
+    id?: number;
+    /**
+     * status
+     * 费率组是否添加或者删除成功
+     */
+    status?: boolean;
+    /**
+     * err
+     * 费率组添加失败原因
+     */
+    err?: string;
+};
+
+/**
+ * Rate_group_lookup_DataModel
+ */
+export type RateGroupLookupDataModel = {
+    /**
+     * id
+     * 费率组id
+     */
+    id?: number;
+    /**
+     * businessType
+     * 绑定的业务类型业务类型
+     */
+    businessType?: string;
+    /**
+     * name
+     * 费率组名称
+     */
+    name?: string;
+    /**
+     * attrs
+     * 费率组属性
+     */
+    attrs?: {
+        [key: string]: string;
+    };
+    /**
+     * isActive
+     * 费率组是否激活
+     */
+    isActive?: boolean;
+    /**
+     * description
+     * 费率组描述
+     */
+    description?: string;
+};
+
+/**
+ * Rate_group_lookup_ResponseModel
+ */
+export type RateGroupLookupResponseModel = {
+    /**
+     * data
+     * 费率组数据
+     */
+    data?: Array<RateGroupLookupDataModel>;
+    /**
+     * total
+     * 费率组总数
+     */
+    total?: number;
+    /**
+     * page
+     * 当前页码
+     */
+    page?: number;
+    /**
+     * pageSize
+     * 每页数量
+     */
+    pageSize?: number;
+    /**
+     * isPrev
+     * 是否有上一页
+     */
+    isPrev?: boolean;
+    /**
+     * isNext
+     * 是否有下一页
+     */
+    isNext?: boolean;
+};
+
+/**
+ * Rate_group_update_ResponseModel
+ */
+export type RateGroupUpdateResponseModel = {
+    /**
+     * id
+     * 费率组id
+     */
+    id?: number;
+    /**
+     * businessType
+     * 修改后绑定的业务类型业务类型
+     */
+    businessType?: string;
+    /**
+     * name
+     * 修改后费率组名称
+     */
+    name?: string;
+    /**
+     * attrs
+     * 修改后费率组属性
+     */
+    attrs?: {
+        [key: string]: string;
+    };
+    /**
+     * priority
+     * 修改后费率组优先级
+     */
+    priority?: number;
+    /**
+     * isActive
+     * 修改后费率组是否激活
+     */
+    isActive?: boolean;
+    /**
+     * description
+     * 修改后费率组描述
+     */
+    description?: string;
+    /**
+     * err
+     * 费率组更新失败原因
+     */
+    err?: string;
+};
+
+/**
  * SortDirection
  */
 export type SortDirection = 'asc' | 'desc';
@@ -886,6 +1531,86 @@ export type UnauthorizedModel = {
      * Message
      */
     message: string;
+};
+
+/**
+ * User_rate_add_or_del_ResponseModel
+ */
+export type UserRateAddOrDelResponseModel = {
+    /**
+     * userId
+     * 用户费率id
+     */
+    userId?: number;
+    /**
+     * rateGroupId
+     * 用户费率关联费率组id
+     */
+    rateGroupId?: number;
+    /**
+     * status
+     * 用户费率是否添加或者删除成功
+     */
+    status?: boolean;
+    /**
+     * err
+     * 用户费率添加失败原因
+     */
+    err?: string;
+};
+
+/**
+ * User_rate_lookup_ResponseModel
+ */
+export type UserRateLookupResponseModel = {
+    /**
+     * rateGroupData
+     * 用户费率关联费率组的数据
+     */
+    rateGroupData?: Array<UserRateLookupRateDataModel>;
+    /**
+     * err
+     * 用户费率查询失败原因
+     */
+    err?: string;
+};
+
+/**
+ * User_rate_lookup_rateDataModel
+ */
+export type UserRateLookupRateDataModel = {
+    /**
+     * rateGroupId
+     * 用户费率关联费率组id
+     */
+    rateGroupId?: number;
+    /**
+     * rateGroupName
+     * 用户费率关联费率组名称
+     */
+    rateGroupName?: string;
+    /**
+     * rateGroupAttrs
+     * 用户费率关联费率组属性
+     */
+    rateGroupAttrs?: {
+        [key: string]: string;
+    };
+    /**
+     * rateGroupPriority
+     * 用户费率关联费率组优先级
+     */
+    rateGroupPriority?: number;
+    /**
+     * rateGroupIsActive
+     * 用户费率关联费率组是否激活
+     */
+    rateGroupIsActive?: boolean;
+    /**
+     * rateGroupDescription
+     * 用户费率关联费率组描述
+     */
+    rateGroupDescription?: string;
 };
 
 /**
@@ -2147,6 +2872,613 @@ export type SmsGetSmsListResponses = {
 
 export type SmsGetSmsListResponse = SmsGetSmsListResponses[keyof SmsGetSmsListResponses];
 
+export type BalanceBalanceLookupAccountData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/balance/lookup/account';
+};
+
+export type BalanceBalanceLookupAccountErrors = {
+    /**
+     * Unauthorized
+     */
+    401: UnauthorizedModel;
+    /**
+     * Forbidden
+     */
+    403: ForbiddenModel;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BalanceBalanceLookupAccountError = BalanceBalanceLookupAccountErrors[keyof BalanceBalanceLookupAccountErrors];
+
+export type BalanceBalanceLookupAccountResponses = {
+    /**
+     * Successful Response
+     */
+    200: BalanceLookupAccountResponseModel;
+};
+
+export type BalanceBalanceLookupAccountResponse = BalanceBalanceLookupAccountResponses[keyof BalanceBalanceLookupAccountResponses];
+
+export type BalanceBalanceRechangeData = {
+    /**
+     * Amount
+     * 充值金额
+     */
+    body: number;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/balance/recharge';
+};
+
+export type BalanceBalanceRechangeErrors = {
+    /**
+     * Unauthorized
+     */
+    401: UnauthorizedModel;
+    /**
+     * Forbidden
+     */
+    403: ForbiddenModel;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BalanceBalanceRechangeError = BalanceBalanceRechangeErrors[keyof BalanceBalanceRechangeErrors];
+
+export type BalanceBalanceRechangeResponses = {
+    /**
+     * Successful Response
+     */
+    200: BalanceAddOrDelResponseModel;
+};
+
+export type BalanceBalanceRechangeResponse = BalanceBalanceRechangeResponses[keyof BalanceBalanceRechangeResponses];
+
+export type BusinessTypeBusinessTypeAddData = {
+    body: BodyBusinessTypeBusinessTypeAdd;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_type/add';
+};
+
+export type BusinessTypeBusinessTypeAddErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessTypeBusinessTypeAddError = BusinessTypeBusinessTypeAddErrors[keyof BusinessTypeBusinessTypeAddErrors];
+
+export type BusinessTypeBusinessTypeAddResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessTypeAddOrDelResponseModel;
+};
+
+export type BusinessTypeBusinessTypeAddResponse = BusinessTypeBusinessTypeAddResponses[keyof BusinessTypeBusinessTypeAddResponses];
+
+export type BusinessTypeBusinessTypeDelData = {
+    body: BodyBusinessTypeBusinessTypeDel;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_type/del';
+};
+
+export type BusinessTypeBusinessTypeDelErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessTypeBusinessTypeDelError = BusinessTypeBusinessTypeDelErrors[keyof BusinessTypeBusinessTypeDelErrors];
+
+export type BusinessTypeBusinessTypeDelResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessTypeAddOrDelResponseModel;
+};
+
+export type BusinessTypeBusinessTypeDelResponse = BusinessTypeBusinessTypeDelResponses[keyof BusinessTypeBusinessTypeDelResponses];
+
+export type BusinessTypeBusinessTypeLookupData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: {
+        /**
+         * Page
+         * 页码
+         */
+        page?: number;
+        /**
+         * Page Size
+         * 每页数量
+         */
+        page_size?: number;
+        /**
+         * Sort By
+         * 排序字段
+         */
+        sort_by?: string;
+        /**
+         * Sort Direction
+         * 排序方向
+         */
+        sort_direction?: string;
+    };
+    url: '/business_type/lookup';
+};
+
+export type BusinessTypeBusinessTypeLookupErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessTypeBusinessTypeLookupError = BusinessTypeBusinessTypeLookupErrors[keyof BusinessTypeBusinessTypeLookupErrors];
+
+export type BusinessTypeBusinessTypeLookupResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessTypeLookupResponseModel;
+};
+
+export type BusinessTypeBusinessTypeLookupResponse = BusinessTypeBusinessTypeLookupResponses[keyof BusinessTypeBusinessTypeLookupResponses];
+
+export type BusinessTypeBusinessTypeUpdateData = {
+    body: BodyBusinessTypeBusinessTypeUpdate;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_type/update';
+};
+
+export type BusinessTypeBusinessTypeUpdateErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessTypeBusinessTypeUpdateError = BusinessTypeBusinessTypeUpdateErrors[keyof BusinessTypeBusinessTypeUpdateErrors];
+
+export type BusinessTypeBusinessTypeUpdateResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessTypeUpdateResponseModel;
+};
+
+export type BusinessTypeBusinessTypeUpdateResponse = BusinessTypeBusinessTypeUpdateResponses[keyof BusinessTypeBusinessTypeUpdateResponses];
+
+export type BusinessAttrBusinessAttrAddData = {
+    body: BodyBusinessAttrBusinessAttrAdd;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_attr/add';
+};
+
+export type BusinessAttrBusinessAttrAddErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessAttrBusinessAttrAddError = BusinessAttrBusinessAttrAddErrors[keyof BusinessAttrBusinessAttrAddErrors];
+
+export type BusinessAttrBusinessAttrAddResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessAttrAddOrDelResponseModel;
+};
+
+export type BusinessAttrBusinessAttrAddResponse = BusinessAttrBusinessAttrAddResponses[keyof BusinessAttrBusinessAttrAddResponses];
+
+export type BusinessAttrBusinessAttrDelData = {
+    body: BodyBusinessAttrBusinessAttrDel;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_attr/del';
+};
+
+export type BusinessAttrBusinessAttrDelErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessAttrBusinessAttrDelError = BusinessAttrBusinessAttrDelErrors[keyof BusinessAttrBusinessAttrDelErrors];
+
+export type BusinessAttrBusinessAttrDelResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessAttrAddOrDelResponseModel;
+};
+
+export type BusinessAttrBusinessAttrDelResponse = BusinessAttrBusinessAttrDelResponses[keyof BusinessAttrBusinessAttrDelResponses];
+
+export type BusinessAttrBusinessAttrLookupData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query: {
+        /**
+         * Business Type Id
+         * 业务类型id
+         */
+        business_type_id: number;
+    };
+    url: '/business_attr/lookup';
+};
+
+export type BusinessAttrBusinessAttrLookupErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessAttrBusinessAttrLookupError = BusinessAttrBusinessAttrLookupErrors[keyof BusinessAttrBusinessAttrLookupErrors];
+
+export type BusinessAttrBusinessAttrLookupResponses = {
+    /**
+     * Response Business Attr Business Attr Lookup
+     * Successful Response
+     */
+    200: Array<BusinessAttrLookupResponseModel>;
+};
+
+export type BusinessAttrBusinessAttrLookupResponse = BusinessAttrBusinessAttrLookupResponses[keyof BusinessAttrBusinessAttrLookupResponses];
+
+export type BusinessAttrBusinessAttrUpdateData = {
+    body: BodyBusinessAttrBusinessAttrUpdate;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/business_attr/update';
+};
+
+export type BusinessAttrBusinessAttrUpdateErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type BusinessAttrBusinessAttrUpdateError = BusinessAttrBusinessAttrUpdateErrors[keyof BusinessAttrBusinessAttrUpdateErrors];
+
+export type BusinessAttrBusinessAttrUpdateResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessAttrUpdateResponseModel;
+};
+
+export type BusinessAttrBusinessAttrUpdateResponse = BusinessAttrBusinessAttrUpdateResponses[keyof BusinessAttrBusinessAttrUpdateResponses];
+
+export type RateGroupRateGroupAddData = {
+    body: BodyRateGroupRateGroupAdd;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/rate_group/add';
+};
+
+export type RateGroupRateGroupAddErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type RateGroupRateGroupAddError = RateGroupRateGroupAddErrors[keyof RateGroupRateGroupAddErrors];
+
+export type RateGroupRateGroupAddResponses = {
+    /**
+     * Successful Response
+     */
+    200: RateGroupAddOrDelResponseModel;
+};
+
+export type RateGroupRateGroupAddResponse = RateGroupRateGroupAddResponses[keyof RateGroupRateGroupAddResponses];
+
+export type RateGroupRateGroupDelData = {
+    body: BodyRateGroupRateGroupDel;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/rate_group/del';
+};
+
+export type RateGroupRateGroupDelErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type RateGroupRateGroupDelError = RateGroupRateGroupDelErrors[keyof RateGroupRateGroupDelErrors];
+
+export type RateGroupRateGroupDelResponses = {
+    /**
+     * Successful Response
+     */
+    200: RateGroupAddOrDelResponseModel;
+};
+
+export type RateGroupRateGroupDelResponse = RateGroupRateGroupDelResponses[keyof RateGroupRateGroupDelResponses];
+
+export type RateGroupRateGroupLookupData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query: {
+        /**
+         * Business Type Id
+         * 业务类型id
+         */
+        business_type_id: number;
+        /**
+         * Page
+         * 页码
+         */
+        page?: number;
+        /**
+         * Page Size
+         * 每页数量
+         */
+        page_size?: number;
+        /**
+         * Sort By
+         * 排序字段
+         */
+        sort_by?: string;
+        /**
+         * Sort Direction
+         * 排序方向
+         */
+        sort_direction?: string;
+    };
+    url: '/rate_group/lookup';
+};
+
+export type RateGroupRateGroupLookupErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type RateGroupRateGroupLookupError = RateGroupRateGroupLookupErrors[keyof RateGroupRateGroupLookupErrors];
+
+export type RateGroupRateGroupLookupResponses = {
+    /**
+     * Successful Response
+     */
+    200: RateGroupLookupResponseModel;
+};
+
+export type RateGroupRateGroupLookupResponse = RateGroupRateGroupLookupResponses[keyof RateGroupRateGroupLookupResponses];
+
+export type RateGroupRateGroupUpdateData = {
+    body: BodyRateGroupRateGroupUpdate;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/rate_group/update';
+};
+
+export type RateGroupRateGroupUpdateErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type RateGroupRateGroupUpdateError = RateGroupRateGroupUpdateErrors[keyof RateGroupRateGroupUpdateErrors];
+
+export type RateGroupRateGroupUpdateResponses = {
+    /**
+     * Successful Response
+     */
+    200: RateGroupUpdateResponseModel;
+};
+
+export type RateGroupRateGroupUpdateResponse = RateGroupRateGroupUpdateResponses[keyof RateGroupRateGroupUpdateResponses];
+
+export type UserRateAddUesrRateAssociationData = {
+    body: BodyUserRateAddUesrRateAssociation;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/user_rate/add';
+};
+
+export type UserRateAddUesrRateAssociationErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UserRateAddUesrRateAssociationError = UserRateAddUesrRateAssociationErrors[keyof UserRateAddUesrRateAssociationErrors];
+
+export type UserRateAddUesrRateAssociationResponses = {
+    /**
+     * Successful Response
+     */
+    200: UserRateAddOrDelResponseModel;
+};
+
+export type UserRateAddUesrRateAssociationResponse = UserRateAddUesrRateAssociationResponses[keyof UserRateAddUesrRateAssociationResponses];
+
+export type UserRateDelUesrRateAssociationData = {
+    body: BodyUserRateDelUesrRateAssociation;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/user_rate/del';
+};
+
+export type UserRateDelUesrRateAssociationErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UserRateDelUesrRateAssociationError = UserRateDelUesrRateAssociationErrors[keyof UserRateDelUesrRateAssociationErrors];
+
+export type UserRateDelUesrRateAssociationResponses = {
+    /**
+     * Successful Response
+     */
+    200: UserRateAddOrDelResponseModel;
+};
+
+export type UserRateDelUesrRateAssociationResponse = UserRateDelUesrRateAssociationResponses[keyof UserRateDelUesrRateAssociationResponses];
+
+export type UserRateLookupUesrRateAssociationData = {
+    body?: never;
+    headers?: {
+        /**
+         * X-Correlation-Id
+         */
+        'X-Correlation-ID'?: string;
+    };
+    path?: never;
+    query?: {
+        /**
+         * User Id
+         * 查询关联的用户id
+         */
+        user_id?: number | null;
+    };
+    url: '/user_rate/lookup';
+};
+
+export type UserRateLookupUesrRateAssociationErrors = {
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+};
+
+export type UserRateLookupUesrRateAssociationError = UserRateLookupUesrRateAssociationErrors[keyof UserRateLookupUesrRateAssociationErrors];
+
+export type UserRateLookupUesrRateAssociationResponses = {
+    /**
+     * Successful Response
+     */
+    200: UserRateLookupResponseModel;
+};
+
+export type UserRateLookupUesrRateAssociationResponse = UserRateLookupUesrRateAssociationResponses[keyof UserRateLookupUesrRateAssociationResponses];
+
 export type ClientOptions = {
-    baseUrl: 'http://localhost:8002' | (string & {});
+    baseUrl: 'http://localhost:8000' | (string & {});
 };

@@ -58,5 +58,6 @@
 
   "tailwindCSS.experimental.classRegex": [
     // ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  "codingcopilot.enableCompletionLanguage": {}
 }
