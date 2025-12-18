@@ -11,11 +11,13 @@ export const userBalance = defineStore('balance', ()=>{
 
         const {balanceBalanceLookupAccount} = useApiV1Client()
         const {data,error} = await balanceBalanceLookupAccount()
-
+        // console.log(data.postedBalance)
+        
         try{
             if(error) console.log(error)
-            posted_balance.value = data.posted_balance
-            pending_balance.value = data.pending_balance
+            posted_balance.value = parseFloat(data.postedBalance) || 0
+            pending_balance.value = parseFloat(data.pendingBalance) || 0
+            // console.log(posted_balance.value,pending_balance.value)
         }catch(e){
             console.error('余额获取失败',e)
             nowerror.value = '余额获取失败'
@@ -24,9 +26,9 @@ export const userBalance = defineStore('balance', ()=>{
         }
     }
 
-    onMounted(()=>{
-        fetchBalance()
-    })
+    // onMounted(()=>{
+    //     fetchBalance()
+    // })
     return{
         posted_balance,
         pending_balance,

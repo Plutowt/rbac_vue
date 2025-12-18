@@ -95,6 +95,11 @@ export const useMenu = defineStore('menu', () => {
                 to: 'joint-image_upload'
               },
               {
+                icon:IconMessage,
+                label:'图片审核',
+                to:'joint-image_aduit'
+              },
+              {
                 icon: IconMessage,
                 label:'任务添加',
                 to: 'joint-excel_upload'
